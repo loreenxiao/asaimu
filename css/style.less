@@ -3406,10 +3406,19 @@ button {
 
 // --------------------------------------------- 首页-EMC防护
 .index-EMC-protect{position: relative;
+  background:url("../images/global.jpg") no-repeat;
+  overflow: hidden;
+  max-height: 9.6rem;
   // margin-top: -3.64rem;
   // z-index: 2;
   .global-image{
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(50%);
+    scale: 1.4;
+
+    img{}
    
   }
   .global-content{position: absolute;
@@ -3420,18 +3429,18 @@ button {
     .global-top{.flex; .j_justify;
       .gt-left{width: 42%; 
         .info{opacity: 0.5;margin-top: .52rem;line-height: 1.875}
-        .moucecircle{.flex; .a_center; .j_center;
+        .moucecircle{.flex; .a_center; .j_center; .dh;
           margin-top: .91rem;
           width: .48rem;
           height: .48rem;
           background: #FFFFFF;
           border-radius: 50%;
-          .hand{display: block; position: relative;
+          .hand{display: block; position: relative;.dh;
             width: .18rem;
             height: .26rem;
             border: solid 2px var(--color-active);
             border-radius: 44%;
-            .point{
+            .point{.dh;
               position: absolute;
               top: 0.03rem;
               left: 0.06rem;
@@ -3439,6 +3448,12 @@ button {
               width: 0.02rem;
               height: 0.04rem;
               background: var(--color-active);
+            }
+          }
+          &:hover{.dh;
+            background-color: var(--color-active);
+            .hand{.dh;border: solid 2px var(--white-color);
+              .point{.dh;background: var(--white-color);}
             }
           }
         }
@@ -3468,11 +3483,13 @@ button {
       position: absolute;
       bottom: .5rem;
       width: 100%;
+      // position: relative;
+      // margin-top: 2.2rem;
         p{.font22; }
         .parner-wrap{margin-top: .34rem; background-color: rgba(28, 28, 28, .6);
           .company-box{
             .pb{padding-bottom: 69.2%;
-              .ab{.flex; .a_center;}
+              .ab{.flex; .a_center; .j_center;}
             }
           }
         }

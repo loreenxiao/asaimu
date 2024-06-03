@@ -375,7 +375,7 @@ $(function () {
 			slidesPerView: 9,
 			spaceBetween: 20,
 			allowTouchMove: false,
-			speed: 8000,
+			// speed: 8000,
 			autoplay:true,
 			autoplay: { delay: 0, disableOnInteraction: false, },
 			breakpoints: {

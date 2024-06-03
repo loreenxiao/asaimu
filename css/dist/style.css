@@ -3860,6 +3860,16 @@ button {
 }
 .index-EMC-protect {
   position: relative;
+  background: url("../images/global.jpg") no-repeat;
+  overflow: hidden;
+  max-height: 9.6rem;
+}
+.index-EMC-protect .global-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(50%);
+  scale: 1.4;
 }
 .index-EMC-protect .global-content {
   position: absolute;
@@ -3900,6 +3910,9 @@ button {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   margin-top: 0.91rem;
   width: 0.48rem;
   height: 0.48rem;
@@ -3909,12 +3922,18 @@ button {
 .index-EMC-protect .global-content .global-top .gt-left .moucecircle .hand {
   display: block;
   position: relative;
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   width: 0.18rem;
   height: 0.26rem;
   border: solid 2px var(--color-active);
   border-radius: 44%;
 }
 .index-EMC-protect .global-content .global-top .gt-left .moucecircle .hand .point {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   position: absolute;
   top: 0.03rem;
   left: 0.06rem;
@@ -3922,6 +3941,24 @@ button {
   width: 0.02rem;
   height: 0.04rem;
   background: var(--color-active);
+}
+.index-EMC-protect .global-content .global-top .gt-left .moucecircle:hover {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background-color: var(--color-active);
+}
+.index-EMC-protect .global-content .global-top .gt-left .moucecircle:hover .hand {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  border: solid 2px var(--white-color);
+}
+.index-EMC-protect .global-content .global-top .gt-left .moucecircle:hover .hand .point {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background: var(--white-color);
 }
 .index-EMC-protect .global-content .global-top .gt-right {
   display: grid;
@@ -3987,6 +4024,10 @@ button {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
 }
 .index-recomment {
   position: relative;

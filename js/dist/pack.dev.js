@@ -376,7 +376,7 @@ $(function () {
       slidesPerView: 9,
       spaceBetween: 20,
       allowTouchMove: false,
-      speed: 8000,
+      // speed: 8000,
       autoplay: true
     }, _defineProperty(_ref, "autoplay", {
       delay: 0,
