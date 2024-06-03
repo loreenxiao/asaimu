@@ -3650,7 +3650,7 @@ button {
   -webkit-justify-content: space-between;
   justify-content: space-between;
   cursor: pointer;
-  padding: 0.2rem 0.36rem;
+  padding: 0.18rem 0.36rem;
   border-radius: 0.05rem;
   gap: 0.2rem;
   background-color: var(--white-color);
@@ -3660,6 +3660,7 @@ button {
 .index-order .swipertab .item .title {
   font-size: 18px;
   font-size: clamp(14px, 0.18rem, 18px);
+  font-weight: 700;
 }
 .index-order .swipertab .active {
   background-color: var(--color-active);
@@ -3994,6 +3995,7 @@ button {
 }
 .index-EMC-protect .global-content .global-top .gt-right .item .i-number .year {
   margin-left: 0.06rem;
+  font-weight: 500;
 }
 .index-EMC-protect .global-content .global-top .gt-right .item .i-number .addicon {
   font-size: 0.6rem;
@@ -4022,6 +4024,7 @@ button {
 .index-EMC-protect .global-content .global-bottom p {
   font-size: 22px;
   font-size: clamp(16px, 0.22rem, 22px);
+  font-weight: 700;
 }
 .index-EMC-protect .global-content .global-bottom .parner-wrap {
   margin-top: 0.34rem;
@@ -4098,6 +4101,7 @@ button {
 }
 .index-recomment .main-box .public-newstitle a span {
   color: var(--black-999);
+  font-weight: 500;
 }
 .index-recomment .main-box .public-newstitle a:hover {
   color: var(--color-active);
