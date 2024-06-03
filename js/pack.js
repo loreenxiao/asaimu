@@ -334,7 +334,7 @@ $(function () {
                    
                     
                     // speed: 900,
-                    // loop: true,
+                    loop: true,
                     // spaceBetween: 30,
                     slidesPerView: 5,
                     centeredSlides: true,
@@ -373,7 +373,7 @@ $(function () {
 		var mySwiper = new Swiper('.index-EMC-protect .parner-wrap', {
 			// loop : true,//可选选项，开启循环
 			slidesPerView: 9,
-			spaceBetween: 20,
+			// spaceBetween: 20,
 			allowTouchMove: false,
 			// speed: 8000,
 			// autoplay:true,
