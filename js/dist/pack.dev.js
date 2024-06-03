@@ -319,7 +319,8 @@ $(function () {
       var swiper = new Swiper(swiperBox, {
         speed: speed,
         spaceBetween: 20,
-        allowTouchMove: false
+        allowTouchMove: false,
+        effect: "fade"
       });
       var swiperArr = [];
       swiperBox.find('.swiper-box').each(function () {
@@ -329,15 +330,15 @@ $(function () {
           //     delay: 4000,
           //     disableOnInteraction: false,
           // },
-          centeredSlides: true,
           // speed: 900,
           // loop: true,
-          slidesPerView: 5,
           // spaceBetween: 30,
+          slidesPerView: 5,
+          centeredSlides: true,
           preventLinksPropagation: false,
           // 阻止点击事件冒泡
           pagination: {
-            el: pager,
+            el: '.swiper-box .swiper-pagination',
             clickable: true
           },
           navigation: {
@@ -345,17 +346,11 @@ $(function () {
             nextEl: '.swiper-box .swiper-button-next'
           },
           breakpoints: {
-            480: {
-              slidesPerView: 1,
-              spaceBetween: 10
+            768: {
+              slidesPerView: 1
             },
             990: {
-              slidesPerView: 2,
-              spaceBetween: 16
-            },
-            1280: {
-              slidesPerView: 3,
-              spaceBetween: 16
+              slidesPerView: 3
             }
           }
         });

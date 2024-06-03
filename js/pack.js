@@ -320,6 +320,7 @@ $(function () {
                 speed,
                 spaceBetween: 20,
                 allowTouchMove: false,
+                effect:"fade",
             });
 
             let swiperArr = [];
@@ -331,35 +332,30 @@ $(function () {
                     //     disableOnInteraction: false,
                     // },
                    
-                    centeredSlides: true,
+                    
                     // speed: 900,
                     // loop: true,
-                    slidesPerView: 5,
-                    
                     // spaceBetween: 30,
+                    slidesPerView: 5,
+                    centeredSlides: true,
                     preventLinksPropagation: false, // 阻止点击事件冒泡
                     pagination: {
-                        el: pager,
+                        el: '.swiper-box .swiper-pagination',
                         clickable: true,
                     },
                     navigation: {
                         prevEl: '.swiper-box .swiper-button-prev',
                         nextEl: '.swiper-box .swiper-button-next',
-        
                     },
                     breakpoints: {
-                        480: {
+                        768: {
                             slidesPerView: 1,
-                            spaceBetween: 10,
-                        },
+                        }, 
                         990: {
-                            slidesPerView: 2,
-                            spaceBetween: 16,
-                        },
-                        1280: {
                             slidesPerView: 3,
-                            spaceBetween: 16,
+                            
                         },
+                       
                     },
                 });
                 swiperArr.push(itemSwiper);
