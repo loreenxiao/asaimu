@@ -1144,6 +1144,9 @@ button {
   z-index: 20;
 }
 #header .header-pc .header-wrap .header-right .nav dl:hover a {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   color: var(--color-active);
 }
 #header .header-pc .header-wrap .header-right .nav dt a {
@@ -2034,6 +2037,18 @@ button {
   color: var(--black-666);
   line-height: 1;
   white-space: nowrap;
+}
+#footer .footer-up .nav-list .nav-center .infobox .content li a {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+#footer .footer-up .nav-list .nav-center .infobox .content li:hover a {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  color: var(--white-color);
+  opacity: 0.8;
 }
 #footer .footer-up .nav-list .nav-right {
   margin-left: 1.75rem;

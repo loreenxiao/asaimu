@@ -1267,10 +1267,10 @@ button {
           dl {
             position: relative;
             z-index: 10;
-  
+            a{}
             &:hover {
               z-index: 20;
-              a{color: var(--color-active);}
+              a{.dh;color: var(--color-active);}
             }
           }
   
@@ -2025,7 +2025,12 @@ button {
             }
           }
           .content{margin-top: 0.37rem;
-            li{padding: 0.08rem 0; color: var(--black-666); line-height: 1; white-space: nowrap;}
+            li{padding: 0.08rem 0; color: var(--black-666); line-height: 1; white-space: nowrap;
+              a{.dh;}
+              &:hover{
+                a{.dh;color: var(--white-color); opacity: 0.8;}
+              }
+            }
           }
           
         }

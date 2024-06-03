@@ -374,7 +374,7 @@ $(function () {
       loop: true,
       //可选选项，开启循环
       slidesPerView: 9,
-      spaceBetween: 20,
+      // spaceBetween: 20,
       allowTouchMove: false,
       // speed: 8000,
       autoplay: true
