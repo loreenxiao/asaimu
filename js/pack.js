@@ -371,13 +371,13 @@ $(function () {
 
     function indexProtect() {
 		var mySwiper = new Swiper('.index-EMC-protect .parner-wrap', {
-			// loop : true,//可选选项，开启循环
+			loop : true,//可选选项，开启循环
 			slidesPerView: 9,
 			// spaceBetween: 20,
 			allowTouchMove: false,
-			// speed: 8000,
-			// autoplay:true,
-			// autoplay: { delay: 0, disableOnInteraction: false, },
+			speed: 3000,
+			autoplay:true,
+			autoplay: { delay: 0, disableOnInteraction: false, },
 			breakpoints: {
                 1200: { slidesPerView: 7, },
                 990: { slidesPerView: 5, },

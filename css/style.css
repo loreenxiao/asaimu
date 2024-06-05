@@ -4150,6 +4150,7 @@ button {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
+  transition-timing-function: linear !important;
 }
 .index-EMC-protect .global-content .global-bottom .parner-wrap .company-box {
   display: -webkit-box;
