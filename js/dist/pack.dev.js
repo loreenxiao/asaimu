@@ -373,19 +373,19 @@ $(function () {
       allowTouchMove: false,
       // speed: 8000,
       // autoplay:true,
-      autoplay: {
-        delay: 0,
-        disableOnInteraction: false
-      },
+      // autoplay: { delay: 0, disableOnInteraction: false, },
       breakpoints: {
-        768: {
-          slidesPerView: 6
+        1200: {
+          slidesPerView: 7
+        },
+        990: {
+          slidesPerView: 5
         },
         640: {
-          slidesPerView: 4
+          slidesPerView: 3
         },
         480: {
-          slidesPerView: 2
+          slidesPerView: 3
         }
       }
     });

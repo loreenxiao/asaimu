@@ -3940,7 +3940,7 @@ button {
   -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3961,7 +3961,8 @@ button {
   opacity: 0;
 }
 .index-EMC-protect .global-content {
-  position: absolute;
+  position: relative;
+  min-height: 9.5rem;
   width: 100%;
   height: 100%;
   top: 0;
@@ -4111,10 +4112,7 @@ button {
   margin-top: 0.34rem;
   background-color: rgba(28, 28, 28, 0.6);
 }
-.index-EMC-protect .global-content .global-bottom .parner-wrap .company-box .pb {
-  padding-bottom: 69.2%;
-}
-.index-EMC-protect .global-content .global-bottom .parner-wrap .company-box .pb .ab {
+.index-EMC-protect .global-content .global-bottom .parner-wrap .company-box {
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -4127,6 +4125,22 @@ button {
   -ms-flex-pack: center;
   -webkit-justify-content: center;
   justify-content: center;
+  padding: 0.405rem 0;
+}
+.index-EMC-protect .global-content .global-bottom .parner-wrap .company-box img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  max-width: 1.4rem;
 }
 .index-recomment {
   position: relative;

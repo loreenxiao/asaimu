@@ -1044,55 +1044,7 @@ button {
 .pb { width: 100%; height: 0; padding-bottom: 100%; position: relative; z-index: 5; overflow: hidden; }
 .ab { width: 100%; height: 100%; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 5; transition: all .45s ease; font-size: 0; text-align: center; overflow: hidden; }
 // --------------------------------------------- swiper
-// .swiper {
-//   position: relative;
-//   overflow: hidden;
 
-//   .swiper-slide {
-//     .ani {
-//       display: none;
-//     }
-
-//     &.swiper-slide-active {
-//       .ani {
-//         display: block;
-//       }
-//     }
-//   }
-
-//   .swiper-pagination {
-//     bottom: -5px;
-//     opacity: 0;
-
-//     .swiper-pagination-bullet {
-//       width: .5rem;
-//       height: 3px;
-//       background-color: var(--color-gray-ddd);
-//       border-radius: 1.5px;
-//       opacity: 1;
-//       margin: 0 .05rem;
-//       .dh;
-
-//       &.swiper-pagination-bullet-active {
-//         background-color: var(--color-active);
-//       }
-//     }
-//   }
-//   .swiper-pagination-point {
-//     margin-bottom: .3rem;
-//     .swiper-pagination-bullet {
-//       width: 12px;
-//       height: 12px;
-//       background-color: transparent;
-//       border: 2px solid #fff;
-//       border-radius: 50%;
-//       margin: 0 3px;
-//       &.swiper-pagination-bullet-active {
-//         background-color: #fff;
-//       }
-//     }
-//   }
-// }
 .swiper-down-main {
   .flex;
   .a_center;
@@ -1369,7 +1321,7 @@ button {
           .flex;
           grid-gap: 0 20px;
           .grid_gap(0,20);
-          .header-btn {
+          .header-btn {cursor: pointer;
             .up {
               height: 100%;
               .flex;
@@ -3057,7 +3009,7 @@ button {
 }
 
 // 更多按钮-公用
-.index_more{.flex; .a_center; .j_center; width: .31rem; height: .31rem;
+.index_more{.dh;.flex; .a_center; .j_center; width: .31rem; height: .31rem;
   border-radius: 50%;
   border: 1px solid #B7B8BC;
   span{color: var(--black-333);}
@@ -3257,7 +3209,8 @@ button {
           }
         }
         .more{.flex; .a_center; gap: 10px; margin-top: .54rem;
-            span{color: var(--black-999);}
+            span{.dh;color: var(--black-999);}
+            .iconfont{.dh;color: var(--black-222);}
         }
 
 
@@ -3269,8 +3222,8 @@ button {
         }
         .content{
           .more{color: var(--color-active);
-            span{color: var(--color-active);}
-            .index_more{border: solid 1px var(--color-active);}
+            span{.dh;color: var(--color-active);}
+            .index_more{.dh;border: solid 1px var(--color-active);}
           }
         }
       }
@@ -3321,14 +3274,20 @@ button {
     margin-top: .47rem;
     // margin-left: -.4rem;
     
-    .order-swiper {
-      overflow: visible;
-      .adelay(.3);
-      background: url("../images/index-order-bg.png") no-repeat;
-      background-size: contain;
-
-      div.swiper-slide.swiper-slide-active .swiper-box { opacity: 1; }
-      .swiper-box {opacity: 0;.dh;
+    .order-swiper { overflow: visible;.adelay(.3);background: url("../images/index-order-bg.png") no-repeat; background-size: contain;
+     
+      .swiper-slide.swiper-slide-active .swiper-box { opacity: 1; }
+      .swiper-box {opacity: 0;.dh; position: relative;
+        &::before{
+          position: absolute;
+          content: '';
+          width: 100px;
+          height: 100%;
+          left: -100px;
+          background-color: #fff;
+          z-index: 2;
+      
+        }
         .item-box{text-align: center;  color: var(--black-000);text-align: center;
           .p-order{.font30; font-weight: 700; margin-top: 1.24rem; display: none;}
           .p-image{margin-top: 0.69rem; height: 1.92rem;padding: 0.2rem .6rem;
@@ -3337,7 +3296,7 @@ button {
           .content{margin-bottom: .5rem;
             p{text-align: center;}
             .fir-title{.font18; color: var(--black-000); font-weight: 700; margin-top: .45rem;}
-            .sec-title{margin-top: .19rem;color: var(--black-666); font-weight: 500;opacity: 0;}
+            .sec-title{margin-top: .19rem;color: var(--black-666); font-weight: 500;opacity: 0; padding: 0 .5rem;}
 
             .thi-detail{.flex; .a_center;opacity: 0; border-radius: 6px; margin-top: .64rem; gap: .17rem; background-color: var(--color-active); padding: .1rem .29rem; line-height: 1;
               span{color: var(--white-color);}
@@ -3352,6 +3311,7 @@ button {
           color:#fff;
           background-size: cover;
           margin-top: -1.55rem;
+          margin-left: -.447rem;
           width: 4.47rem !important;
           // background-size: contain;
           // margin-top: -1rem;
@@ -3434,7 +3394,7 @@ button {
   // margin-top: -3.64rem;
   // z-index: 2;
   .global-image{.dh;
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -3447,7 +3407,7 @@ button {
     
     
   }
-  .global-content{position: absolute;
+  .global-content{position: relative; min-height: 9.5rem;
     width: 100%;
     height: 100%;
     top: 0;
@@ -3517,10 +3477,12 @@ button {
       // margin-top: 2.2rem;
         p{.font22; font-weight: 700;}
         .parner-wrap{margin-top: .34rem; background-color: rgba(28, 28, 28, .6);
-          .company-box{
-            .pb{padding-bottom: 69.2%;
-              .ab{.flex; .a_center; .j_center;}
-            }
+          .swiper-wrapper{.a_center;}
+          .company-box{.flex; .a_center; .j_center; padding: .405rem 0;
+            img{.flex; .a_center; .j_center;max-width: 1.4rem;}
+            // .pb{padding-bottom: 69.2%;
+            //   .ab{.flex; .a_center; .j_center;}
+            // }
           }
         }
 
@@ -3580,6 +3542,10 @@ button {
               img{.dh; .fd(1.1);
 
               }
+            }
+            .info{
+              .i-time,.i-title{color: var(--color-active); opacity: 0.8; }
+              
             }
           }
         }
