@@ -3419,6 +3419,9 @@ button {
   background-color: var(--white-color);
 }
 .indexbanner .banner-item ul li .content {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   gap: 0.2rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3434,6 +3437,9 @@ button {
   justify-content: center;
 }
 .indexbanner .banner-item ul li .content .image {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -3450,9 +3456,15 @@ button {
   height: 0.24rem;
 }
 .indexbanner .banner-item ul li .content .image img {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   width: 100%;
 }
 .indexbanner .banner-item ul li .content .title {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   font-size: 18px;
   font-size: clamp(14px, 0.18rem, 18px);
   color: var(--black-000);
@@ -3464,10 +3476,26 @@ button {
   transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   background-color: var(--color-active);
 }
+.indexbanner .banner-item ul li:hover .content {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.indexbanner .banner-item ul li:hover .content .image {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
 .indexbanner .banner-item ul li:hover .content .image img {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   filter: brightness(0) invert(1);
 }
 .indexbanner .banner-item ul li:hover .content .title {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   color: var(--white-color);
 }
 .indexbanner .banner-item ul li:hover .index_more {
@@ -4433,6 +4461,13 @@ button {
   font-size: clamp(16px, 0.22rem, 22px);
   font-weight: 500;
   color: var(--black-999);
+}
+.index-recomment .main-box .item-products .product-list ul li a:hover .content .image {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  width: 1.5rem;
+  height: 0.8rem;
 }
 .index-recomment .main-box .item-products .product-list ul li a:hover .content .title .t-type {
   -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);

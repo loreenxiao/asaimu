@@ -3128,19 +3128,19 @@ button {
    
     ul{.flex;width: 100%; gap:.27rem;
       li{.dh; .flex;.a_center;.j_justify;cursor: pointer; flex: 1; padding: .22rem .23rem .22rem .4rem;  border-radius: 6px;background-color: var(--white-color);
-        .content{.flex; gap: .2rem;.flex;.a_center; .j_center;
-          .image{.flex;.a_center;.j_justify; width: .24rem; height: .24rem;
-            img{width: 100%;}
+        .content{.dh;.flex; gap: .2rem;.flex;.a_center; .j_center;
+          .image{.dh;.flex;.a_center;.j_justify; width: .24rem; height: .24rem;
+            img{.dh;width: 100%;}
           }
-          .title{.font18; color: var(--black-000);    white-space: nowrap;}
+          .title{.dh;.font18; color: var(--black-000);    white-space: nowrap;}
         }
         &:hover{.dh;
           background-color: var(--color-active);
-          .content{
-            .image{
-              img{filter: brightness(0) invert(1);}
+          .content{.dh;
+            .image{.dh;
+              img{.dh;filter: brightness(0) invert(1);}
             }
-            .title{color: var(--white-color);}
+            .title{.dh;color: var(--white-color);}
           }
           .index_more{border: solid 1px var(--white-color); span{color: var(--white-color);}}
         }
@@ -3574,7 +3574,9 @@ button {
                 }
                 &:hover{
                   .content{
-                    
+                    .image{.dh;width: 1.5rem; height: .8rem;
+                      // img{.dh;.fd(1.1);}
+                    }
                     .title{
                       .t-type{.dh;color: var(--color-active);}
                     }
