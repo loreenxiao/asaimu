@@ -3282,7 +3282,7 @@ button {
 /* 侧边栏--通讯方式 */
 .navbar-communication .kefu-box {
   position: fixed;
-  top: 50%;
+  bottom: 20%;
   right: 60px;
   z-index: 10;
 }
@@ -3310,8 +3310,8 @@ button {
   -webkit-justify-content: center;
   justify-content: center;
   overflow: hidden;
-  width: 0.46rem;
-  height: 0.46rem;
+  width: 46px;
+  height: 46px;
   border: solid 1px #e9ebeb;
   border-radius: 5px;
 }
@@ -3416,10 +3416,15 @@ button {
   justify-content: center;
   gap: 12px;
   cursor: pointer;
-  width: 138px;
+  width: fit-content;
+  padding: 0 0.22rem;
   height: 46px;
   border-radius: 5px;
   border: 1px solid #FFFFFF;
+}
+.idx_more span {
+  display: inline-block;
+  white-space: nowrap;
 }
 .idx_more span img {
   filter: brightness(0) invert(1);
@@ -3438,6 +3443,54 @@ button {
 .indexbanner .bannerbox {
   width: 100%;
   color: var(--white-color);
+}
+.indexbanner .bannerbox .sidebar-wrapper {
+  position: absolute;
+  right: 0;
+  width: 16.6%;
+  background: rgba(255, 255, 255, 0.6);
+  height: 100%;
+  z-index: 2;
+}
+.indexbanner .bannerbox .sidebar-wrapper .sidebox {
+  width: 100%;
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.indexbanner .bannerbox .sidebar-wrapper .sidebox .side-narbar {
+  padding-left: 0.3rem;
+}
+.indexbanner .bannerbox .sidebar-wrapper .sidebox .side-narbar p {
+  color: var(--black-222);
+}
+.indexbanner .bannerbox .sidebar-wrapper .sidebox .side-narbar .fir-title {
+  font-size: 24px;
+  font-size: clamp(18px, 0.24rem, 24px);
+}
+.indexbanner .bannerbox .sidebar-wrapper .sidebox .side-narbar .sec-title,
+.indexbanner .bannerbox .sidebar-wrapper .sidebox .side-narbar .idx_more {
+  font-size: 16px;
+  font-size: clamp(14px, 0.16rem, 16px);
+  margin-top: 0.17rem;
+}
+.indexbanner .bannerbox .sidebar-wrapper .sidebox .side-narbar .idx_more {
+  margin-top: 0.34rem;
+  background-color: var(--black-111);
+  border: none;
+}
+.indexbanner .bannerbox .sidebar-wrapper .sidebox .side-narbar .idx_more:hover {
+  background-color: #1E1E1E;
 }
 .indexbanner .bannerbox .bancontent {
   width: 100%;

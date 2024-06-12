@@ -3008,9 +3008,9 @@ button {
 /* ------------------------- */
 /* 侧边栏--通讯方式 */
 .navbar-communication{
-	.kefu-box {position: fixed;top: 50%;right: 60px; z-index: 10;
+	.kefu-box {position: fixed;bottom: 20%;right: 60px; z-index: 10;
 		.item {margin:10px 0; border-radius: 5px;background-color: var(--white-color);position: relative;cursor: pointer;
-			.item-box {.dh;.flex;.a_center;.j_center;overflow: hidden;width: .46rem;height: .46rem;border: solid 1px #e9ebeb;border-radius: 5px;
+			.item-box {.dh;.flex;.a_center;.j_center;overflow: hidden;width: 46px;height: 46px;border: solid 1px #e9ebeb;border-radius: 5px;
         img{.flex;.a_center;.j_center;}
         &:hover{
           .dh;background-color: var(--color-active);border:none;
@@ -3045,11 +3045,12 @@ button {
 }
 // 按钮
 .idx_more{.dh;.flex;.a_center;.j_center; gap: 12px; cursor: pointer;
-  width: 138px;
+  width: fit-content;
+  padding: 0 .22rem;
   height: 46px;
   border-radius: 5px;
   border: 1px solid #FFFFFF;
-  span{
+  span{display: inline-block;white-space:nowrap;
     img{filter: brightness(0) invert(1);}
   }
   &:hover{.dh;
@@ -3067,6 +3068,33 @@ button {
 // --------------------------------------------- 首页-banner
 .indexbanner{position: relative; padding-top: 1.18rem;
   .bannerbox {width: 100%; color: var(--white-color);
+    .sidebar-wrapper{
+      position: absolute;
+      right: 0;
+      width: 16.6%;
+      background: rgba(255, 255, 255, .6);
+      height: 100%;
+      z-index: 2;
+      .sidebox{width: 100%; height: 100%; .flex;.a_center;.j_center;
+        .side-narbar{padding-left: .3rem;
+          p{
+            color: var(--black-222);
+          }
+          .fir-title{.font24; }
+          .sec-title,.idx_more{.font16; margin-top: .17rem;}
+          .idx_more{margin-top: .34rem;
+            background-color: var(--black-111); border: none;
+            &:hover{
+              background-color: #1E1E1E;
+            }
+          }
+        }
+      }
+      
+      
+      
+    }
+    
     .bancontent{width: 100%;position: absolute;top: 0;left: 0;align-content: center;
       height: 100%;
       position: absolute;
@@ -3113,6 +3141,7 @@ button {
       .grid_box{}
     }
   }
+
 }
 
 
