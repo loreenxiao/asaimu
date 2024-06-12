@@ -37,12 +37,12 @@ $(function () {
     hiUpgrade();
 
     // 窗口发生改变刷新页面
-    var windoWidth = $(window).width();
-    $(window).resize(function () {
-        if (Math.abs($(this).width() - windoWidth) > 20) {
-            window.location.href = "";
-        }
-    });
+    // var windoWidth = $(window).width();
+    // $(window).resize(function () {
+    //     if (Math.abs($(this).width() - windoWidth) > 20) {
+    //         window.location.href = "";
+    //     }
+    // });
 
 
     
@@ -185,343 +185,97 @@ $(function () {
     }
     tabUl();
 
-    // 可视化数据滚动
-    function visualData(obj) {
-        $(window).load(function () {
-            obj.each(function () {
-                var h = Number($(this).html());
-                var t = "";
-                var n = Math.ceil(h / 20);
-                var a = true;
-                var This = $(this);
-                if ($(this).length != 0) {
-                    t = $(this).offset().top;
-                }
-                This.html(0);
-                fn1();
-                $(window).scroll(function () {
-                    fn1();
-                });
-
-                function fn1() {
-                    var wT = $(window).scrollTop();
-                    if (wT > t - $(window).height() + 50 && wT < t - 50 && a == true) {
-                        a = false;
-                        var y = 0;
-                        var timer2 = setInterval(function () {
-                            if (y >= h) {
-                                y = h;
-                                clearInterval(timer2);
-                            }
-                            This.html(y);
-                            y += n;
-                        }, 100);
-                    }
-                }
-            });
-        });
-    }
-    visualData($(".num-move"));
-
+  
 
 
    
 
     // 首页-banner
-    function indexSlide() {
-        var slide = new Swiper('.indexbanner .bannerbox', {
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            speed: 900,
-            effect: 'fade',
+    // function indexSlide() {
+    //     var slide = new Swiper('.indexbanner .bannerbox', {
+    //         autoplay: {
+    //             delay: 4000,
+    //             disableOnInteraction: false,
+    //         },
+    //         speed: 900,
+    //         effect: 'fade',
             
-            // loop: true,
-            watchOverflow: true, //因为仅有1个slide，swiper无效
-            preventLinksPropagation: false, // 阻止点击事件冒泡
-            navigation: {
-                nextEl: '.indexbanner .bannerbox .swiper-button-next',
-                prevEl: '.indexbanner .bannerbox .swiper-button-prev',
-            },
-            pagination: {
-                el: '.indexbanner .bannerbox .swiper-pagination',
-                clickable: true,
-            },
-        });
-    }
-    indexSlide();
+    //         // loop: true,
+    //         watchOverflow: true, //因为仅有1个slide，swiper无效
+    //         preventLinksPropagation: false, // 阻止点击事件冒泡
+    //         navigation: {
+    //             nextEl: '.indexbanner .bannerbox .swiper-button-next',
+    //             prevEl: '.indexbanner .bannerbox .swiper-button-prev',
+    //         },
+    //         pagination: {
+    //             el: '.indexbanner .bannerbox .swiper-pagination',
+    //             clickable: true,
+    //         },
+    //     });
+    // }
+    // indexSlide();
 
-
-    
-
-    // 首页- 解决方案
-	function indexSolution() {
-		var slide = new Swiper('.index-solution .solution-card', {
-			speed: 900,
-			spaceBetween: 42,
-			slidesPerView: 6,
-			preventLinksPropagation: false, // 阻止点击事件冒泡
+    function indexSlide() {
+		var mySwiper = new Swiper('.indexbanner .bannerbox', {
+			slidesPerView: 1,
+			speed: 800,
+			loop: true,
+			autoplay: true,
+			effect: 'fade',
 			pagination: {
-				el: '.index-solution .solution-card .swiper-pagination',
+				el: '.indexbanner .swiper-pagination',
 				clickable: true,
-			},
-			navigation: {
-				prevEl: '.index-solution .swiper-button-prev',
-				nextEl: '.index-solution .swiper-button-next',
+				renderBullet: function (index, className) {
+					// return '<span class="' + className + '">' + 0+(index + 1) + '</span>';
+					return '<div class="' + className + '">' + '<span class="num">' + 0 + (index + 1) + '</span>' + '</div>';
 
-			},
-			breakpoints: {
-				1560:{
-                    slidesPerView: 5,
-					spaceBetween: 30,
-                },
-                1200:{
-                    slidesPerView: 4,
-					spaceBetween: 25,
-                },
-				990: {
-					slidesPerView: 3,
-					spaceBetween: 20,
 				},
-				640: {
-					slidesPerView: 2,
-					spaceBetween: 20,
-				},
-                480: {
-					slidesPerView: 1,
-					spaceBetween: 20,
-				},
-
-			},
-		});
-
-	}
-	indexSolution();
-
-    // 首页- 定制方案
-    function indexOrder() {
-        let divBox = $('.index-order');
-        if (divBox.length) {
-            const getDiv = el => divBox.find(el);
-            let tabs = getDiv('.swipertab').children(),
-                swiperBox = getDiv('.order-swiper'),
-                prev = getDiv('.swiper-button-prev'),
-                next = getDiv('.swiper-button-next'),
-                speed = 500;
-
-            tabs.click(function () {
-                var i = $(this).index();
-                $(this).addClass('active').siblings().removeClass('active');
-                swiper.slideTo($(this).index());
-            });
-
-            const swiper = new Swiper(swiperBox, {
-                speed,
-                spaceBetween: 20,
-                allowTouchMove: false,
-                effect:"fade",
-            });
-
-            let swiperArr = [];
-            swiperBox.find('.swiper-box').each(function () {
-                let pager = $(this).siblings('.swiper-pagination');
-                const itemSwiper = new Swiper($(this), {
-                    // autoplay: {
-                    //     delay: 4000,
-                    //     disableOnInteraction: false,
-                    // },
-                   
-                    
-                    // speed: 900,
-                    loop: true,
-                    // spaceBetween: 30,
-                    slidesPerView: 5,
-                    centeredSlides: true,
-                    preventLinksPropagation: false, // 阻止点击事件冒泡
-                    pagination: {
-                        el: '.swiper-box .swiper-pagination',
-                        clickable: true,
-                    },
-                    navigation: {
-                        prevEl: '.swiper-box .swiper-button-prev',
-                        nextEl: '.swiper-box .swiper-button-next',
-                    },
-                    breakpoints: {
-                        768: {
-                            slidesPerView: 1,
-                        }, 
-                        990: {
-                            slidesPerView: 3,
-                            
-                        },
-                       
-                    },
-                });
-                swiperArr.push(itemSwiper);
-            });
-
-            prev.click(() => swiperArr[swiper.activeIndex].slidePrev());
-            next.click(() => swiperArr[swiper.activeIndex].slideNext());
-        }
-    }
-    indexOrder();
-    
-    // 首页- EMC防护
-
-    function indexProtect() {
-		var mySwiper = new Swiper('.index-EMC-protect .parner-wrap', {
-			loop : true,//可选选项，开启循环
-			slidesPerView: 9,
-			// spaceBetween: 20,
-			allowTouchMove: false,
-			speed: 3000,
-			autoplay:true,
-			autoplay: { delay: 0, disableOnInteraction: false, },
-			breakpoints: {
-                1200: { slidesPerView: 7, },
-                990: { slidesPerView: 5, },
-				640: { slidesPerView: 3, },
-				480: { slidesPerView: 3, },
 			}
 		})
 	}
-	indexProtect();
+	indexSlide();
+    
 
+    // 首页- product
+    function indexProduct() {
+        var slide = new Swiper('.index-product .itemlist', {
+            speed: 900,
+            slidesPerView: 4,
+            spaceBetween: 20,
+            breakpoints: {
+                480: {
+                    slidesPerView: 1,
+                    spaceBetween: 10,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 15,
+                },
+                990: {
+                    slidesPerView: 3,
+                    spaceBetween: 20,
+                },
+                
+            },
+            navigation: {
+				prevEl: '.index-product .swiper-button-prev',
+				nextEl: '.index-product .swiper-button-next',
+
+			},
+            // navigation: {
+            //     nextEl: '.indexbanner .bannerbox .swiper-button-next',
+            //     prevEl: '.indexbanner .bannerbox .swiper-button-prev',
+            // },
+            // pagination: {
+            //     el: '.indexbanner .bannerbox .swiper-pagination',
+            //     clickable: true,
+            // },
+        });
+    }
+    indexProduct();
 
 
 
 })
 
 
-
-// 鼠标跟随
-function imousehover(obj, obj2) {
-    // 鼠标跟随效果
-    const isPad =
-        navigator.maxTouchPoints &&
-        navigator.maxTouchPoints > 2 &&
-        /MacIntel/.test(navigator.platform);
-
-    class CustomCursor {
-        constructor(hoverItems) {
-            this.cursor = obj;
-            this.cursorInner = $(".inner", this.cursor);
-            this.pageX = 0;
-            this.pageY = 0;
-            this.move = true;
-            this.hoverItems = hoverItems;
-        }
-
-        init() {
-            if (this.cursor[0]) {
-                this.initCursor();
-                this.initHovers();
-                this.initMove();
-            }
-        }
-
-        initCursor() {
-            this.pageX = $(window).width() / 2 - 50;
-            this.pageY = $(window).height() / 2 - 50;
-            $(document).on("mousemove", (e) => {
-                this.pageX = e.clientX;
-                this.pageY = e.clientY;
-            });
-            const render = () => {
-                if (this.move) {
-                    window.TweenMax.to(this.cursor, 0.5, {
-                        x: this.pageX,
-                        y: this.pageY,
-                        ease: "Power1.easeOut",
-                    });
-                }
-                requestAnimationFrame(render);
-            };
-            render();
-        }
-
-        initHovers() {
-            const handleMouseEnter = (e) => {
-                window.TweenMax.to(this.cursor, 0.5, {
-                    scale: 1,
-                    opacity: 1,
-                    ease: "Power1.easeOut",
-                });
-                e.stopPropagation();
-            };
-            const handleMouseLeave = () => {
-                window.TweenMax.to(this.cursor, 0.5, {
-                    scale: 0,
-                    opacity: 0,
-                    ease: "Power1.easeOut",
-                });
-
-                // this.cursor.removeClass(function (i, v) {return v.replace('cursor', '');});
-            };
-            this.hoverItems.each(function (i, item) {
-                $(item).on("mouseenter", handleMouseEnter);
-                $(item).on("mouseleave", handleMouseLeave);
-            });
-        }
-        initMove() {
-            const handleMouseMove = (e) => {
-                if ($(e.target).closest('.owl-nav')[0]) {
-                    this.initCircle(e.target, "[class*='owl-']");
-                } else if ($(e.target).closest('.searchOnOff')[0]) {
-                    this.initCircle(e.target, ".searchOnOff");
-                } else {
-                    window.TweenMax.to(this.cursor, 0.5, {
-                        scale: 1,
-                        // background: 'yellow',
-                        ease: "Power1.easeOut",
-                    });
-                    window.TweenMax.to(this.cursorInner, 0.5, {
-                        opacity: 1,
-                        ease: "Power1.easeOut",
-                    });
-                    this.move = true;
-                }
-                if ($(e.currentTarget).hasClass('ff_topSlider') || $(e.currentTarget).parents('.mlist.project')[0]) {
-                    // const sxPos = (e.clientX / window.innerWidth) * 200 - 100;
-                    // this.cursor.toggleClass("next", sxPos > 0);
-                    this.cursor.addClass('more');
-                } else if ($(e.currentTarget).hasClass('videom') || $(e.currentTarget).parents('.bodyvideom')[0]) {
-                    this.cursor.addClass('play');
-                } else if ($(e.currentTarget).parents('.team_tabs')[0]) {
-                    this.cursor.addClass('drag');
-                } else if ($(e.currentTarget).hasClass('post-next')) {
-                    this.cursor.addClass('next');
-                }
-            };
-
-            this.hoverItems.each(function (i, item) {
-                $(item).on("mousemove", item, handleMouseMove);
-            });
-        }
-        initCircle(target, elm) {
-            var _sTop = $(window).scrollTop();
-            var _offset = Math.min($(target).closest(elm).outerWidth(), $(target).closest(elm).outerHeight());
-            var _x = Math.round($(target).closest(elm).offset().left + _offset / 2);
-            var _y = Math.round($(target).closest(elm).offset().top + _offset / 2 - _sTop);
-            this.move = false;
-            window.TweenMax.to(this.cursor, 0.5, {
-                scale: 0.5,
-                x: _x,
-                y: _y,
-                background: 'rgba(255,255,255,0)',
-                ease: "Power1.easeOut",
-            });
-            window.TweenMax.to(this.cursorInner, 0.5, {
-                opacity: 0,
-                ease: "Power1.easeOut",
-            });
-        }
-    }
-
-    if (!isPad) {
-        // $('body').append('<div class="cursor"><div class="inner">More</div></div>');
-        const cursor = new CustomCursor(obj2);
-        cursor.init();
-    }
-}
