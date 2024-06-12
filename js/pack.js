@@ -151,9 +151,26 @@ $(function () {
     function headInit() {
         var t = $(window).scrollTop();
         if (t >= 100) {
-            $(".header-pc").addClass("pc-active")
+            $(".header-pc").addClass("pc-active");
+            // 头部导航--2层变1层
+            $(".header-wrap-up .container").css("width","94%");
+            $(".header-pc .header-wrap-down").css("background-color","rgba(255, 255, 255, 0)");
+            $(".header-pc .header-wrap-down").css("top","0");
+            $(".header-pc .header-wrap-down").css("height","0.66rem");
+
+            
+            
+            
         } else {
-            $(".header-pc").removeClass("pc-active")
+            $(".header-pc").removeClass("pc-active");
+             // 头部导航--1层变2层
+            $(".header-wrap-up .container").css("width","66.67%");
+            $(".header-pc .header-wrap-down").css("top","inherit");
+            $(".header-pc .header-wrap-down").css("height","0.52rem");
+
+            
+            
+
         }
     }
     headInit();
@@ -227,7 +244,7 @@ $(function () {
 				clickable: true,
 				renderBullet: function (index, className) {
 					// return '<span class="' + className + '">' + 0+(index + 1) + '</span>';
-					return '<div class="' + className + '">' + '<span class="num">' + 0 + (index + 1) + '</span>' + '</div>';
+					return '<div class="' + className + '">' + '</div>';
 
 				},
 			}
@@ -262,14 +279,11 @@ $(function () {
 				nextEl: '.index-product .swiper-button-next',
 
 			},
-            // navigation: {
-            //     nextEl: '.indexbanner .bannerbox .swiper-button-next',
-            //     prevEl: '.indexbanner .bannerbox .swiper-button-prev',
-            // },
-            // pagination: {
-            //     el: '.indexbanner .bannerbox .swiper-pagination',
-            //     clickable: true,
-            // },
+           
+            pagination: {
+                el: '.index-product .swiper-pagination',
+                clickable: true,
+            },
         });
     }
     indexProduct();

@@ -1155,7 +1155,7 @@ button {
     }
     
     .header-wrap-up {background-color: var(--white-color); color: var(--black-000);
-      .container{
+      .container{transition: width 0.5s ease-in-out;
         .up-box{
           margin: auto;
           height: var(--header-height);
@@ -1192,6 +1192,9 @@ button {
     .header-wrap-down{
       background-color: var(--bg-f7);
       height: .52rem;
+      position: absolute;
+      width: 100%;
+     
       .container{height: 100% !important;
         .header-right .nav dt {
           height: 100% !important;
@@ -1941,7 +1944,7 @@ button {
     .footer-up {
       padding: .25rem 0;
       .f-right{.flex; .a_center; .j_center;
-        .f-title{margin-right: 16px;}
+        .f-title{margin-right: 16px; color: var(--white-color);}
         .f-media{.flex; .a_center; .j_center;gap: 10px;
           span{.dh;.flex; .a_center; .j_center; border-radius: 5px; width: 30px; height: 30px;background-color: rgba(255, 255, 255, .2); 
             img{.flex; .a_center; .j_center;}
@@ -2004,7 +2007,7 @@ button {
    
   }
   @media @max480 {
-   
+    padding: .4rem 0;
 
   }
 }
@@ -2980,7 +2983,7 @@ button {
 
 
 .public-pagination{
-  position: relative;  height:1rem;width: 203px;margin: auto;
+  position: relative;  height:100px;width: 203px;margin: auto;
   .container{width: auto; height: 100%;
     .buttonbox{width: 100%; height: 100%;
       .boxsize{.flex; .a_center;.j_center;
@@ -3067,7 +3070,7 @@ button {
 // --------------------------------------------- 首页
 // --------------------------------------------- 首页-banner
 .indexbanner{position: relative; padding-top: 1.18rem;
-  .bannerbox {width: 100%; color: var(--white-color);
+  .bannerbox {position: relative; width: 100%; color: var(--white-color);
     .sidebar-wrapper{
       position: absolute;
       right: 0;
@@ -3075,7 +3078,7 @@ button {
       background: rgba(255, 255, 255, .6);
       height: 100%;
       z-index: 2;
-      .sidebox{width: 100%; height: 100%; .flex;.a_center;.j_center;
+      .sidebox{width: 100%; height: 100%; .flex;.a_center;.j_center; background: url("../images/index-banner-sidebarbg.png"); background-position: bottom right;background-repeat: no-repeat;
         .side-narbar{padding-left: .3rem;
           p{
             color: var(--black-222);
@@ -3110,7 +3113,7 @@ button {
       
     }
     .swiper-pagination-clickable .swiper-pagination-bullet{color: var(--white-color);}
-    .swiper-pagination-bullet{width: 80px;height: 5px;border: 1px solid #FFFFFF; border-radius: 0px;background-color: inherit;}
+    .swiper-pagination-bullet{width: 22px;height: 2px;background-color: rgba(255, 255, 255, .3); border-radius: 0px;}
     .swiper-pagination-bullet-active{
       &::after{content: ''; position: absolute;left: 0;top: 0; width: 100%;height: 100%;background-color: #fff;  animation: h_schedule 4s 1 linear forwards;}
       
@@ -3120,7 +3123,7 @@ button {
       position: absolute;width: 100%;height: 100%; left: 0;top: 0;
       .container{height: 100%;
         .main-box{width: 100%;height: 100%;position: relative;bottom: 0;text-align: left;
-          .swiper-pagination{position: absolute;bottom: 30px; 
+          .swiper-pagination{position: absolute;bottom: 30px; width: 100%; 
             .swiper-pagination-bullet {position: relative; opacity: 1; text-align: right; margin-right: 10px;
                 span{position: absolute;top: -26px;right: -2px; color: var(--white-color);}
             }
@@ -3135,10 +3138,16 @@ button {
     .pc-banner{display: block;}
     .mobile-banner{display: none;}
     
+    @media @max1200{
+      .sidebar-wrapper{width: 20%;}
+    }
+    @media @max990{
+      .sidebar-wrapper{width: 30%;}
+    }
     @media @max768{
       .pc-banner{display: none;}
-      .mobile-banner{display: inline-block;}
-      .grid_box{}
+      .mobile-banner{display: inline-block; min-height: 300px;}
+      .sidebar-wrapper{display: none;}
     }
   }
 
@@ -3149,7 +3158,7 @@ button {
 .index-product{margin-top: .5rem; 
   .container{
     .title{.font36;margin-top: .6rem;}
-    .itemlist{margin-top: .29rem; overflow: hidden;
+    .itemlist{position: relative; margin-top: .29rem; overflow: hidden;
       .swiper-slide{.dh;border: 1px solid #C9C9C9;border-radius: 5px;
         .image{overflow: hidden;
           img{.dh; width: 100%; height: 100%; object-fit: cover;}
@@ -3172,6 +3181,13 @@ button {
         .three-point{position: absolute;bottom: .2rem; right: .2rem;}
         &:hover{.dh; border: 1px solid var(--color-active);border-radius: 5px;}
       }
+      .swiper-pagination{display: none;}
+    }
+    @media @max768{
+      .itemlist{
+        .public-pagination{display: none;}
+        .swiper-pagination{display: inline-block;z-index: 10;position: relative;margin-top: 28px;}
+      }
     }
   }
 }
@@ -3180,6 +3196,7 @@ button {
   .container{
     .flex;.a_center;.j_justify;
     .index-normal{
+      min-height: 4.26rem;
       width: 34.0625%;
       .image{
         border-radius: 5px 5px 0px 0px;
@@ -3251,6 +3268,7 @@ button {
       background-color: var(--footer-bg-color);
       padding: .29rem .2rem 1.13rem .2rem;
       border-radius: 5px;
+      
       .title{.font28;color: var(--white-color);line-height: 1.1; }
       ul{margin-top: .5rem;
         li{
