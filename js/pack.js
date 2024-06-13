@@ -208,30 +208,6 @@ $(function () {
    
 
     // 首页-banner
-    // function indexSlide() {
-    //     var slide = new Swiper('.indexbanner .bannerbox', {
-    //         autoplay: {
-    //             delay: 4000,
-    //             disableOnInteraction: false,
-    //         },
-    //         speed: 900,
-    //         effect: 'fade',
-            
-    //         // loop: true,
-    //         watchOverflow: true, //因为仅有1个slide，swiper无效
-    //         preventLinksPropagation: false, // 阻止点击事件冒泡
-    //         navigation: {
-    //             nextEl: '.indexbanner .bannerbox .swiper-button-next',
-    //             prevEl: '.indexbanner .bannerbox .swiper-button-prev',
-    //         },
-    //         pagination: {
-    //             el: '.indexbanner .bannerbox .swiper-pagination',
-    //             clickable: true,
-    //         },
-    //     });
-    // }
-    // indexSlide();
-
     function indexSlide() {
 		var mySwiper = new Swiper('.indexbanner .bannerbox', {
 			slidesPerView: 1,
@@ -249,8 +225,26 @@ $(function () {
 				},
 			}
 		})
+        document.getElementById('play-button').addEventListener('click', function () {
+            if (mySwiper.autoplay.running) {
+                // 停止播放
+                mySwiper.autoplay.stop();
+                $('.play-stop').css("display","inline-block");
+                $('.play-start').css("display","none")
+
+            } else {
+                // 继续播放
+                mySwiper.autoplay.start();
+                $('.play-start').css("display","inline-block");
+                $('.play-stop').css("display","none");
+
+
+            }
+            
+        });
 	}
 	indexSlide();
+
     
 
     // 首页- product

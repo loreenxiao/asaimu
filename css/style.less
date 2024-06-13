@@ -1194,6 +1194,8 @@ button {
       height: .52rem;
       position: absolute;
       width: 100%;
+      top: 0;
+      
      
       .container{height: 100% !important;
         .header-right .nav dt {
@@ -3011,7 +3013,7 @@ button {
 /* ------------------------- */
 /* 侧边栏--通讯方式 */
 .navbar-communication{
-	.kefu-box {position: fixed;bottom: 20%;right: 60px; z-index: 10;
+	.kefu-box {position: fixed;bottom: 20%;right: 22px; z-index: 10;
 		.item {margin:10px 0; border-radius: 5px;background-color: var(--white-color);position: relative;cursor: pointer;
 			.item-box {.dh;.flex;.a_center;.j_center;overflow: hidden;width: 46px;height: 46px;border: solid 1px #e9ebeb;border-radius: 5px;
         img{.flex;.a_center;.j_center;}
@@ -3129,11 +3131,24 @@ button {
             }
             
           }
+         
         }
       }
       
       
     }
+    #play-button{.flex;
+      position: absolute;bottom: 28px;margin: auto; margin-left: 80px; z-index: 10;width: 100%;
+      img{
+        width: auto;
+        filter: brightness(0) invert(1);
+        &:hover{
+          filter:inherit;
+        }
+      }
+      .play-stop{display: none;}
+    }
+    
     img {width: 100%;}
     .pc-banner{display: block;}
     .mobile-banner{display: none;}
@@ -3336,13 +3351,16 @@ button {
           }
         }
       }
-      .f-submit{.font16;
+      .f-submit{.font16;.dh;
         width: 110px;
         height: .46rem;
         min-height: 35px;
         background-color:var(--color-active);
         border-radius: 5px;
         color: var(--white-color);
+        &:hover{.dh;
+          background-color:#0763D6;
+        }
       }
     }
     @media @max768 {

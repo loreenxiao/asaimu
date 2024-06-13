@@ -1105,6 +1105,7 @@ button {
   height: 0.52rem;
   position: absolute;
   width: 100%;
+  top: 0;
 }
 #header .header-pc .header-wrap-down .container {
   height: 100% !important;
@@ -3294,7 +3295,7 @@ button {
 .navbar-communication .kefu-box {
   position: fixed;
   bottom: 20%;
-  right: 60px;
+  right: 22px;
   z-index: 10;
 }
 .navbar-communication .kefu-box .item {
@@ -3594,6 +3595,28 @@ button {
   top: -26px;
   right: -2px;
   color: var(--white-color);
+}
+.indexbanner .bannerbox #play-button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  position: absolute;
+  bottom: 28px;
+  margin: auto;
+  margin-left: 80px;
+  z-index: 10;
+  width: 100%;
+}
+.indexbanner .bannerbox #play-button img {
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+.indexbanner .bannerbox #play-button img:hover {
+  filter: inherit;
+}
+.indexbanner .bannerbox #play-button .play-stop {
+  display: none;
 }
 .indexbanner .bannerbox img {
   width: 100%;
@@ -4029,12 +4052,21 @@ button {
 .index-contact-form .container .cf-right .f-submit {
   font-size: 16px;
   font-size: clamp(14px, 0.16rem, 16px);
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
   width: 110px;
   height: 0.46rem;
   min-height: 35px;
   background-color: var(--color-active);
   border-radius: 5px;
   color: var(--white-color);
+}
+.index-contact-form .container .cf-right .f-submit:hover {
+  -webkit-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  -o-transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  transition: all 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+  background-color: #0763D6;
 }
 @media (max-width:768px) {
   .index-contact-form .container {
