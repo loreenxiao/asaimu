@@ -1469,6 +1469,33 @@ button {
 #header .mask-bg.active {
   display: block;
 }
+@media (max-width:1680px) {
+  #header .header-pc .header-wrap-up .container {
+    width: 94% !important;
+  }
+  #header .header-pc .header-wrap-down {
+    top: 0 !important;
+    height: var(--header-height) !important;
+    background-color: inherit !important;
+  }
+  #header .header-pc .header-wrap-down .container {
+    width: 66.67% !important;
+  }
+}
+@media (max-width:1400px) {
+  #header .header-pc .header-wrap-up .container {
+    width: 100% !important;
+  }
+}
+@media (max-width:1200px) {
+  #header .header-pc .header-top-right {
+    display: none;
+  }
+  #header .header-pc .header-wrap-down .container {
+    width: 100% !important;
+    padding-left: 20%;
+  }
+}
 #header .m_header_box {
   width: 100%;
   height: auto;
@@ -3649,6 +3676,16 @@ button {
     display: none;
   }
 }
+@media (max-width:1680px) {
+  .indexbanner {
+    padding-top: 0.66rem;
+  }
+}
+@media (max-width:768px) {
+  .indexbanner {
+    padding-top: 0.59rem;
+  }
+}
 .index-product {
   margin-top: 0.5rem;
 }
@@ -3762,6 +3799,7 @@ button {
   -ms-flex-pack: justify;
   -webkit-justify-content: space-between;
   justify-content: space-between;
+  align-items: stretch;
 }
 .index-AboutUs .container .index-normal {
   min-height: 4.26rem;
@@ -3864,8 +3902,8 @@ button {
   -ms-flex-pack: start;
   -webkit-justify-content: flex-start;
   justify-content: flex-start;
-  line-height: 1.57;
-  margin-top: 0.05rem;
+  line-height: 1;
+  margin-top: 0.13rem;
 }
 .index-AboutUs .container .index-news-box .news-list li .time {
   margin-right: 12px;
@@ -4002,7 +4040,7 @@ button {
     gap: 0px;
   }
   .index-AboutUs .container .index-normal {
-    margin-top: 0.2rem;
+    margin-top: 0.4rem;
   }
 }
 .index-contact-form {

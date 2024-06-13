@@ -1168,6 +1168,7 @@ button {
           }
         }
         
+        
       }
 
       .logo {
@@ -1422,7 +1423,34 @@ button {
 			display: block;
 		}
 	}
-
+  @media @max1680 {
+    .header-pc .header-wrap-up .container{
+      width: 94% !important;
+    }
+    
+   .header-pc .header-wrap-down{
+      top: 0 !important;
+      // height: 0.66rem !important;
+      height: var(--header-height) !important;
+      background-color: inherit !important;
+    }
+    .header-pc .header-wrap-down .container{
+      width: 66.67% !important;
+      
+    }
+  }
+  @media @max1400 {
+    .header-pc .header-wrap-up .container{
+      width: 100% !important;
+    }
+  }
+  @media @max1200 {
+    .header-pc .header-top-right{display: none;}
+    .header-pc .header-wrap-down .container{
+      width: 100% !important;
+      padding-left: 20%;
+    }
+  }
   /* ----------------------------------------------------------    手机端导航 */
   .m_header_box {
     width: 100%;
@@ -1839,6 +1867,8 @@ button {
       display: block;
     }
   }
+
+
 }
 
 // --------------------------------------------- 头部结束
@@ -3165,7 +3195,13 @@ button {
       .sidebar-wrapper{display: none;}
     }
   }
-
+  @media @max1680{
+    padding-top: 0.66rem;
+    
+  }
+  @media @max768{
+    padding-top: 0.59rem;
+  }
 }
 
 
@@ -3209,7 +3245,7 @@ button {
 // --------------------------------------------- 首页- 1关于我们/2新闻/3链接
 .index-AboutUs{padding: .6rem 0; 
   .container{
-    .flex;.a_center;.j_justify;
+    .flex;.a_center;.j_justify; align-items: stretch;
     .index-normal{
       min-height: 4.26rem;
       width: 34.0625%;
@@ -3251,8 +3287,8 @@ button {
         border-radius: 5px 5px 0px 0px;
       }
       .news-list{margin-top: .25rem;
-        li{.flex;.a_center;.j_start; line-height: 1.57;
-          margin-top: .05rem;
+        li{.flex;.a_center;.j_start; line-height: 1;
+          margin-top: 0.13rem;
           .time{margin-right: 12px;}
           .title{.dh; cursor: pointer; margin-left: 15px;position: relative; line-height: 1.2;
             span{.text(1);}
@@ -3331,7 +3367,7 @@ button {
   @media @max640 {
     .container{
       grid-template-columns: repeat(1,1fr); gap: 0px;
-      .index-normal{margin-top: .2rem;}
+      .index-normal{margin-top: .4rem;}
     }
   }
 }
