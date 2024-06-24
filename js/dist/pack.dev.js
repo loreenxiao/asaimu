@@ -6,6 +6,8 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 $(function () {
   // 使用IE浏览器提示
   function hiUpgrade() {
@@ -49,13 +51,13 @@ $(function () {
   }
 
   hiUpgrade(); // 窗口发生改变刷新页面
-
-  var windoWidth = $(window).width();
-  $(window).resize(function () {
-    if (Math.abs($(this).width() - windoWidth) > 20) {
-      window.location.href = "";
-    }
-  }); // 导航
+  // var windoWidth = $(window).width();
+  // $(window).resize(function () {
+  //     if (Math.abs($(this).width() - windoWidth) > 20) {
+  //         window.location.href = "";
+  //     }
+  // });
+  // 导航
 
   function headNav() {
     // pc
@@ -366,29 +368,36 @@ $(function () {
   indexOrder(); // 首页- EMC防护
 
   function indexProtect() {
-    var mySwiper = new Swiper('.index-EMC-protect .parner-wrap', {
-      // loop : true,//可选选项，开启循环
+    var _ref;
+
+    var mySwiper = new Swiper('.index-EMC-protect .parner-wrap', (_ref = {
+      loop: true,
+      //可选选项，开启循环
       slidesPerView: 9,
       // spaceBetween: 20,
       allowTouchMove: false,
-      // speed: 8000,
-      // autoplay:true,
-      // autoplay: { delay: 0, disableOnInteraction: false, },
-      breakpoints: {
-        1200: {
-          slidesPerView: 7
-        },
-        990: {
-          slidesPerView: 5
-        },
-        640: {
-          slidesPerView: 3
-        },
-        480: {
-          slidesPerView: 3
-        }
+      speed: 3000,
+      autoplay: true
+    }, _defineProperty(_ref, "autoplay", {
+      delay: 0,
+      disableOnInteraction: false
+    }), _defineProperty(_ref, "breakpoints", {
+      1200: {
+        slidesPerView: 7
+      },
+      990: {
+        slidesPerView: 5,
+        spaceBetween: 18
+      },
+      640: {
+        slidesPerView: 3,
+        spaceBetween: 15
+      },
+      480: {
+        slidesPerView: 3,
+        spaceBetween: 10
       }
-    });
+    }), _ref));
   }
 
   indexProtect();

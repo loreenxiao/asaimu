@@ -37,12 +37,12 @@ $(function () {
     hiUpgrade();
 
     // 窗口发生改变刷新页面
-    var windoWidth = $(window).width();
-    $(window).resize(function () {
-        if (Math.abs($(this).width() - windoWidth) > 20) {
-            window.location.href = "";
-        }
-    });
+    // var windoWidth = $(window).width();
+    // $(window).resize(function () {
+    //     if (Math.abs($(this).width() - windoWidth) > 20) {
+    //         window.location.href = "";
+    //     }
+    // });
 
 
     
@@ -380,9 +380,9 @@ $(function () {
 			autoplay: { delay: 0, disableOnInteraction: false, },
 			breakpoints: {
                 1200: { slidesPerView: 7, },
-                990: { slidesPerView: 5, },
-				640: { slidesPerView: 3, },
-				480: { slidesPerView: 3, },
+                990: { slidesPerView: 5, spaceBetween: 18},
+				640: { slidesPerView: 3, spaceBetween: 15},
+				480: { slidesPerView: 3, spaceBetween: 10},
 			}
 		})
 	}
