@@ -1165,6 +1165,7 @@ button {
   width: 100%;
   top: 0;
   transition: all 0.8s ease-in-out;
+  transform: translateY(0.66rem);
 }
 #header .header-pc .header-wrap-down .container {
   height: 100% !important;
@@ -1209,6 +1210,10 @@ button {
   display: -webkit-flex;
   display: flex;
   gap: 0.5rem;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
 #header .header-pc .header-right .nav .bor {
   position: absolute;
@@ -1540,9 +1545,7 @@ button {
     width: 94% !important;
   }
   #header .header-pc .header-wrap-down {
-    top: 0 !important;
     height: var(--header-height) !important;
-    background-color: inherit !important;
   }
   #header .header-pc .header-wrap-down .container {
     width: 66.67% !important;

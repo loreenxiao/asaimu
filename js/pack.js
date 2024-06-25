@@ -148,31 +148,87 @@ $(function () {
         headInit();
     })
 
-    function headInit() {
+        
+    $(window).resize(function() {
+        var width = $(window).width();
+        console.log('浏览器宽度变化了，当前宽度为：' + width);
+        // 在这里执行您需要的方法
+        headInit(width);
+    });
+     
+    function yourResizeMethod(width) {
+        // 根据浏览器的宽度做出相应的处理
+        if (width < 600) {
+            // 如果宽度小于600px，执行某些操作
+        } else {
+            // 如果宽度大于等于600px，执行其他操作
+            debugger
+        }
+    }
+
+
+
+    function headInit(width) {
+        console.log("0000",width)
         var t = $(window).scrollTop();
+        if(width = 'undefined'){
+            width = $(window).width();
+            console.log("444",width)
+        }
         if (t >= 66) {
             $(".header-pc").addClass("pc-active");
             // 头部导航--2层变1层
-            $(".header-wrap-up .container").css("width","94%");
-            $(".header-pc .header-wrap-down").css("background-color","rgba(255, 255, 255, 0)");
-            $(".header-pc .header-wrap-down").css("top","0");
-            $(".header-pc .header-wrap-down").css("height","0.66rem");
+            $('.header-wrap-up .container').css({
+                'width': '94%',
+            }).animate({ }, 800); // 动画时长为1000毫秒
+
+            $('.header-pc .header-wrap-down').css({
+                "transform": "translateY(0px)",
+                'background-color':'rgba(255, 255, 255, 0)',
+                'height':'0.66rem',
+            }).animate({}, 3000); // 动画时长为1000毫秒
 
             
-            
+            if( 1024 < width < 1568){
+                $('.header-pc .header-wrap-down').css({
+                    'top':'1px',
+                }).animate({}, 3000); // 动画时长为1000毫秒
+            }else{
+                $('.header-pc .header-wrap-down').css({
+                    'top':'10px',
+                }).animate({}, 3000); // 动画时长为1000毫秒
+            }
+
             
         } else {
             $(".header-pc").removeClass("pc-active");
-             // 头部导航--1层变2层
-            $(".header-wrap-up .container").css("width","66.67%");
-            $(".header-pc .header-wrap-down").css("top","inherit");
-            $(".header-pc .header-wrap-down").css("background-color","#F7F7F7");
-            $(".header-pc .header-wrap-down").css("height","0.52rem");
-
+             // 头部导航--1层变2层         
+            $('.header-wrap-up .container').css({
+                'width': '66.67%',
+            }).animate({ }, 800); // 动画时长为1000毫秒
+            $('.header-pc .header-wrap-down').css({
+                // 'top': 'inherit',
+                "transform": "translateY(0.66rem)",
+                'background-color':'#F7F7F7',
+                'height':'0.52rem',
+            }).animate({},100); // 动画时长为1000毫秒
             
-            
-
+            if(width > 1560){
+                $('.header-pc .header-wrap-down').css({
+                    'top':'0px',
+                }).animate({}, 3000); // 动画时长为1000毫秒
+            }
+            else if( 1024 < width < 1560){
+                $('.header-pc .header-wrap-down').css({
+                    'top':'15px',
+                }).animate({}, 3000); // 动画时长为1000毫秒
+            }else{
+                $('.header-pc .header-wrap-down').css({
+                    'top':'0px',
+                }).animate({}, 3000); // 动画时长为1000毫秒
+            }
         }
+
     }
     headInit();
 
