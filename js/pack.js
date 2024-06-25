@@ -150,7 +150,7 @@ $(function () {
 
     function headInit() {
         var t = $(window).scrollTop();
-        if (t >= 100) {
+        if (t >= 66) {
             $(".header-pc").addClass("pc-active");
             // 头部导航--2层变1层
             $(".header-wrap-up .container").css("width","94%");
@@ -166,6 +166,7 @@ $(function () {
              // 头部导航--1层变2层
             $(".header-wrap-up .container").css("width","66.67%");
             $(".header-pc .header-wrap-down").css("top","inherit");
+            $(".header-pc .header-wrap-down").css("background-color","#F7F7F7");
             $(".header-pc .header-wrap-down").css("height","0.52rem");
 
             

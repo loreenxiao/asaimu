@@ -1,11 +1,5 @@
 "use strict";
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
 $(function () {
   // 使用IE浏览器提示
   function hiUpgrade() {
@@ -49,13 +43,13 @@ $(function () {
   }
 
   hiUpgrade(); // 窗口发生改变刷新页面
-
-  var windoWidth = $(window).width();
-  $(window).resize(function () {
-    if (Math.abs($(this).width() - windoWidth) > 20) {
-      window.location.href = "";
-    }
-  }); // 导航
+  // var windoWidth = $(window).width();
+  // $(window).resize(function () {
+  //     if (Math.abs($(this).width() - windoWidth) > 20) {
+  //         window.location.href = "";
+  //     }
+  // });
+  // 导航
 
   function headNav() {
     // pc
@@ -155,10 +149,20 @@ $(function () {
   function headInit() {
     var t = $(window).scrollTop();
 
-    if (t >= 100) {
-      $(".header-pc").addClass("pc-active");
+    if (t >= 66) {
+      $(".header-pc").addClass("pc-active"); // 头部导航--2层变1层
+
+      $(".header-wrap-up .container").css("width", "94%");
+      $(".header-pc .header-wrap-down").css("background-color", "rgba(255, 255, 255, 0)");
+      $(".header-pc .header-wrap-down").css("top", "0");
+      $(".header-pc .header-wrap-down").css("height", "0.66rem");
     } else {
-      $(".header-pc").removeClass("pc-active");
+      $(".header-pc").removeClass("pc-active"); // 头部导航--1层变2层
+
+      $(".header-wrap-up .container").css("width", "66.67%");
+      $(".header-pc .header-wrap-down").css("top", "inherit");
+      $(".header-pc .header-wrap-down").css("background-color", "#F7F7F7");
+      $(".header-pc .header-wrap-down").css("height", "0.52rem");
     }
   }
 
@@ -184,368 +188,70 @@ $(function () {
     });
   }
 
-  tabUl(); // 可视化数据滚动
-
-  function visualData(obj) {
-    $(window).load(function () {
-      obj.each(function () {
-        var h = Number($(this).html());
-        var t = "";
-        var n = Math.ceil(h / 20);
-        var a = true;
-        var This = $(this);
-
-        if ($(this).length != 0) {
-          t = $(this).offset().top;
-        }
-
-        This.html(0);
-        fn1();
-        $(window).scroll(function () {
-          fn1();
-        });
-
-        function fn1() {
-          var wT = $(window).scrollTop();
-
-          if (wT > t - $(window).height() + 50 && wT < t - 50 && a == true) {
-            a = false;
-            var y = 0;
-            var timer2 = setInterval(function () {
-              if (y >= h) {
-                y = h;
-                clearInterval(timer2);
-              }
-
-              This.html(y);
-              y += n;
-            }, 100);
-          }
-        }
-      });
-    });
-  }
-
-  visualData($(".num-move")); // 首页-banner
+  tabUl(); // 首页-banner
 
   function indexSlide() {
-    var slide = new Swiper('.indexbanner .bannerbox', {
-      autoplay: {
-        delay: 4000,
-        disableOnInteraction: false
-      },
-      speed: 900,
+    var mySwiper = new Swiper('.indexbanner .bannerbox', {
+      slidesPerView: 1,
+      speed: 800,
+      loop: true,
+      autoplay: true,
       effect: 'fade',
-      // loop: true,
-      watchOverflow: true,
-      //因为仅有1个slide，swiper无效
-      preventLinksPropagation: false,
-      // 阻止点击事件冒泡
-      navigation: {
-        nextEl: '.indexbanner .bannerbox .swiper-button-next',
-        prevEl: '.indexbanner .bannerbox .swiper-button-prev'
-      },
       pagination: {
-        el: '.indexbanner .bannerbox .swiper-pagination',
-        clickable: true
+        el: '.indexbanner .swiper-pagination',
+        clickable: true,
+        renderBullet: function renderBullet(index, className) {
+          // return '<span class="' + className + '">' + 0+(index + 1) + '</span>';
+          return '<div class="' + className + '">' + '</div>';
+        }
+      }
+    });
+    document.getElementById('play-button').addEventListener('click', function () {
+      if (mySwiper.autoplay.running) {
+        // 停止播放
+        mySwiper.autoplay.stop();
+        $('.play-stop').css("display", "inline-block");
+        $('.play-start').css("display", "none");
+      } else {
+        // 继续播放
+        mySwiper.autoplay.start();
+        $('.play-start').css("display", "inline-block");
+        $('.play-stop').css("display", "none");
       }
     });
   }
 
-  indexSlide(); // 首页- 解决方案
+  indexSlide(); // 首页- product
 
-  function indexSolution() {
-    var slide = new Swiper('.index-solution .solution-card', {
+  function indexProduct() {
+    var slide = new Swiper('.index-product .itemlist', {
       speed: 900,
-      spaceBetween: 42,
-      slidesPerView: 6,
-      preventLinksPropagation: false,
-      // 阻止点击事件冒泡
-      pagination: {
-        el: '.index-solution .solution-card .swiper-pagination',
-        clickable: true
-      },
-      navigation: {
-        prevEl: '.index-solution .swiper-button-prev',
-        nextEl: '.index-solution .swiper-button-next'
-      },
+      slidesPerView: 4,
+      spaceBetween: 20,
       breakpoints: {
-        1560: {
-          slidesPerView: 5,
-          spaceBetween: 30
+        480: {
+          slidesPerView: 1,
+          spaceBetween: 10
         },
-        1200: {
-          slidesPerView: 4,
-          spaceBetween: 25
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 15
         },
         990: {
           slidesPerView: 3,
           spaceBetween: 20
-        },
-        640: {
-          slidesPerView: 2,
-          spaceBetween: 20
-        },
-        480: {
-          slidesPerView: 1,
-          spaceBetween: 20
         }
+      },
+      navigation: {
+        prevEl: '.index-product .swiper-button-prev',
+        nextEl: '.index-product .swiper-button-next'
+      },
+      pagination: {
+        el: '.index-product .swiper-pagination',
+        clickable: true
       }
     });
   }
 
-  indexSolution(); // 首页- 定制方案
-
-  function indexOrder() {
-    var divBox = $('.index-order');
-
-    if (divBox.length) {
-      var getDiv = function getDiv(el) {
-        return divBox.find(el);
-      };
-
-      var tabs = getDiv('.swipertab').children(),
-          swiperBox = getDiv('.order-swiper'),
-          prev = getDiv('.swiper-button-prev'),
-          next = getDiv('.swiper-button-next'),
-          speed = 500;
-      tabs.click(function () {
-        var i = $(this).index();
-        $(this).addClass('active').siblings().removeClass('active');
-        swiper.slideTo($(this).index());
-      });
-      var swiper = new Swiper(swiperBox, {
-        speed: speed,
-        spaceBetween: 20,
-        allowTouchMove: false,
-        effect: "fade"
-      });
-      var swiperArr = [];
-      swiperBox.find('.swiper-box').each(function () {
-        var pager = $(this).siblings('.swiper-pagination');
-        var itemSwiper = new Swiper($(this), {
-          // autoplay: {
-          //     delay: 4000,
-          //     disableOnInteraction: false,
-          // },
-          // speed: 900,
-          loop: true,
-          // spaceBetween: 30,
-          slidesPerView: 5,
-          centeredSlides: true,
-          preventLinksPropagation: false,
-          // 阻止点击事件冒泡
-          pagination: {
-            el: '.swiper-box .swiper-pagination',
-            clickable: true
-          },
-          navigation: {
-            prevEl: '.swiper-box .swiper-button-prev',
-            nextEl: '.swiper-box .swiper-button-next'
-          },
-          breakpoints: {
-            768: {
-              slidesPerView: 1
-            },
-            990: {
-              slidesPerView: 3
-            }
-          }
-        });
-        swiperArr.push(itemSwiper);
-      });
-      prev.click(function () {
-        return swiperArr[swiper.activeIndex].slidePrev();
-      });
-      next.click(function () {
-        return swiperArr[swiper.activeIndex].slideNext();
-      });
-    }
-  }
-
-  indexOrder(); // 首页- EMC防护
-
-  function indexProtect() {
-    var mySwiper = new Swiper('.index-EMC-protect .parner-wrap', {
-      // loop : true,//可选选项，开启循环
-      slidesPerView: 9,
-      // spaceBetween: 20,
-      allowTouchMove: false,
-      // speed: 8000,
-      // autoplay:true,
-      // autoplay: { delay: 0, disableOnInteraction: false, },
-      breakpoints: {
-        1200: {
-          slidesPerView: 7
-        },
-        990: {
-          slidesPerView: 5
-        },
-        640: {
-          slidesPerView: 3
-        },
-        480: {
-          slidesPerView: 3
-        }
-      }
-    });
-  }
-
-  indexProtect();
-}); // 鼠标跟随
-
-function imousehover(obj, obj2) {
-  // 鼠标跟随效果
-  var isPad = navigator.maxTouchPoints && navigator.maxTouchPoints > 2 && /MacIntel/.test(navigator.platform);
-
-  var CustomCursor =
-  /*#__PURE__*/
-  function () {
-    function CustomCursor(hoverItems) {
-      _classCallCheck(this, CustomCursor);
-
-      this.cursor = obj;
-      this.cursorInner = $(".inner", this.cursor);
-      this.pageX = 0;
-      this.pageY = 0;
-      this.move = true;
-      this.hoverItems = hoverItems;
-    }
-
-    _createClass(CustomCursor, [{
-      key: "init",
-      value: function init() {
-        if (this.cursor[0]) {
-          this.initCursor();
-          this.initHovers();
-          this.initMove();
-        }
-      }
-    }, {
-      key: "initCursor",
-      value: function initCursor() {
-        var _this = this;
-
-        this.pageX = $(window).width() / 2 - 50;
-        this.pageY = $(window).height() / 2 - 50;
-        $(document).on("mousemove", function (e) {
-          _this.pageX = e.clientX;
-          _this.pageY = e.clientY;
-        });
-
-        var render = function render() {
-          if (_this.move) {
-            window.TweenMax.to(_this.cursor, 0.5, {
-              x: _this.pageX,
-              y: _this.pageY,
-              ease: "Power1.easeOut"
-            });
-          }
-
-          requestAnimationFrame(render);
-        };
-
-        render();
-      }
-    }, {
-      key: "initHovers",
-      value: function initHovers() {
-        var _this2 = this;
-
-        var handleMouseEnter = function handleMouseEnter(e) {
-          window.TweenMax.to(_this2.cursor, 0.5, {
-            scale: 1,
-            opacity: 1,
-            ease: "Power1.easeOut"
-          });
-          e.stopPropagation();
-        };
-
-        var handleMouseLeave = function handleMouseLeave() {
-          window.TweenMax.to(_this2.cursor, 0.5, {
-            scale: 0,
-            opacity: 0,
-            ease: "Power1.easeOut"
-          }); // this.cursor.removeClass(function (i, v) {return v.replace('cursor', '');});
-        };
-
-        this.hoverItems.each(function (i, item) {
-          $(item).on("mouseenter", handleMouseEnter);
-          $(item).on("mouseleave", handleMouseLeave);
-        });
-      }
-    }, {
-      key: "initMove",
-      value: function initMove() {
-        var _this3 = this;
-
-        var handleMouseMove = function handleMouseMove(e) {
-          if ($(e.target).closest('.owl-nav')[0]) {
-            _this3.initCircle(e.target, "[class*='owl-']");
-          } else if ($(e.target).closest('.searchOnOff')[0]) {
-            _this3.initCircle(e.target, ".searchOnOff");
-          } else {
-            window.TweenMax.to(_this3.cursor, 0.5, {
-              scale: 1,
-              // background: 'yellow',
-              ease: "Power1.easeOut"
-            });
-            window.TweenMax.to(_this3.cursorInner, 0.5, {
-              opacity: 1,
-              ease: "Power1.easeOut"
-            });
-            _this3.move = true;
-          }
-
-          if ($(e.currentTarget).hasClass('ff_topSlider') || $(e.currentTarget).parents('.mlist.project')[0]) {
-            // const sxPos = (e.clientX / window.innerWidth) * 200 - 100;
-            // this.cursor.toggleClass("next", sxPos > 0);
-            _this3.cursor.addClass('more');
-          } else if ($(e.currentTarget).hasClass('videom') || $(e.currentTarget).parents('.bodyvideom')[0]) {
-            _this3.cursor.addClass('play');
-          } else if ($(e.currentTarget).parents('.team_tabs')[0]) {
-            _this3.cursor.addClass('drag');
-          } else if ($(e.currentTarget).hasClass('post-next')) {
-            _this3.cursor.addClass('next');
-          }
-        };
-
-        this.hoverItems.each(function (i, item) {
-          $(item).on("mousemove", item, handleMouseMove);
-        });
-      }
-    }, {
-      key: "initCircle",
-      value: function initCircle(target, elm) {
-        var _sTop = $(window).scrollTop();
-
-        var _offset = Math.min($(target).closest(elm).outerWidth(), $(target).closest(elm).outerHeight());
-
-        var _x = Math.round($(target).closest(elm).offset().left + _offset / 2);
-
-        var _y = Math.round($(target).closest(elm).offset().top + _offset / 2 - _sTop);
-
-        this.move = false;
-        window.TweenMax.to(this.cursor, 0.5, {
-          scale: 0.5,
-          x: _x,
-          y: _y,
-          background: 'rgba(255,255,255,0)',
-          ease: "Power1.easeOut"
-        });
-        window.TweenMax.to(this.cursorInner, 0.5, {
-          opacity: 0,
-          ease: "Power1.easeOut"
-        });
-      }
-    }]);
-
-    return CustomCursor;
-  }();
-
-  if (!isPad) {
-    // $('body').append('<div class="cursor"><div class="inner">More</div></div>');
-    var cursor = new CustomCursor(obj2);
-    cursor.init();
-  }
-}
+  indexProduct();
+});
