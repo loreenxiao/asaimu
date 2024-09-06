@@ -160,15 +160,25 @@ audio, canvas, progress, video {
 //   font-style: normal;
 //   font-display: swap;
 // }
-@font-face {font-family: 'OPPOSANS'; src: url('../fonts/OPPOSANS-L.TTF'); font-weight: 300;}
+@font-face {font-family: 'OPPOSANS-L'; src: url('../fonts/OPPOSANS-L.TTF'); font-weight: 300;}
 @font-face {font-family: 'OPPOSANS'; src: url('../fonts/OPPOSANS-R.TTF'); font-weight: normal;}
-@font-face {font-family: 'OPPOSANS'; src: url('../fonts/OPPOSANS-M.TTF'); font-weight: 500;}
-@font-face {font-family: 'OPPOSANS'; src: url('../fonts/OPPOSANS-B.TTF'); font-weight: 700;}
-@font-face {font-family: 'OPPOSANS'; src: url('../fonts/OPPOSANS-H.TTF'); font-weight: 800;}
+@font-face {font-family: 'OPPOSANS-M'; src: url('../fonts/OPPOSANS-M.TTF'); font-weight: 500;}
+@font-face {font-family: 'OPPOSANS-B'; src: url('../fonts/OPPOSANS-B.TTF'); font-weight: 700;}
+@font-face {font-family: 'OPPOSANS-H'; src: url('../fonts/OPPOSANS-H.TTF'); font-weight: 800;}
 
 
-
-
+.light{
+  font-family: 'OPPOSANS-L';
+}
+.bold{
+  font-family: 'OPPOSANS-B';
+}
+.medium{
+  font-family: 'OPPOSANS-M';
+}
+.heavy{
+  font-family: 'OPPOSANS-H';
+}
 
 
 input,
@@ -776,16 +786,16 @@ button {
 
 
   --black-000:#000000;
+  --black-111:#111111;
   --black-222:#222222;
   --black-333:#333333;
   --black-666:#666666;
   --black-999:#999999;
+  --black-eee:#EEEEEE;
 
-  --bg-f7:#F7F7F7;
+  --bg-f4: #F4F4F4;
   --bg-f6:#F6F6F6;
- 
-
-
+  --bg-f7:#F7F7F7;
 
 
   /* 字体大小 */
@@ -1009,6 +1019,27 @@ button {
     font-size: 1rem;
   }
 }
+
+.black0{
+  color: var(--black-000);
+}
+.black1{
+  color: var(--black-111);
+}
+.black2{
+  color: var(--black-222);
+}
+.black3{
+  color: var(--black-333);
+}
+.black6{
+  color: var(--black-666);
+}
+.black9{
+  color: var(--black-999);
+}
+
+
 
 /* images等比-NEW */
 .public-img {
@@ -2195,6 +2226,17 @@ button {
   }
 }
 
+.w1560{
+  width: 81.25%;
+  margin: 0 auto;
+
+  @media @max1840 {
+
+  }
+  @media @max990 {
+    padding: 0 20px;
+  }
+}
 
 
 // --------------------------------------------- 锚点链接
@@ -3644,4 +3686,69 @@ button {
     }
     
   }
+}
+
+
+// nav导航
+.navbarwrap{
+  // border-top: solid 1px var(--black-eee);
+  border-bottom: solid 1px var(--black-eee);
+  margin-top: var(--header-height);
+  color: var(--black-666);
+  .innerbox{.flex; .a_center; 
+   
+    height: .6rem;
+    .image{ .flex; .a_center; .j_center;
+      width: .6rem; height: .6rem;
+      border-left: solid 1px var(--black-eee);
+      border-right: solid 1px var(--black-eee);
+      img{width: 10px; height: 10px;}
+    }
+    .item{ height: 100%;
+      span{.flex; .a_center; .j_center;height: 100%; padding: 0 .2rem; border-right: solid 1px var(--black-eee);}
+
+    }
+  }
+}
+.product-banner-wrap{
+  .innerbox{position: relative;
+    .info{
+      position: relative;
+      width: 100%;
+      height: 100%;
+      padding: 0.65rem 0;
+      z-index: 2;
+      .title{}
+      .sec-title{margin-top: .1rem;}
+    }
+    .image{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%; 
+      height: 100%;
+    }
+  }
+}
+.product-list-wrap{padding:1.2rem 0;
+  .innerbox{ .flex; gap: 1.08rem;
+    .left-box{width: 20.5%;
+      ul{
+        li{.flex; .j_justify;.bold;  padding: .3rem;background-color: var(--bg-f4);border-radius: 10px;
+          margin-top: .08rem; color: var(--black-222);
+          img{transform: rotate(-90deg);}
+        }
+        .active{
+          background-color: var(--color-active); color: var(--white-color);
+          img{
+            filter: brightness(0) invert(1);
+          }
+        }
+      }
+    }
+    .right-box{width:79.5%;
+
+    }
+  }
+
 }

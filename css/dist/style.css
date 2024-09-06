@@ -147,7 +147,7 @@ video {
   vertical-align: baseline;
 }
 @font-face {
-  font-family: 'OPPOSANS';
+  font-family: 'OPPOSANS-L';
   src: url('../fonts/OPPOSANS-L.TTF');
   font-weight: 300;
 }
@@ -157,19 +157,31 @@ video {
   font-weight: normal;
 }
 @font-face {
-  font-family: 'OPPOSANS';
+  font-family: 'OPPOSANS-M';
   src: url('../fonts/OPPOSANS-M.TTF');
   font-weight: 500;
 }
 @font-face {
-  font-family: 'OPPOSANS';
+  font-family: 'OPPOSANS-B';
   src: url('../fonts/OPPOSANS-B.TTF');
   font-weight: 700;
 }
 @font-face {
-  font-family: 'OPPOSANS';
+  font-family: 'OPPOSANS-H';
   src: url('../fonts/OPPOSANS-H.TTF');
   font-weight: 800;
+}
+.light {
+  font-family: 'OPPOSANS-L';
+}
+.bold {
+  font-family: 'OPPOSANS-B';
+}
+.medium {
+  font-family: 'OPPOSANS-M';
+}
+.heavy {
+  font-family: 'OPPOSANS-H';
 }
 input,
 button {
@@ -636,12 +648,15 @@ button {
   --footer-bg-color: #171717;
   --footer-down-bg-color: #141414;
   --black-000: #000000;
+  --black-111: #111111;
   --black-222: #222222;
   --black-333: #333333;
   --black-666: #666666;
   --black-999: #999999;
-  --bg-f7: #F7F7F7;
+  --black-eee: #EEEEEE;
+  --bg-f4: #F4F4F4;
   --bg-f6: #F6F6F6;
+  --bg-f7: #F7F7F7;
   /* 字体大小 */
   --font12: 12px;
   --font14: 14px;
@@ -879,6 +894,24 @@ button {
   .font160 {
     font-size: 1rem;
   }
+}
+.black0 {
+  color: var(--black-000);
+}
+.black1 {
+  color: var(--black-111);
+}
+.black2 {
+  color: var(--black-222);
+}
+.black3 {
+  color: var(--black-333);
+}
+.black6 {
+  color: var(--black-666);
+}
+.black9 {
+  color: var(--black-999);
 }
 /* images等比-NEW */
 .public-img {
@@ -2299,6 +2332,15 @@ button {
 }
 @media (max-width:990px) {
   .container {
+    padding: 0 20px;
+  }
+}
+.w1560 {
+  width: 81.25%;
+  margin: 0 auto;
+}
+@media (max-width:990px) {
+  .w1560 {
     padding: 0 20px;
   }
 }
@@ -4547,4 +4589,124 @@ button {
   .index-recomment .main-box .news-image {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+.navbarwrap {
+  border-bottom: solid 1px var(--black-eee);
+  margin-top: var(--header-height);
+  color: var(--black-666);
+}
+.navbarwrap .innerbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  height: 0.6rem;
+}
+.navbarwrap .innerbox .image {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-left: solid 1px var(--black-eee);
+  border-right: solid 1px var(--black-eee);
+}
+.navbarwrap .innerbox .image img {
+  width: 10px;
+  height: 10px;
+}
+.navbarwrap .innerbox .item {
+  height: 100%;
+}
+.navbarwrap .innerbox .item span {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 0.2rem;
+  border-right: solid 1px var(--black-eee);
+}
+.product-banner-wrap .innerbox {
+  position: relative;
+}
+.product-banner-wrap .innerbox .info {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0.65rem 0;
+  z-index: 2;
+}
+.product-banner-wrap .innerbox .info .sec-title {
+  margin-top: 0.1rem;
+}
+.product-banner-wrap .innerbox .image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.product-list-wrap {
+  padding: 1.2rem 0;
+}
+.product-list-wrap .innerbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  gap: 1.08rem;
+}
+.product-list-wrap .innerbox .left-box {
+  width: 20.5%;
+}
+.product-list-wrap .innerbox .left-box ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  font-family: 'OPPOSANS-B';
+  padding: 0.3rem;
+  background-color: var(--bg-f4);
+  border-radius: 10px;
+  margin-top: 0.08rem;
+  color: var(--black-222);
+}
+.product-list-wrap .innerbox .left-box ul li img {
+  transform: rotate(-90deg);
+}
+.product-list-wrap .innerbox .left-box ul .active {
+  background-color: var(--color-active);
+  color: var(--white-color);
+}
+.product-list-wrap .innerbox .left-box ul .active img {
+  filter: brightness(0) invert(1);
+}
+.product-list-wrap .innerbox .right-box {
+  width: 79.5%;
 }
