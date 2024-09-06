@@ -4710,3 +4710,24 @@ button {
 .product-list-wrap .innerbox .right-box {
   width: 79.5%;
 }
+.product-list-wrap .innerbox .right-box .rowline {
+  width: 100%;
+}
+.product-list-wrap .innerbox .right-box .rowline .title {
+  position: relative;
+  font-size: 20px;
+  font-size: clamp(15px, 0.2rem, 20px);
+  font-weight: 700;
+  white-space: nowrap;
+  line-height: 1;
+  color: var(--black-222);
+}
+.product-list-wrap .innerbox .right-box .rowline .title::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: -0.33rem;
+  width: 6px;
+  height: 0.18rem;
+  background-color: var(--color-active);
+}
