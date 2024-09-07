@@ -400,7 +400,62 @@ $(function () {
     }), _ref));
   }
 
-  indexProtect();
+  indexProtect(); // --------------------------------------------- 关于我们--发展历程
+
+  function development() {
+    var mySwiper = new Swiper('.development-culture .leftwrap .scrollcontent', {
+      // loop : true,//可选选项，开启循环
+      direction: "vertical",
+      spaceBetween: 10,
+      slidesPerView: 3,
+      speed: 1000,
+      breakpoints: {
+        480: {
+          slidesPerView: 1
+        },
+        990: {
+          slidesPerView: 1.8
+        },
+        1280: {
+          slidesPerView: 2
+        }
+      },
+      pagination: {
+        el: '.development-culture .leftwrap .scrollcontent .swiper-pagination',
+        clickable: true
+      }
+    });
+    $(".development-culture .leftwrap .yeartab li").click(function () {
+      $(this).addClass("active").siblings().removeClass("active");
+      var index = $(this).index();
+      mySwiper.slideTo(index);
+    });
+  }
+
+  development(); // 产品-滚动锚点
+
+  $(".product-list-wrap .innerbox .left-box ul li").click(function () {
+    var index = $(this).index();
+    $(this).addClass('active').siblings().removeClass('active');
+    $('html, body').animate({
+      scrollTop: $(".product-list-wrap .innerbox .right-box .rowline").eq(index).offset().top // 获取锚点的位置
+
+    }, 500); // 动画持续时间
+  }); // 产品详情---产品特性 参数搜索 相关下载
+
+  $(".product-seristab-wrap .seris-content .section-one .tab-title li").click(function () {
+    var index = $(this).index();
+    $(this).addClass('active').siblings().removeClass('active');
+    $(".product-seristab-wrap .seris-content .section-one .tab-content .sectionitem").eq(index).addClass('on').siblings().removeClass('on');
+  }); // 产品详情---不同系列
+
+  $(".product-seristab-wrap .seris-tab li").click(function () {
+    $(this).addClass('active').siblings().removeClass('active');
+  }); // 企业文化
+
+  $(".company-culture .innerbox .item").hover(function () {
+    $(this).addClass('active').siblings().removeClass('active');
+  });
 }); // 鼠标跟随
 
 function imousehover(obj, obj2) {
