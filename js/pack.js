@@ -98,7 +98,8 @@ $(function () {
                 });
             }
         }
-
+    
+        
         // 返回顶部
         if ($(".backToTopBtn").length) {
             var btnTop = document.getElementById('backToTopBtn');
@@ -148,12 +149,17 @@ $(function () {
         headInit();
     })
 
+
+    
     function headInit() {
         var t = $(window).scrollTop();
-        if (t >= 100) {
-            $(".header-pc").addClass("pc-active")
-        } else {
-            $(".header-pc").removeClass("pc-active")
+        // banner 覆盖top：0
+        if($(".header-opacity").length){
+            if (t >= 100) {
+                $(".header-pc").addClass("pc-active")
+            } else {
+                $(".header-pc").removeClass("pc-active")
+            }
         }
     }
     headInit();

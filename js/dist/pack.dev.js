@@ -155,12 +155,14 @@ $(function () {
   });
 
   function headInit() {
-    var t = $(window).scrollTop();
+    var t = $(window).scrollTop(); // banner 覆盖top：0
 
-    if (t >= 100) {
-      $(".header-pc").addClass("pc-active");
-    } else {
-      $(".header-pc").removeClass("pc-active");
+    if ($(".header-opacity").length) {
+      if (t >= 100) {
+        $(".header-pc").addClass("pc-active");
+      } else {
+        $(".header-pc").removeClass("pc-active");
+      }
     }
   }
 
