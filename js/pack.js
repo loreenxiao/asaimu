@@ -220,10 +220,10 @@ $(function () {
     headNav();
 
       //数字跳动
-    $('.jump-num').countUp({
-        delay: 5,
-        time: 1000
-    });
+    // $('.jump-num').countUp({
+    //     delay: 5,
+    //     time: 1000
+    // });
 
 
     // 滚轮下滑
@@ -310,42 +310,42 @@ $(function () {
 
 
     // 可视化数据滚动
-    function visualData(obj) {
-        $(window).load(function () {
-            obj.each(function () {
-                var h = Number($(this).html());
-                var t = "";
-                var n = Math.ceil(h / 20);
-                var a = true;
-                var This = $(this);
-                if ($(this).length != 0) {
-                    t = $(this).offset().top;
-                }
-                This.html(0);
-                fn1();
-                $(window).scroll(function () {
-                    fn1();
-                });
+    // function visualData(obj) {
+    //     $(window).load(function () {
+    //         obj.each(function () {
+    //             var h = Number($(this).html());
+    //             var t = "";
+    //             var n = Math.ceil(h / 20);
+    //             var a = true;
+    //             var This = $(this);
+    //             if ($(this).length != 0) {
+    //                 t = $(this).offset().top;
+    //             }
+    //             This.html(0);
+    //             fn1();
+    //             $(window).scroll(function () {
+    //                 fn1();
+    //             });
 
-                function fn1() {
-                    var wT = $(window).scrollTop();
-                    if (wT > t - $(window).height() + 50 && wT < t - 50 && a == true) {
-                        a = false;
-                        var y = 0;
-                        var timer2 = setInterval(function () {
-                            if (y >= h) {
-                                y = h;
-                                clearInterval(timer2);
-                            }
-                            This.html(y);
-                            y += n;
-                        }, 100);
-                    }
-                }
-            });
-        });
-    }
-    visualData($(".num-move"));
+    //             function fn1() {
+    //                 var wT = $(window).scrollTop();
+    //                 if (wT > t - $(window).height() + 50 && wT < t - 50 && a == true) {
+    //                     a = false;
+    //                     var y = 0;
+    //                     var timer2 = setInterval(function () {
+    //                         if (y >= h) {
+    //                             y = h;
+    //                             clearInterval(timer2);
+    //                         }
+    //                         This.html(y);
+    //                         y += n;
+    //                     }, 100);
+    //                 }
+    //             }
+    //         });
+    //     });
+    // }
+    // visualData($(".num-move"));
 
 
 
