@@ -1,15 +1,145 @@
 "use strict";
 
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 $(function () {
-  // 使用IE浏览器提示
+  var Utils =
+  /*#__PURE__*/
+  function () {
+    function Utils() {
+      _classCallCheck(this, Utils);
+    }
+
+    _createClass(Utils, [{
+      key: "lenisInit",
+      value: function lenisInit() {
+        var _this2 = this;
+
+        var initSmoothScrolling = function initSmoothScrolling() {
+          _this2.lenis = new Lenis({
+            mouseMultiplier: 1.2,
+            smooth: true,
+            smoothTouch: false
+          });
+
+          var scrollFn = function scrollFn(time) {
+            _this2.lenis.raf(time);
+
+            requestAnimationFrame(scrollFn);
+          };
+
+          requestAnimationFrame(scrollFn);
+        };
+
+        initSmoothScrolling();
+      }
+    }]);
+
+    return Utils;
+  }();
+
+  var App =
+  /*#__PURE__*/
+  function (_Utils) {
+    _inherits(App, _Utils);
+
+    function App() {
+      var _this3;
+
+      _classCallCheck(this, App);
+
+      _this3 = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
+
+      _this3.init();
+
+      return _this3;
+    }
+
+    _createClass(App, [{
+      key: "init",
+      value: function init() {
+        this.lenisInit();
+        this.definedAn();
+      }
+    }, {
+      key: "definedAn",
+      value: function definedAn() {
+        var that = this;
+        $('.l-morebox').hover(function () {
+          var jttl = gsap.timeline({
+            paused: true
+          });
+          jttl.to($(this).find('svg.jt'), {
+            xPercent: 100
+          }).set($(this).find('svg.jt'), {
+            xPercent: -100
+          }).to($(this).find('svg.jt'), {
+            xPercent: 0
+          });
+          jttl.play();
+        }, function () {});
+
+        if ($('.index-title').length > 0) {
+          var panels = gsap.utils.toArray(".index-title");
+          panels.forEach(function (v, i) {
+            var name = $(v).find('.name>*');
+            var nname = $(v).find('.nname>*');
+            gsap.from(name, {
+              xPercent: 100,
+              opacity: 0,
+              stagger: 0.05,
+              ease: 'power2.inOut',
+              scrollTrigger: {
+                trigger: v,
+                start: "top bottom",
+                toggleActions: "play resume resume reset"
+              }
+            });
+            gsap.from(nname, {
+              xPercent: 100,
+              opacity: 0,
+              stagger: 0.05,
+              ease: 'power2.inOut',
+              scrollTrigger: {
+                trigger: v,
+                start: "top bottom",
+                toggleActions: "play resume resume reset"
+              }
+            });
+          });
+        }
+      }
+    }]);
+
+    return App;
+  }(Utils);
+
+  var _app = new App();
+  /* 全局公共属性 */
+
+
+  var wH = window.innerHeight,
+      wW = window.innerWidth,
+      c = "active"; // 使用IE浏览器提示
+
   function hiUpgrade() {
     window.AESKey = ''; // 判断浏览器是否支持placeholder属性
 
@@ -148,7 +278,12 @@ $(function () {
     }
   }
 
-  headNav(); // 滚轮下滑
+  headNav(); //数字跳动
+
+  $('.jump-num').countUp({
+    delay: 5,
+    time: 1000
+  }); // 滚轮下滑
 
   $(window).scroll(function () {
     headInit();
@@ -166,12 +301,7 @@ $(function () {
     }
   }
 
-  headInit(); //数字跳动
-
-  $('.jump-num').countUp({
-    delay: 5,
-    time: 800
-  }); // 点击展开
+  headInit(); // 点击展开
 
   function tabUl() {
     $(".tab-ul ul li:eq(0)").addClass("active");
@@ -188,7 +318,73 @@ $(function () {
     });
   }
 
-  tabUl(); // 可视化数据滚动
+  tabUl(); // a标签锚点平滑过渡
+
+  $('a[href^="#"]').on('click', function (event) {
+    var target = $(this.getAttribute('href'));
+
+    if (target.length) {
+      event.preventDefault();
+      $('html, body').stop().animate({
+        scrollTop: target.offset().top - 60 // 调整滚动位置以适应导航栏的高度
+
+      }, 1000, function () {
+        window.location.hash = target.selector;
+      });
+    }
+  }); // 滚动加载入场动画 --开始
+  // 判断元素出现在可视窗口的时候添加clsss  
+  // 传参一： 需要出现在窗口的类名 
+  // 传参二： 需要 
+  // 传参二： 需要再窗口出现位置 取值范围 例如 0.5  就是 vh * 0.5  窗口的一半 
+  // wowFun("svgBox1",0.5); 
+  // let wH = window.innerHeight, wW = window.innerWidth, c = "active";
+
+  function wowFun(a, b, c) {
+    var box = $(a);
+
+    if (c > 1 || c < 0 || c == 0) {
+      c = 1;
+    }
+
+    if (box != "" || box != null) {
+      box.each(function () {
+        var _this = $(this),
+            topNum = _this.offset().top,
+            scrollTop = $(window).scrollTop() + wH * c,
+            d = _this.attr("data-time");
+
+        if (d == null || d == "undefined" || d == 0) {
+          d = 0;
+        }
+
+        if (scrollTop > topNum) {
+          setTimeout(function () {
+            _this.addClass(b);
+          }, d);
+        } else {
+          _this.removeClass(b);
+        }
+
+        $(window).scroll(function () {
+          topNum = _this.offset().top, scrollTop = $(window).scrollTop() + wH * c, scrollTop_wH = $(window).scrollTop() + wH;
+
+          if (scrollTop > topNum) {
+            _this.addClass(b);
+
+            _this.css({
+              "animation-delay": d + "ms"
+            });
+          } else if (scrollTop_wH < topNum || scrollTop_wH == topNum) {
+            _this.removeClass(b);
+          }
+        });
+      });
+    }
+  }
+
+  wowFun(".s-animate", "fadeInLeft", 1);
+  wowFun(".s-animate-up", "fadeInUp", 1); // 可视化数据滚动
 
   function visualData(obj) {
     $(window).load(function () {
@@ -490,20 +686,20 @@ function imousehover(obj, obj2) {
     }, {
       key: "initCursor",
       value: function initCursor() {
-        var _this = this;
+        var _this4 = this;
 
         this.pageX = $(window).width() / 2 - 50;
         this.pageY = $(window).height() / 2 - 50;
         $(document).on("mousemove", function (e) {
-          _this.pageX = e.clientX;
-          _this.pageY = e.clientY;
+          _this4.pageX = e.clientX;
+          _this4.pageY = e.clientY;
         });
 
         var render = function render() {
-          if (_this.move) {
-            window.TweenMax.to(_this.cursor, 0.5, {
-              x: _this.pageX,
-              y: _this.pageY,
+          if (_this4.move) {
+            window.TweenMax.to(_this4.cursor, 0.5, {
+              x: _this4.pageX,
+              y: _this4.pageY,
               ease: "Power1.easeOut"
             });
           }
@@ -516,10 +712,10 @@ function imousehover(obj, obj2) {
     }, {
       key: "initHovers",
       value: function initHovers() {
-        var _this2 = this;
+        var _this5 = this;
 
         var handleMouseEnter = function handleMouseEnter(e) {
-          window.TweenMax.to(_this2.cursor, 0.5, {
+          window.TweenMax.to(_this5.cursor, 0.5, {
             scale: 1,
             opacity: 1,
             ease: "Power1.easeOut"
@@ -528,7 +724,7 @@ function imousehover(obj, obj2) {
         };
 
         var handleMouseLeave = function handleMouseLeave() {
-          window.TweenMax.to(_this2.cursor, 0.5, {
+          window.TweenMax.to(_this5.cursor, 0.5, {
             scale: 0,
             opacity: 0,
             ease: "Power1.easeOut"
@@ -543,36 +739,36 @@ function imousehover(obj, obj2) {
     }, {
       key: "initMove",
       value: function initMove() {
-        var _this3 = this;
+        var _this6 = this;
 
         var handleMouseMove = function handleMouseMove(e) {
           if ($(e.target).closest('.owl-nav')[0]) {
-            _this3.initCircle(e.target, "[class*='owl-']");
+            _this6.initCircle(e.target, "[class*='owl-']");
           } else if ($(e.target).closest('.searchOnOff')[0]) {
-            _this3.initCircle(e.target, ".searchOnOff");
+            _this6.initCircle(e.target, ".searchOnOff");
           } else {
-            window.TweenMax.to(_this3.cursor, 0.5, {
+            window.TweenMax.to(_this6.cursor, 0.5, {
               scale: 1,
               // background: 'yellow',
               ease: "Power1.easeOut"
             });
-            window.TweenMax.to(_this3.cursorInner, 0.5, {
+            window.TweenMax.to(_this6.cursorInner, 0.5, {
               opacity: 1,
               ease: "Power1.easeOut"
             });
-            _this3.move = true;
+            _this6.move = true;
           }
 
           if ($(e.currentTarget).hasClass('ff_topSlider') || $(e.currentTarget).parents('.mlist.project')[0]) {
             // const sxPos = (e.clientX / window.innerWidth) * 200 - 100;
             // this.cursor.toggleClass("next", sxPos > 0);
-            _this3.cursor.addClass('more');
+            _this6.cursor.addClass('more');
           } else if ($(e.currentTarget).hasClass('videom') || $(e.currentTarget).parents('.bodyvideom')[0]) {
-            _this3.cursor.addClass('play');
+            _this6.cursor.addClass('play');
           } else if ($(e.currentTarget).parents('.team_tabs')[0]) {
-            _this3.cursor.addClass('drag');
+            _this6.cursor.addClass('drag');
           } else if ($(e.currentTarget).hasClass('post-next')) {
-            _this3.cursor.addClass('next');
+            _this6.cursor.addClass('next');
           }
         };
 

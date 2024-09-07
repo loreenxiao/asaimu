@@ -1,5 +1,81 @@
 $(function () {
-   
+    class Utils {
+        lenisInit() {
+            const initSmoothScrolling = () => {
+                this.lenis = new Lenis({
+                    mouseMultiplier: 1.2,
+                    smooth: true,
+                    smoothTouch: false
+                });
+                const scrollFn = (time) => {
+                    this.lenis.raf(time);
+                    requestAnimationFrame(scrollFn);
+                };
+                requestAnimationFrame(scrollFn);
+            };
+            initSmoothScrolling();
+        }
+    }
+    
+    class App extends Utils {
+        constructor() {
+            super();
+            this.init();
+        }
+    
+        init() {
+            this.lenisInit();
+            this.definedAn();
+        }
+    
+        definedAn() {
+            let that = this;
+            $('.l-morebox').hover(function () {
+                let jttl = gsap.timeline({ paused: true });
+                jttl.to($(this).find('svg.jt'), { xPercent: 100 })
+                    .set($(this).find('svg.jt'), { xPercent: -100 })
+                    .to($(this).find('svg.jt'), { xPercent: 0 });
+                jttl.play();
+            }, function () { });
+    
+            if ($('.index-title').length > 0) {
+                let panels = gsap.utils.toArray(".index-title");
+                panels.forEach((v, i) => {
+                    let name = $(v).find('.name>*');
+                    let nname = $(v).find('.nname>*');
+                    gsap.from(name, {
+                        xPercent: 100,
+                        opacity: 0,
+                        stagger: 0.05,
+                        ease: 'power2.inOut',
+                        scrollTrigger: {
+                            trigger: v,
+                            start: "top bottom",
+                            toggleActions: "play resume resume reset"
+                        }
+                    });
+                    gsap.from(nname, {
+                        xPercent: 100,
+                        opacity: 0,
+                        stagger: 0.05,
+                        ease: 'power2.inOut',
+                        scrollTrigger: {
+                            trigger: v,
+                            start: "top bottom",
+                            toggleActions: "play resume resume reset"
+                        }
+                    });
+                });
+            }
+        }
+    }
+    const _app = new App();
+
+    /* 全局公共属性 */
+    let wH = window.innerHeight,
+    wW = window.innerWidth,
+    c = "active";
+
     // 使用IE浏览器提示
     function hiUpgrade() {
         window.AESKey = '';
@@ -143,6 +219,12 @@ $(function () {
     }
     headNav();
 
+      //数字跳动
+    $('.jump-num').countUp({
+        delay: 5,
+        time: 1000
+    });
+
 
     // 滚轮下滑
     $(window).scroll(function () {
@@ -165,12 +247,7 @@ $(function () {
     headInit();
 
 
-    //数字跳动
-    $('.jump-num').countUp({
-        delay: 5,
-        time: 800
-    });
-
+    
     
     
 
@@ -190,6 +267,47 @@ $(function () {
         })
     }
     tabUl();
+
+    // a标签锚点平滑过渡
+    $('a[href^="#"]').on('click', function(event) {
+        var target = $(this.getAttribute('href'));
+        if( target.length ) {
+        event.preventDefault();
+        $('html, body').stop().animate({
+            scrollTop: target.offset().top - 60 // 调整滚动位置以适应导航栏的高度
+        }, 1000, function() {
+            window.location.hash = target.selector;
+        });
+        }
+    });
+
+
+     // 滚动加载入场动画 --开始
+    
+    // 判断元素出现在可视窗口的时候添加clsss  
+    // 传参一： 需要出现在窗口的类名 
+    // 传参二： 需要 
+    // 传参二： 需要再窗口出现位置 取值范围 例如 0.5  就是 vh * 0.5  窗口的一半 
+    // wowFun("svgBox1",0.5); 
+    // let wH = window.innerHeight, wW = window.innerWidth, c = "active";
+    function wowFun(a,b,c) {
+        var box = $(a);
+        if(c > 1 || c < 0 || c == 0) { c = 1 }
+        if (box != "" || box != null) {
+            box.each(function () {
+                var  _this = $(this), topNum = _this.offset().top, scrollTop = $(window).scrollTop() + (wH * c), d = _this.attr("data-time");
+                if(d == null || d == "undefined" || d == 0 ){ d = 0; }
+                if (scrollTop > topNum) { setTimeout(function(){ _this.addClass(b); }, d)} else { _this.removeClass(b); }
+                $(window).scroll(function () {
+                    topNum = _this.offset().top, scrollTop = $(window).scrollTop() + (wH * c), scrollTop_wH = $(window).scrollTop() + wH;
+                    if (scrollTop > topNum) { _this.addClass(b); _this.css({"animation-delay": d+"ms"}) } else if(scrollTop_wH < topNum || scrollTop_wH == topNum ) {  _this.removeClass(b);}
+                });
+            })
+        }
+    }
+    wowFun(".s-animate", "fadeInLeft", 1);
+    wowFun(".s-animate-up", "fadeInUp", 1);
+
 
     // 可视化数据滚动
     function visualData(obj) {
