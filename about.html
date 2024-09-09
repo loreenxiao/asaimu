@@ -135,7 +135,7 @@
                         <div class="circle rotate">
                             <img src="./images/video-circle-btn.png" alt="">
                         </div>
-                        <div class="videobtn">
+                        <div class="videobtn" id="playvideo">
                             <img src="./images/video-btn.png" alt=""> 播放视频...
                         </div>
                     </div>
@@ -488,6 +488,19 @@
             </div>
         </section>
 
+
+        <!-- 视频弹窗 -->
+        <div id="hi-video-pop">
+            <div href="javascript:;" class="hi-close"></div>
+            <div class="hi-video-box">
+                <div class="hi-video-wrap">
+                    <!-- <video src="" controls preload="none" webkit-playsinline="true" playsinline="true"></video> -->
+                    <video src="./video/media.mp4" controls="" autoplay="true" preload="true" webkit-playsinline="true"
+                        playsinline="true"></video>
+                </div>
+            </div>
+        </div>
+
     </main>
     <!-- 表单 -->
     <div id="form"></div>
@@ -510,7 +523,16 @@
    <script type="text/javascript" src="js/extend.js"></script>
    <script type="text/javascript" src="js/pack.js"></script>
 
-
+    <script>
+        $(function () {
+            $("#playvideo").click(function () {
+                $(" #hi-video-pop").css("display", "block")
+            })
+            $(".hi-close").click(function () {
+                $(" #hi-video-pop").css("display", "none")
+            })
+        })
+    </script>
    
 
 
