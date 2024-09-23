@@ -633,6 +633,54 @@ $(function () {
       scrollTop: $(".product-list-wrap .innerbox .right-box .rowline").eq(index).offset().top // 获取锚点的位置
 
     }, 500); // 动画持续时间
+  });
+  $(document).ready(function () {
+    // 给每个按钮绑定点击事件
+    $('.product-list-wrap .innerbox .left-box ul li').click(function () {
+      var buttonDataId = $(this).data('id');
+      var targetDiv = $('#divList .item[data-id="' + buttonDataId + '"]'); // 清除所有 div 的 active 类
+
+      $('.product-list-wrap .innerbox .right-box .rowline').removeClass('active'); // 给当前点击对应的 div 添加 active 类
+
+      targetDiv.addClass('active'); // 滚动到对应的 div
+
+      $('html, body').animate({
+        scrollTop: targetDiv.offset().top
+      }, 500); // 更新按钮的状态
+
+      $('.product-list-wrap .innerbox .left-box ul li').removeClass('selected');
+      $(this).addClass('selected');
+    }); // 初始化第一个 div 和按钮为 active 和 selected 状态
+
+    $('.product-list-wrap .innerbox .right-box .rowline:first-child').addClass('active');
+    $('.product-list-wrap .innerbox .left-box ul li:first-child').addClass('selected'); // 监听滚动事件
+
+    $(window).on('scroll', function () {
+      detectActiveDiv();
+    });
+
+    function detectActiveDiv() {
+      var scrollTop = $(window).scrollTop();
+      var windowHeight = $(window).height();
+      $('.product-list-wrap .innerbox .right-box .rowline').each(function () {
+        var divTop = $(this).offset().top;
+        var divHeight = $(this).outerHeight();
+
+        if (divTop <= scrollTop + windowHeight && divTop + divHeight >= scrollTop) {
+          // 当前 div 在可视区域内
+          $(this).addClass('active').siblings().removeClass('active');
+          updateButtonState($(this));
+        } else {
+          $(this).removeClass('active');
+        }
+      });
+    }
+
+    function updateButtonState(activeDiv) {
+      var activeDivId = activeDiv.data('id');
+      $('.product-list-wrap .innerbox .left-box ul li').removeClass('selected');
+      $('.product-list-wrap .innerbox .left-box ul li[data-id="' + activeDivId + '"]').addClass('selected');
+    }
   }); // 产品详情---产品特性 参数搜索 相关下载
 
   $(".product-seristab-wrap .seris-content .section-one .tab-title li").click(function () {
@@ -804,4 +852,75 @@ function imousehover(obj, obj2) {
     var cursor = new CustomCursor(obj2);
     cursor.init();
   }
+} // 新闻列表
+
+
+function newsList() {
+  var slide = new Swiper('.newswrap .newbanner', {
+    speed: 900,
+    autoplay: true,
+    effect: "fade",
+    preventLinksPropagation: false,
+    // 阻止点击事件冒泡
+    pagination: {
+      el: '.newswrap .newbanner .swiper-pagination',
+      clickable: true
+    }
+  });
 }
+
+newsList(); // EMC方案设计
+
+function solutionTabSwiper() {
+  var slide = new Swiper('.casedesign-wrap .innerbox .designbox .swiperbox', {
+    speed: 900,
+    slidesPerView: 1,
+    effect: 'fade',
+    preventLinksPropagation: false // 阻止点击事件冒泡
+
+  });
+  $(".casedesign-wrap .innerbox .designbox .case-tab .name").click(function () {
+    var a = $(this).index();
+    $(".about-history-swiper .swiper-pagination-bullet").eq($(this).index()).click();
+    $(this).addClass("active").siblings().removeClass("active");
+    slide.slideTo(a);
+  });
+}
+
+solutionTabSwiper(); // EMC测试服务
+
+function teamActiveSwiper() {
+  var mySwiper = new Swiper('.solution-two-section1 .bottomwrap .oneSwiper', {
+    speed: 1000,
+    pagination: {
+      el: '.solution-two-section1 .bottomwrap .oneSwiper .swiper-pagination',
+      clickable: true
+    },
+    on: {// slideChangeTransitionStart: function (swiper) {
+      //     var d = this.activeIndex;
+      //     $(".index-core-algorithm-page .tab-title .title").stop().removeClass("active").eq(d).addClass("active");
+      //     swiperS2.slideTo(d);
+      // },
+    }
+  });
+  var mySwiper2 = new Swiper('.solution-two-section1 .bottomwrap .twoSwiper', {
+    speed: 1000,
+    pagination: {
+      el: '.solution-two-section1 .bottomwrap .twoSwiper .swiper-pagination',
+      clickable: true
+    }
+  });
+  $(".solution-two-section1 .bottomwrap .innerbox .info .tabitem li").click(function () {
+    var a = $(this).index();
+    console.log("a", a);
+    $(".solution-two-section1 .bottomwrap .innerbox .image .swiper-pagination-bullet").eq($(this).index()).click();
+    $(this).addClass("active").siblings().removeClass("active");
+    mySwiper.slideTo(a);
+  });
+}
+
+teamActiveSwiper(); // 4.1 EMC测试服务
+
+$(".test-server-wrap .innerbox .bottom-global .info .item").hover(function () {
+  $(this).addClass('active').siblings().removeClass('active');
+});

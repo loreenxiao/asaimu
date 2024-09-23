@@ -17,9 +17,8 @@
     <meta name="keywords" content="关键字" />
     <meta name="description" content="网页的内容" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="images/favicon.ico" />
-    <!-- CSS层叠样式表 -->
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="svg/logo.svg" />
+
     <!-- CSS层叠样式表 -->
     <link type="text/css" rel="stylesheet" href="iconfont/iconfont.css">
     <link type="text/css" rel="stylesheet" href="layui/css/layui.css">
@@ -30,6 +29,7 @@
 
     <!-- JavaScript语言 -->
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/count.js"></script>
 
 
 </head>
@@ -72,27 +72,27 @@
                 <div class="innerbox">
                     <div class="left-box">
                         <ul>
-                            <li class="active">
+                            <li class="" data-id="1">
                                 ESD,TVS 保护器件
                                 <span class="more"><img src="./images/bread-down.png" alt=""></span>
                             </li>
-                            <li>
+                            <li data-id="2">
                                 共模
                                 <span class="more"><img src="./images/bread-down.png" alt=""></span>
                             </li>
-                            <li>
+                            <li data-id="3">
                                 二极管
                                 <span class="more"><img src="./images/bread-down.png" alt=""></span>
                             </li>
-                            <li>
+                            <li data-id="4">
                                 三极管
                                 <span class="more"><img src="./images/bread-down.png" alt=""></span>
-                            </li>
-                            <li>
+                            </li >
+                            <li data-id="5">
                                 mos管
                                 <span class="more"><img src="./images/bread-down.png" alt=""></span>
                             </li>
-                            <li>
+                            <li data-id="6">
                                 磁珠
                                 <span class="more"><img src="./images/bread-down.png" alt=""></span>
                             </li>
@@ -100,11 +100,11 @@
                     </div>
                     <div class="right-box productlist">
                         <!-- ESD,TVS 保护器件  -->
-                        <div class="rowline">
+                        <div class="rowline" data-id="1">
                             <p class="title">
                                 ESD,TVS 保护器件
                             </p>
-                            <div class="itemlist">
+                            <div class="itemlist" >
                                 <a class="item" href="productDetail.html">
                                     <p class="name font18">汽车ESD，TVS</p>
                                     <div class="image">
@@ -132,7 +132,7 @@
                             </div>
                         </div>
                         <!-- 共模 -->
-                        <div class="rowline">
+                        <div class="rowline" data-id="2">
                             <p class="title">
                                 共模
                             </p>
@@ -164,7 +164,7 @@
                             </div>
                         </div>
                         <!-- 二极管 -->
-                        <div class="rowline">
+                        <div class="rowline" data-id="3">
                             <p class="title">
                                 二极管
                             </p>
@@ -202,7 +202,7 @@
                             </div>
                         </div>
                         <!-- 三极管 -->
-                        <div class="rowline">
+                        <div class="rowline" data-id="4">
                             <p class="title">
                                 三极管
                             </p>
@@ -235,7 +235,7 @@
                         </div>
 
                         <!-- mos管 -->
-                        <div class="rowline">
+                        <div class="rowline" data-id="5">
                             <p class="title">
                                 mos管
                             </p>
@@ -262,7 +262,7 @@
                             </div>
                         </div>
                         <!-- 磁珠 -->
-                        <div class="rowline">
+                        <div class="rowline" data-id="6">
                             <p class="title">
                                 磁珠
                             </p>

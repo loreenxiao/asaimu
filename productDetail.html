@@ -18,7 +18,8 @@
     <meta name="description" content="网页的内容" />
     <meta name="author" content="" />
 
-    <link rel="shortcut icon" href="images/favicon.ico" />
+    <link rel="shortcut icon" href="svg/logo.svg" />
+
     <!-- CSS层叠样式表 -->
     <link type="text/css" rel="stylesheet" href="iconfont/iconfont.css">
     <link type="text/css" rel="stylesheet" href="layui/css/layui.css">
@@ -29,6 +30,7 @@
 
     <!-- JavaScript语言 -->
     <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/count.js"></script>
 
 
 </head>
@@ -59,13 +61,13 @@
                 <div class="w1560">
                     <div class="info">
                         <div class="i-left">
-                            <p class="title font42 bold black2">汽车ESD，TVS </p>
-                            <p class="sec-title medium font18 black3">响应速度快，提供优化的保护</p>
-                            <img src="./images/dotted.png" alt="" class="line">
-                            <p class="intro black6 font16">我们的IVN总线保护解决方案能够提供更高的系统稳健性，因此成为热门的可靠选择。它们具有<span class="red bold font16">运行电容低、可避免意
+                            <p class="title font42 bold black2 s-animate-up" data-time="50">汽车ESD，TVS </p>
+                            <p class="sec-title medium font18 black3 s-animate-up" data-time="150">响应速度快，提供优化的保护</p>
+                            <img src="./images/dotted.png" alt="" class="line s-animate-up" data-time="100">
+                            <p class="intro black6 font16 s-animate-up" data-time="200">我们的IVN总线保护解决方案能够提供更高的系统稳健性，因此成为热门的可靠选择。它们具有<span class="red bold font16">运行电容低、可避免意
                                 外电路干扰</span>等特点，非常适合用于提供汽车总线保护。 </p>
                         </div>
-                        <div class="i-right">
+                        <div class="i-right s-animate-up" data-time="150">
                             <img src="./images/prodetail-img.png" alt="">
                         </div>
                     </div>
@@ -78,15 +80,15 @@
         <!-- 列表 -->
         <section class="product-seristab-wrap">
            <div class="w1560">
-                <ul class="seris-tab">
+                <ul class="seris-tab s-animate-up" data-time="200">
                     <li class="title active">超大电流系列</li>
                     <li class="title">超大电流系列</li>
                     <li class="title">低残压系列</li>
                     <li class="title">恒VC系列</li>
                 </ul>
-                <div class="seris-content">
+                <div class="seris-content ">
                     <div class="section-one">
-                        <ul class="tab-title">
+                        <ul class="tab-title s-animate-up" data-time="250">
                             <li class="active">产品特性</li>
                             <li>参数搜索</li>
                             <li>相关下载</li>
@@ -100,8 +102,8 @@
                                         <img src="./images/product-seris-bg.png" alt="">
                                     </div>
                                     <div class="info">
-                                        <p class="left bold font30 black0"><span class="activecolor bold font30 ">主要特性</span>和优势</p>
-                                        <div class="right">
+                                        <p class="left bold font30 black0 s-animate-up" data-time="50"><span class="activecolor bold font30 ">主要特性</span>和优势</p>
+                                        <div class="right s-animate-up" data-time="100">
                                             <ul>
                                                 <li>30 kV ESD保护</li>
                                                 <li>系统抗ESD能力更强</li>
@@ -117,9 +119,9 @@
                                     </div>
                                 </div>
                                 <div class="main-application">
-                                    <p class="left bold font30 black0"><span class="activecolor bold font30 ">关键</span>应用</p>
+                                    <p class="left bold font30 black0 s-animate-up" data-time="50"><span class="activecolor bold font30 ">关键</span>应用</p>
                                     <div class="itemlist">
-                                        <div class="item">
+                                        <div class="item s-animate-up" data-time="50">
                                             <div class="image">
                                                 <img src="./images/appl1.png" alt="">
                                             </div>
@@ -128,7 +130,7 @@
                                                 <p class="title medium black3">汽车总线保护</p>
                                             </div>
                                         </div>
-                                        <div class="item">
+                                        <div class="item s-animate-up" data-time="100">
                                             <div class="image">
                                                 <img src="./images/appl2.png" alt="">
                                             </div>
@@ -137,7 +139,7 @@
                                                 <p class="title medium black3">数据与音频接口，如汽车多媒体线路保护</p>
                                             </div>
                                         </div>
-                                        <div class="item">
+                                        <div class="item s-animate-up" data-time="150">
                                             <div class="image">
                                                 <img src="./images/appl3.png" alt="">
                                             </div>
@@ -146,7 +148,7 @@
                                                 <p class="title medium black3">过压保护，如安全气囊控制器、ABS、ESC</p>
                                             </div>
                                         </div>
-                                        <div class="item">
+                                        <div class="item s-animate-up" data-time="200">
                                             <div class="image">
                                                 <img src="./images/appl4.png" alt="">
                                             </div>
@@ -159,7 +161,7 @@
                                 </div>
                             </div>
                             <!-- 参数搜索 -->
-                            <div class="sectionitem seris-block">
+                            <div class="sectionitem seris-block s-animate-up" data-time="50">
                                 <div class="filter-title">
                                     <div class="left">
                                         每页最多显示 
@@ -762,7 +764,7 @@
 
                             </div>
                             <!-- 相关下载 -->
-                            <div class="sectionitem download-block">
+                            <div class="sectionitem download-block s-animate-up" data-time="50">
                                 <div class="downloadword">
                                     <div class="title">
                                         <div class="left bold font30 black3"><span class="activecolor bold font30 black3">下载</span>文档</div>
