@@ -2106,6 +2106,24 @@ button {
 // --------------------------------------------- 尾部结束
 
 
+// --------------------------------------------- 首页-关于我们
+.ani-text {
+  // display: initial;
+  background: rgb(0 0 0 / 20%) -webkit-linear-gradient(to right, #000, #000) no-repeat;
+  background: rgb(0 0 0 / 20%) linear-gradient(to right, #000, #000) no-repeat;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-size: 0 100%;
+  -webkit-transition: background-size cubic-bezier(.1, .5, .5, 1) 0.5s;
+  transition: background-size cubic-bezier(.1, .5, .5, 1) 0.5s;
+  @media @max1024 {
+    background: transparent;
+    -webkit-text-fill-color: inherit;
+    -webkit-background-clip: initial;
+  }
+}
+
+
 // --------------------------------------------- IE升级提示
 #hi-upgrade {
   position: fixed;
@@ -3318,6 +3336,7 @@ button {
       padding-left: .26rem;
       height: .6rem;
       color: #B3B3B3;
+      width: 100%;
       &:focus{
         background: #FDFAF7;
         border: 1px solid #EE7B1D;
@@ -3369,7 +3388,9 @@ button {
 
 
   }
-
+  @media @max480{
+    padding:.5rem 0;
+  }
 }
 
 // --------------------------------------------- 首页
@@ -3958,6 +3979,24 @@ button {
 
     }
   }
+  @media @max480{
+    .innerbox{
+      height: inherit;
+      .image{
+        border: none;
+      }
+      .item{
+        display: inline-block;
+        width: 100%;
+        a{.j_justify;
+          padding: .1rem .2rem;
+          border: solid 1px var(--black-eee);
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
 }
 .product-banner-wrap{
   .innerbox{position: relative;
@@ -4165,6 +4204,13 @@ button {
       width: 100%; 
       height: 100%;
       img{width: 100%; height: 100%; object-fit: cover;}
+    }
+  }
+  @media @max480 {
+    .innerbox .info{
+      display: inline-block;width: 100%; padding: .5rem 0;
+      .i-left{width: 100%;}
+      .i-right{width: 100%; margin-top: .3rem;}
     }
   }
 }
@@ -4521,6 +4567,28 @@ button {
     border-color: var(--color-active) !important;
     background-color: var(--color-active);
   }
+  @media @max480 {
+    .seris-tab{
+      // display: inline-block; width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2,1fr); 
+      height: inherit;
+      li{ .a_center; .j_center;
+        padding: .1rem ;
+        padding-left: .2rem;
+      }
+    }
+    .seris-content .section-one .tab-content .sectionitem {
+      .main-advantage .info .right{
+        padding-left: 0;
+        margin-top: .3rem;
+      }
+      .main-application .itemlist{
+        grid-template-columns: repeat(1, 1fr);
+      }
+    }
+  }
+
 }
 
 
@@ -4532,7 +4600,7 @@ button {
       position: relative;
       width: 100%;
       height: 100%;
-      padding: 1.515rem 0;
+      padding: 1.495rem 0;
       z-index: 2;
       .title{}
       .sec-title{margin-top: .18rem;  line-height: calc(28/18);white-space: pre-line;}
@@ -4563,7 +4631,7 @@ button {
 .about-wrap{padding: 1.2rem 0; overflow-x: hidden;
   .innerbox{.flex; gap: 1.08rem;position: relative;
     .ileft{
-      width: 38.6%;
+      width: 33%;
       .title{
         white-space: pre-line;
       }
@@ -4578,7 +4646,7 @@ button {
 
     }
     .iright{
-      width: 61.4%;
+      width: 67%;
       .info{ 
         
         p{
@@ -4607,7 +4675,7 @@ button {
           .i-end{.a_end;}
           .i-center{.a_center;}
 
-          .i-name{margin-top: .2rem;color: var(--black-333);  }
+          .i-name{.medium; margin-top: .2rem;color: var(--black-333);  }
 
         }
       }
@@ -4617,17 +4685,25 @@ button {
   .video-wrap{position: relative; margin-top: .99rem;
     .image{
       border-radius: 10px;
+      position: absolute;
+      width: 100%; height: 100%;
+      img{
+        width: 100%; height: 100%; object-fit: cover; border-radius: 10px
+      }
     }
     .info{.flex;
-      position: absolute;
-      width: 100%;
-      bottom: .35rem;
-      left: .35rem;
+      // position: absolute;
+      // width: 100%;
+      // bottom: .35rem;
+      // left: .35rem;
+      padding: 3.15rem .35rem .35rem .35rem;
       .circle {width: 1.02rem; height: 1.02rem;}
       .videobtn{ cursor: pointer;
         .flex; .a_center; gap: .32rem;position: absolute;
         left: .15rem;
-        top: .15rem;
+        // top: .15rem;
+        left: 0.5rem;
+        bottom: 0.5rem;
         img{width: .7rem;
           height: .7rem;}
       }
@@ -4645,10 +4721,12 @@ button {
     }
   }
   @media @max480 {
-
+    padding: .8rem 0;
+    .innerbox .iright .itemlist{
+      grid-template-columns: repeat(2, 1fr);
+      gap: .3rem;
+    }
   }
-
-
 }
 
 // --------------------------------------------- 关于我们-企业文化
@@ -4718,7 +4796,7 @@ button {
 
 
 // --------------------------------------------- 关于我们-发展历程
-.development-culture{padding: 1.2rem 0; height: 9.6rem; overflow: hidden;
+.development-culture{position: relative; padding: 1.2rem 0; height: 9.6rem; overflow: hidden;
   .innerbox{ .flex; .a_start;
     .leftwrap{ .flex; gap: 2.85rem; width: 50%;  margin-top: 1.14rem;height: 5.22rem;
     
@@ -4836,6 +4914,9 @@ button {
               
             }
           }
+          .logo{
+            padding: .6rem;
+          }
         }
       }
     }
@@ -4843,6 +4924,26 @@ button {
   @media @max768 {
     .innerbox .leftwrap{
       gap: 1rem;
+      
+    }
+  }
+  @media @max480 {
+    .innerbox {
+      display: inline-block; width: 100%;
+      .leftwrap{
+        gap: .5rem;
+        width: 60%;
+        margin-top: .5rem;
+      }
+      .rightwrap {width: 50%;
+        position: absolute;
+        top: 2.5rem;
+        right: 0;
+        .swiperlogo .item{
+          width: 3.21rem;
+          height: 3.21rem;
+        }
+      }
     }
   }
 
@@ -4874,9 +4975,13 @@ button {
       border-left: solid 1px #E4E4E4;
       border-right: solid 1px #E4E4E4;
       .title{ text-align: center;margin-bottom: .64rem;}
-      .item{padding-bottom: 1.12rem;
+      .honoritem{
+        padding: 0 .6rem;
+        .item{padding-bottom: 1.12rem;
         
+        }
       }
+      
     }
     .h-right{
       width: 70.9%;
@@ -4888,8 +4993,8 @@ button {
           border-right: solid 1px #E4E4E4;
           padding: .4rem 0;
           img{.dh;
-            width: 165px;
-            height: 238px;
+            width: 1.65rem;
+            height: 2.38rem;
           }
           p{text-align: center;};
           &:hover{.dh;
@@ -4946,11 +5051,16 @@ button {
     .honor-box .h-right {
       .itemlist{
         grid-template-columns: repeat(2, 1fr);
+       
         .item:nth-child(2n){
           border-right:solid 1px #E4E4E4;
         }
-        .item:nth-child(3n){
+        .item:nth-child(3){
           border-right:inherit;
+        }
+        .item:nth-child(8){
+          border-bottom:solid 1px #E4E4E4;
+
         }
       }
     }
@@ -5310,11 +5420,11 @@ button {
     }
   }
 }
-.newswrap{ padding: 1.2rem 0; position: relative; overflow: hidden;
+.newswrap{ padding: 1.2rem 0; position: relative; overflow: hidden;    background: #F6F6F6;
   .newbanner{ overflow: hidden;
     .innerbox{ .flex; gap: .6rem ; width: 100%;
       .n-left{
-        width: 46%;
+        width: 48%;
         border-top: solid 2px var(--black-222) ;
         border-bottom: solid 2px var(--black-222) ;
   
@@ -5322,17 +5432,17 @@ button {
           line-height: 1; margin-top: .66rem;
         }
         .title{
-         margin-top: .5rem;
+         margin-top: .4rem;
         }
         .info{ .text(3);
-          line-height: calc(30/16); margin-top: .54rem;
+          line-height: calc(30/16); margin-top: .45rem;
         }
         .public-detail{
           margin-top: 1.03rem;
         }
       }
       .n-right{
-        width: 54%;height: 4.86rem;
+        width: 52%;height: 4.86rem;
         border-radius: 10px;
         img{
           width: 100%; height: 100%; object-fit: cover;
@@ -5355,30 +5465,55 @@ button {
       border: 2px solid var(--color-active);
     }
   }
+  @media @max768{
+    .newbanner .innerbox .n-left .public-detail{
+      margin-top: .5rem;
+    }
+  }
+  @media @max480{
+    padding: .8rem 0;
+    .newbanner {
+      .innerbox{
+        display: inline-block;width: 100%;
+        .n-left{
+          width: 100%;
+          border-bottom: none;
+        }
+        .n-right{
+          width: 100%;
+          margin-top: .3rem;
+        }
+      }
+      .swiper-pagination{
+        position: relative;
+        width: 100%;
+        bottom: .8rem;
+        left: inherit;
+      }
+  
+    }
+  }
+
 }
 
-.newlist-wrap{ padding-bottom: 1.2rem;
-  .grid3{
-    
-  }
+.newlist-wrap{padding:1.2rem 0;
   .innerbox{ row-gap: 1rem;
-    .item{ overflow: hidden; 
+    .item{position: relative;  overflow: hidden; height: 5.42rem;
+      &:after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 0;
+        background: url(../images/news-img-hover.png) no-repeat bottom right;
+        z-index: 0;
+        transition: all 0.3s ease;
+        border-radius: 10px;
+        
+      }
       a{
-        position: relative; padding: 0 0.4rem; width: 100%;
-        &:after{
-          content: '';
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          width: 100%;
-          height: 100%;
-          background: url(../images/news-img-hover.png) no-repeat bottom right;
-          z-index: 1;
-          opacity: 0;
-          transition: all 0.3s ease;
-          border-radius: 10px;
-          min-height: 542px;
-        }
+        padding: 0 0.4rem; width: 100%; height: 100%;
         .image{
           position: absolute;
           transition: all 0.3s ease;
@@ -5391,8 +5526,9 @@ button {
             width: 100%; height: 100%; object-fit: cover; border-radius: 10px;
           }
         }
-        .info{position: relative;
-           z-index: 2;
+        .info{
+          z-index: 2;
+          position: relative;
           padding-top: calc(2.74rem + 0.4rem);
           .time{
             line-height: 1;
@@ -5408,38 +5544,56 @@ button {
           
         }
         .public-detail{
-          margin-top: .94rem;
-          padding-bottom: .6rem;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          align-items: end;
+          bottom: .6rem;
         }
         
       }
       &:hover{
-          a{
-            &:after{
-              opacity: 1;
-              transition: all 0.3s ease;
+          &:after{
+            bottom: 0;
+            // opacity: 1;
+            height: 100%;
+            transition: all 0.3s ease;
+          }
+          .image{
+            transition: all 0.3s ease;
+            transform: translateY(-5rem);
+          }
+          .info{
+            padding-top: .6rem;
+            z-index: 2;
+            .time{
+              color: var(--color-active);
             }
-            .image{
-              transition: all 0.3s ease;
-              transform: translateY(-5rem);
+            .title{
+              margin-top: .8rem;
             }
-            .info{
-              padding-top: calc(2.064rem);
-              .time{
-                color: var(--color-active);
-              }
-              .desc{
-                display: block;
-              }
-              
-            }
-            .public-detail{color: var(--color-active); z-index: 2;
-              img{
-                filter: inherit;
-              }
+            .desc{
+              display: block;
             }
             
           }
+          .public-detail{color: var(--color-active); z-index: 2;
+            img{
+              filter: inherit;
+            }
+          }
+      }
+    }
+  }
+  @media @max480{
+    padding: .8rem 0;
+    .innerbox{
+      grid-template-columns: repeat(1, 1fr);row-gap: .3rem;
+      .item a{
+        padding: 0;
+        .image{
+          width: 100%;
+        }
       }
     }
   }
@@ -5452,10 +5606,10 @@ button {
       width: 79.1%;
       border-right: solid 1px var(--black-eee);
       padding-right: .5rem;
-      padding-top: .99rem;
+      padding-top: .8rem;
       padding-bottom: 1.2rem;
       .title{}
-      .mediabox{.flex; .j_justify; .a_center; margin-top: .4rem;
+      .mediabox{.flex; .j_justify; .a_center; margin-top: .2rem;
         .m-left{.flex; .a_center; gap: .87rem;
           .item{.flex;.a_center; gap: .1rem;
             span{.flex;.a_center;}
@@ -6359,7 +6513,7 @@ button {
       .item{
         border-radius: 10px;
         border: 1px solid #E1E1E1;    
-        padding: 0.425rem 0;
+        padding: 0.425rem .3rem;
         backdrop-filter: blur(4px);
         .name{}
         .title{margin-top: .2rem;}
@@ -6369,6 +6523,21 @@ button {
         }
         
 
+      }
+    }
+  }
+  @media @max480{
+    .innerbox {
+      .top-title{
+        display: inline-block;width: 100%;
+        .publictitle {
+          width: 100%;
+        }
+        .desc {width: 100%; margin-top: .3rem;}
+      }
+      .itemlist{
+        margin-top: .5rem;
+        
       }
     }
   }
@@ -6413,7 +6582,8 @@ button {
             position: relative;
             width: .36rem;height: .36rem;
             border-radius: 50%;
-            border: 1px solid rgb(255 255 255 / 30%);
+            border: 1px dashed rgb(255 255 255 / 30%);
+            animation: circular 20s linear infinite;
             &:before{
               position: absolute;
               content: '';
@@ -6427,7 +6597,7 @@ button {
           &:hover{ .dh;
             background: rgb(255 255 255 / 8%);
             .icon{.dh;
-              border: 1px solid #EE7B1D;
+              border: 1px dashed #EE7B1D;
               &:before{
                 background: #EE7B1D;
 
@@ -6450,6 +6620,9 @@ button {
           width: 100%;
         }
         .desc {width: 100%; margin-top: .3rem;}
+      }
+      .itemlist .item li .percent:last-child{
+        display: none;
       }
     }
   }
@@ -6536,13 +6709,16 @@ button {
     }
   }
   @media @max480{
-    .innerbox{
+    .innerwrap{
       .top-title{
         display: inline-block;width: 100%;
         .publictitle {
           width: 100%;
         }
         .desc {width: 100%; margin-top: .3rem;}
+      }
+      .bottomwrap .innerbox{
+        grid-template-columns: repeat(1, 1fr);
       }
     }
   }
@@ -6643,12 +6819,28 @@ button {
           height: 0.12rem;
           background-size: contain;
         }
-        &:last-child{
+        &:first-child{
           &::before{
             display: none;
           }
         }
       }
+      .item:nth-child(1){
+        order: 4;
+      }
+      .item:nth-child(2){
+        order: 3;
+
+      }
+      .item:nth-child(3){
+        order: 2;
+
+      }
+      .item:nth-child(4){
+        order: 1;
+
+      }
+
      
     }
 

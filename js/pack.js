@@ -814,8 +814,56 @@ function imousehover(obj, obj2) {
     }
 }
 
-
-
+// 文字过渡动画
+// 首页-关于我们-文字过渡动画
+function aniText() {
+    var PC = $(window).width() > 1024,
+        mobile = $(window).width() <= 1024,
+        winWidth = $(window).width(),
+        winHeight = $(window).height();
+    if (mobile) {}
+    if (PC) {
+        const textElements = gsap.utils.toArray('.ani-text');
+        textElements.forEach(text => {
+            gsap.to(text, {
+                backgroundSize: '100%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: text,
+                    start: 'center 80%',
+                    end: 'center 50%',
+                    scrub: true,
+                    // markers: {startColor: "red", endColor: "red", fontSize: "18px", fontWeight: "bold", indent: 20},
+                },
+            });
+        });
+    }
+}
+aniText();
+function aniText2() {
+    var PC = $(window).width() > 1024,
+        mobile = $(window).width() <= 1024,
+        winWidth = $(window).width(),
+        winHeight = $(window).height();
+    if (mobile) {}
+    if (PC) {
+        const textElements = gsap.utils.toArray('.ani-text2');
+        textElements.forEach(text => {
+            gsap.to(text, {
+                backgroundSize: '100%',
+                ease: 'none',
+                scrollTrigger: {
+                    trigger: text,
+                    start: 'center 80%',
+                    end: 'center 50%',
+                    scrub: true,
+                    // markers: {startColor: "red", endColor: "red", fontSize: "18px", fontWeight: "bold", indent: 20},
+                },
+            });
+        });
+    }
+}
+aniText2();
  // 新闻列表
  function newsList() {
     var slide = new Swiper('.newswrap .newbanner', {
