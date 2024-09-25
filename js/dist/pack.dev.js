@@ -911,14 +911,25 @@ function aniText2() {
   }
 }
 
-aniText2(); // 导航栏下沉导航-搜索
+aniText2(); // 导航栏下沉导航-开始
 
 $("#header .header-pc .header-wrap .header-right .column .header-btn").mouseover(function () {
   $(this).find(".search-panel").stop().slideDown();
 });
 $("#header .header-pc .header-wrap .header-right .column .header-btn").mouseleave(function () {
   $(this).find(".search-panel").stop().slideUp();
-}); // 新闻列表
+});
+$("#header .header-pc .header-wrap .header-right .nav dl").mouseover(function () {
+  $(this).find(".downpanel").stop().slideDown();
+});
+$("#header .header-pc .header-wrap .header-right .nav dl").mouseleave(function () {
+  $(this).find(".downpanel").stop().slideUp();
+}); // 产品中心-切换
+
+$("#header .header-pc .header-wrap .header-right .nav dl .downpanel .innerbox2 .titlelist span").hover(function () {
+  $(this).addClass("active").siblings().removeClass("active");
+}); // 导航栏下沉导航-结束
+// 新闻列表
 
 function newsList() {
   var slide = new Swiper('.newswrap .newbanner', {
