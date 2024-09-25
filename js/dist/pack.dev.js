@@ -384,7 +384,8 @@ $(function () {
   }
 
   wowFun(".s-animate", "fadeInLeft", 1);
-  wowFun(".s-animate-up", "fadeInUp", 1); // 可视化数据滚动
+  wowFun(".s-animate-up", "fadeInUp", 1);
+  wowFun(".s-animate-rotate", "rotateonce", 1); // 可视化数据滚动
   // function visualData(obj) {
   //     $(window).load(function () {
   //         obj.each(function () {
@@ -519,12 +520,12 @@ $(function () {
         var pager = $(this).siblings('.swiper-pagination');
         var itemSwiper = new Swiper($(this), {
           // autoplay: {
-          //     delay: 4000,
+          //     delay: 3000,
           //     disableOnInteraction: false,
           // },
           // speed: 900,
           loop: true,
-          // spaceBetween: 30,
+          spaceBetween: 22,
           slidesPerView: 5,
           centeredSlides: true,
           preventLinksPropagation: false,
@@ -910,12 +911,18 @@ function aniText2() {
   }
 }
 
-aniText2(); // 新闻列表
+aniText2(); // 导航栏下沉导航-搜索
+
+$("#header .header-pc .header-wrap .header-right .column .header-btn").mouseover(function () {
+  $(this).find(".search-panel").stop().slideDown();
+});
+$("#header .header-pc .header-wrap .header-right .column .header-btn").mouseleave(function () {
+  $(this).find(".search-panel").stop().slideUp();
+}); // 新闻列表
 
 function newsList() {
   var slide = new Swiper('.newswrap .newbanner', {
     speed: 900,
-    autoplay: true,
     effect: "fade",
     preventLinksPropagation: false,
     // 阻止点击事件冒泡
@@ -947,24 +954,34 @@ function solutionTabSwiper() {
 solutionTabSwiper(); // EMC测试服务
 
 function teamActiveSwiper() {
+  var swiper1ActiveIndex = 0; // 第一个轮播的索引
+
   var mySwiper = new Swiper('.solution-two-section1 .bottomwrap .oneSwiper', {
     speed: 1000,
     pagination: {
       el: '.solution-two-section1 .bottomwrap .oneSwiper .swiper-pagination',
       clickable: true
     },
-    on: {// slideChangeTransitionStart: function (swiper) {
-      //     var d = this.activeIndex;
-      //     $(".index-core-algorithm-page .tab-title .title").stop().removeClass("active").eq(d).addClass("active");
-      //     swiperS2.slideTo(d);
-      // },
+    on: {
+      slideChange: function slideChange(mySwiper) {
+        // -----S ------
+        swiper1ActiveIndex = this.activeIndex; // -----E ------
+      }
     }
   });
   var mySwiper2 = new Swiper('.solution-two-section1 .bottomwrap .twoSwiper', {
     speed: 1000,
+    autoplay: true,
+    effect: 'fade',
     pagination: {
       el: '.solution-two-section1 .bottomwrap .twoSwiper .swiper-pagination',
       clickable: true
+    },
+    on: {// slideChangeTransitionStart: function () { //切换时分类也要改变状态
+      //     var d = this.activeIndex;
+      //     debugger
+      //     $(".application-scenarios .appl_solve .center_box .right .swiper_list .item_box .item").eq(d).addClass("active").siblings().removeClass("active");
+      // }
     }
   });
   $(".solution-two-section1 .bottomwrap .innerbox .info .tabitem li").click(function () {
@@ -980,4 +997,21 @@ teamActiveSwiper(); // 4.1 EMC测试服务
 
 $(".test-server-wrap .innerbox .bottom-global .info .item").hover(function () {
   $(this).addClass('active').siblings().removeClass('active');
-});
+}); // --------------------------------------------- EMC测试服务
+
+function EMCTestServer() {
+  var slide = new Swiper('.test-server-wrap .innerbox .bottom-global .bg .swiperimg', {
+    loop: true,
+    //可选选项，开启循环
+    allowTouchMove: false,
+    effect: "fade",
+    speed: 1000
+  });
+  $(".test-server-wrap .innerbox .bottom-global .info .item").hover(function () {
+    $(this).addClass("active").siblings().removeClass("active");
+    var index = $(this).index();
+    slide.slideTo(index);
+  });
+}
+
+EMCTestServer();
