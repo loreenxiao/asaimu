@@ -227,11 +227,7 @@ $(function () {
     }
     headNav();
 
-    //数字跳动
-    // $('.jump-num').countUp({
-    //     delay: 5,
-    //     time: 1000
-    // });
+
 
 
     // 滚轮下滑
@@ -485,8 +481,6 @@ $(function () {
                     //     delay: 3000,
                     //     disableOnInteraction: false,
                     // },
-
-
                     // speed: 900,
                     loop: true,
                     spaceBetween: 22,
@@ -502,13 +496,16 @@ $(function () {
                         nextEl: '.swiper-box .swiper-button-next',
                     },
                     breakpoints: {
-                        768: {
+                        480: {
                             slidesPerView: 1,
                         },
-                        990: {
+                        768: {
                             slidesPerView: 3,
-
                         },
+                        // 990: {
+                        //     slidesPerView: 3,
+
+                        // },
 
                     },
                 });
@@ -870,28 +867,47 @@ aniText2();
 
 
 // 导航栏下沉导航-开始
+$(document).ready(function(){
+    $("#header .header-pc .header-wrap .header-right .column .header-btn").hover(function(){
+        $(this).find(".search-panel").stop().slideDown()
+    },function(){
+        $(this).find(".search-panel").stop().slideUp(); // 鼠标移出时的操作
+    })
 
-$("#header .header-pc .header-wrap .header-right .column .header-btn").mouseover(function(){
-    $(this).find(".search-panel").stop().slideDown()
+    // $("#header .header-pc .header-wrap .header-right .column .header-btn").mouseleave(function(){
+        
+    // })
+
+
+    $("#header .header-pc .header-wrap .header-right .nav dl").hover(function(){
+        $(this).find(".downpanel").stop().slideDown()
+        $(".header-pc").addClass("pc-active");
+    },function(){
+        $(this).find(".downpanel").stop().slideUp();
+        $(".header-pc").removeClass("pc-active");
+
+    }) 
+
+
+    // 搜索
+    $("#header .header-pc .header-wrap .header-right .column .header-search").hover(function(){
+        $(".header-pc").addClass("pc-active");
+    },function(){
+        $(".header-pc").removeClass("pc-active");
+
+    }) 
+
+
+    // 产品中心-切换
+    $("#header .header-pc .header-wrap .header-right .nav dl .downpanel .innerbox2 .titlelist span").hover(function () {
+        $(this).addClass("active").siblings().removeClass("active");
+    })
 })
 
-$("#header .header-pc .header-wrap .header-right .column .header-btn").mouseleave(function(){
-    $(this).find(".search-panel").stop().slideUp()
-})
 
 
-$("#header .header-pc .header-wrap .header-right .nav dl").mouseover(function(){
-    $(this).find(".downpanel").stop().slideDown()
-})
 
-$("#header .header-pc .header-wrap .header-right .nav dl").mouseleave(function(){
-    $(this).find(".downpanel").stop().slideUp()
-})
 
-// 产品中心-切换
-$("#header .header-pc .header-wrap .header-right .nav dl .downpanel .innerbox2 .titlelist span").hover(function () {
-    $(this).addClass("active").siblings().removeClass("active");
-})
 
 
 // 导航栏下沉导航-结束

@@ -180,6 +180,9 @@ audio, canvas, progress, video {
 .light{
   font-family: 'OPPOSANS-L';
 }
+.normal{
+  font-family: 'OPPOSANS';
+}
 .bold{
   font-family: 'OPPOSANS-B';
 }
@@ -1178,7 +1181,7 @@ button {
 
   .header-pc {
     position: relative;
-    .dh;
+    ransition: all 0.4s ease-in-out;
     &::before {
       content: '';
       width: 100%;
@@ -1208,6 +1211,7 @@ button {
         .font-weight-b;
         .flex;
         .a_center;
+        z-index: 2;
         .logo-black {
 					display: none;
 				}
@@ -1302,7 +1306,9 @@ button {
               .innerbox2{
                 .titlelist{padding: .15rem 0; .flex;.a_center; .j_center;
                   span{ .black3; cursor: pointer;
-                    padding: .16rem .34rem;
+                    padding:0.17rem 0.34rem;
+                    line-height: 1;
+
                   }
                   .active{
                     background: rgb(238 123 29 / 10%);
@@ -1323,7 +1329,7 @@ button {
                     width: 44.8%;
                     margin: auto;
                   }
-                  .grid5{
+                  .grid6{
                     width: 68%;
                     margin: auto;
                   }
@@ -1335,7 +1341,8 @@ button {
                       background: #F4F4F4;
                       border-radius: 10px;
                       padding: .3rem;
-                      img{
+                      overflow: hidden;
+                      img{.dh;
                         width: 100%; height: 100%; object-fit: contain;
                       }
                     }
@@ -1343,6 +1350,9 @@ button {
                       .dh;.black3; margin-top: .1rem; text-align: center;
                     }
                     &:hover{
+                      .image{
+                        img{.dh; .fd(1.1)}
+                      }
                       .name{.dh;
                         .activecolor;
                       }
@@ -1454,10 +1464,11 @@ button {
           grid-gap: 0 20px;
           .grid_gap(0,20);
           .header-btn {cursor: pointer;
-            .up {
+            .up {position: relative;
               height: 100%;
               .flex;
               .a_center;
+              z-index: 2;
               img{filter: brightness(0) invert(1);}
               .telephone-btn {
                 img {
@@ -1542,6 +1553,8 @@ button {
               left: 0;
               background-color: #fff;
               padding: .5rem 0;
+              // top: 0;
+              // padding: calc(var(--header-height) + 0.5rem) 0 0.5rem 0;
               display: none;
               .innerbox{
                 width: 52%;
@@ -2180,7 +2193,7 @@ button {
       }
       .nav-center{.flex;gap: 1.3rem; margin-left: 2.7rem;
         .infobox{
-          .title{.font20; font-weight: 700; position: relative; padding-bottom: 0.3rem; line-height: 1; white-space: nowrap;
+          .title{font-size: var(--font20); font-weight: 700; position: relative; padding-bottom: 0.3rem; line-height: 1; white-space: nowrap;
             &:after{
               position: absolute;
               content: '';
@@ -2203,14 +2216,14 @@ button {
         }
       }
       .nav-right{margin-left: 1.75rem;
-        .title{.font20;line-height: 1;font-weight: 700;}
+        .title{font-size: var(--font20);line-height: 1;font-weight: 700;}
         .content{.flex; margin-top: .45rem;
           .code-box{
             &:first-child{margin-right: .2rem;}
             .image{width: .98rem; height: .98rem;
               img{width: 100%; height: 100%; object-fit: cover;}
             }
-            .name{.font16; margin-top: .18rem; text-align: center; color: var(--black-666); white-space: nowrap;}
+            .name{font-size: var(--font16); margin-top: .18rem; text-align: center; color: var(--black-666); white-space: nowrap;}
 
           }
         }
@@ -2218,7 +2231,6 @@ button {
     }
     
   }
-
   .footer-down {padding: .28rem 0; background-color: var(--footer-down-bg-color);
     .content{.flex; .j_justify; .a_center;
       color: var(--black-333);
@@ -2233,7 +2245,11 @@ button {
 
   @media @max1280{
     .footer-up .nav-list .nav-center{margin-left: 1.3rem;}
- 
+  }
+  @media @max1200{
+    .footer-up .nav-list .nav-center{
+      gap: .8rem;
+    }
   }
   @media @max1024 {
     .footer-up .nav-list{gap: .5rem;}
@@ -2264,6 +2280,17 @@ button {
   @media @max768{
     .footer-up{
       padding: 1rem 0;
+      .nav-list{.flex; .j_justify;
+        .nav-right{
+          .title{
+            text-align: right;
+          }
+          .content{ .j_end;
+            width: 100%;
+            
+          }
+        }
+      }
     }
     .footer-down{
       padding-top: 0;
@@ -2553,6 +2580,9 @@ button {
 }
 .grid5{
   display: grid;grid-template-columns: repeat(5,1fr); 
+}
+.grid6{
+  display: grid;grid-template-columns: repeat(6,1fr); 
 }
 .layui-form-checked[lay-skin=primary]>i{
   border-color: var(--color-active) !important;
@@ -3593,9 +3623,9 @@ button {
         height: 100%;
         .content{
           height: auto;
-          .title{.font18; .bold; color: var(--color-active); white-space: nowrap;}
-          .sec-title{margin-top: .27rem;
-            p{.medium; .font48;line-height: 1.2;}
+          .title{.bold; font-size: var(--font18); color: var(--color-active); white-space: nowrap; transform: translateY(1rem); opacity: 0;transition: all .5s ease-in-out;}
+          .sec-title{margin-top: .27rem;transform: translateY(1rem); opacity: 0;transition: all .5s ease-in-out;
+            p{.medium; font-size: var(--font48); line-height: 1.2;}
           }
 
         }
@@ -3610,6 +3640,20 @@ button {
       left: 0;
     }
 	}
+  .swiper-slide-active{
+    .bancontent .container .content {
+      .title{
+        transform: translateY(0);
+        opacity: 1;
+        transition: all .5s ease-in-out;
+      }
+      .sec-title{
+        transform: translateY(0);
+        opacity: 1;
+        transition: all .8s ease-in-out;
+      }
+    }
+  }
 	
   .banner-item{position: absolute;
     width: 100%;
@@ -3624,7 +3668,7 @@ button {
           .image{.dh;.flex;.a_center;.j_justify; width: .24rem; height: .24rem;
             img{.dh;width: 100%;}
           }
-          .title{.dh;.bold; .font18; color: var(--black-000);    white-space: nowrap;}
+          .title{.dh;.bold; font-size: var(--font18); color: var(--black-000);    white-space: nowrap;}
         }
         &:hover{.dh;
           background-color: var(--color-active);
@@ -3639,23 +3683,27 @@ button {
       }
     }
   }
-
 	@media @max768{
-	
     .banner-item{
       .index_more{display: none;}
-      ul li{padding: .1rem;
-        .content .image{display: none;}
+      ul li{padding:0.15rem 0.23rem 0.15rem 0.4rem;
+        .content .title{.normal}
       }
     }
     .bannerbox{
       .pc-banner{display: inline-block !important;}
       .pagination{display: none;}
     }
-   
 	}
-  @media @max640{
-
+  @media @max480{
+    .pro-ban .bannerbox .pc-banner{
+      min-height: 8rem;
+    }
+    .banner-item ul{
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      margin-top: .2rem;
+    }
   }
 }
 // --------------------------------------------- 首页-解决方案
@@ -3733,8 +3781,8 @@ button {
       .active{.dh;display: block;}
     }
   }
-
   @media @max768{
+    padding: .8rem 0;
     .public-title-pagination{
       .pagination{display: none;}
     }
@@ -3749,11 +3797,10 @@ button {
   z-index: 5;
   position: relative;
   .innerbox{
-    overflow: hidden;
     .swipertab{.flex;
       .item{.flex;.a_center;.j_justify;cursor: pointer; padding: .18rem .36rem; border-radius: .05rem; gap: .2rem; 
         background-color: var(--white-color); color: var(--black-222);border:solid 1px rgba(34, 34, 34, 0.1); font-size: var(--font18);
-        .title{.font18; .bold;
+        .title{font-size: var(--font18); .bold;
   
         }
       }
@@ -3767,7 +3814,7 @@ button {
       }
     }
     .swiper-main {
-      margin-top: .47rem;
+      margin-top: .47rem;transform: translateY(.8rem);
       .order-swiper { overflow: visible;.adelay(.3);background: url("../images/index-order-bg.png") no-repeat; background-size: contain;
        
         .swiper-slide.swiper-slide-active .swiper-box { opacity: 1; }
@@ -3792,12 +3839,12 @@ button {
             background: url(../images/index-order-phone.png) no-repeat;
             background-size: contain;
             z-index: 2;
-        
+            transform: translateY(.5rem);
           }
           .item-box{text-align: center;  color: var(--black-000);text-align: center;background: #FFFFFF;
             box-shadow: 0px 0px 109px 0px rgba(229, 229, 229, 0.88);
             border-radius: 10px;margin-bottom: .8rem;    margin-top: 1.15rem;
-            .p-order{.bold; font-size: var(--font24); margin-top: 1.24rem; display: none;}
+            .p-order{.bold; display: none; font-size: var(--font24); margin-top: 1.24rem; display: none;}
             .p-image{ height: 1.92rem;padding: 0.32rem 0.14rem;
               img{width: 100%; height: 100%; object-fit: contain;}
             }
@@ -3818,7 +3865,7 @@ button {
             background-repeat: no-repeat;
             color:#fff;
             background-size: cover;
-            margin-top: -1.55rem;
+            // margin-top: -1.55rem;
             // margin-left: -.447rem;
             // width: 4.47rem !important;
             background-position: top  center;
@@ -3831,13 +3878,13 @@ button {
               }
             }
             
-            .p-order{display: block
+            .p-order{display: none;
   
             }
             .item-box{
               .p-image{}
               .content {
-                .fir-title{.font20;}
+                .fir-title{font-size: var(--font20);}
                 .sec-title{display: inline-block;}
                 .thi-detail{display: inline-flex;}
               }
@@ -3856,7 +3903,7 @@ button {
               border-radius: 30px; 
               border: solid 1px #E3E3E3;
               background: #E3E3E3;
-              span{.font22; color: var(--black-000);}
+              span{font-size: var(--font22); color: var(--black-000);}
               &:hover{background-color: var(--color-active);border: none;
                 span{
                   color: #fff;
@@ -3902,21 +3949,72 @@ button {
       .public-title-pagination{display: inline-block;}
       .swipertab{margin-top: .4rem;}
       .swiper-main .order-swiper .swiper-box .swiper-slide-active{
-        width: 100% !important;
         margin-top:0;
         margin-left: 0;
       }
+    }
+  }
+  @media @max1200{
+    .innerbox .swiper-main .order-swiper .swiper-box::after{
+      width: 3.2rem;
+    }
+  }
+  @media @max990{
+    .innerbox .swiper-main .order-swiper .swiper-box::after{
+      width: 3rem;left: 39.5%;top: -1rem;
+    }
+  }
+  @media @max768{
+    margin-top: .8rem; 
+    .innerbox .swiper-main {
+      transform: translateY(0.5rem);
+      .order-swiper {
+        .swiper-box{
+          &:after{
+            width: 6.5rem; left: 35%; transform:inherit;
+          }
+          .item-box .content{
+            padding: 0 .25rem;
+          }
+        }
+        
+      }
+    }
+  }
+  @media @max480{
+    .innerbox {
+      .swiper-main{
+        transform: translateY(0);
+      }
+      .swiper-pagination-bullet{
+        background: #000;
+        opacity: 0.2;
+      }
+      .swiper-pagination-bullet-active{
+        background-color: var(--color-active);
+        opacity: 1;
+      }
+    }
+    .innerbox .swiper-main .order-swiper .swiper-box{
+      .item-box{
+        margin-top: 0; padding: .5rem;
+      }
+      &:after{
+        background: none; display: none;
+      }
+    }
+    .innerbox .swiper-main .order-swiper .swiper-box .swiper-pagination{
+      position: relative;
+      bottom: .45rem;
+      z-index: 2;
     }
   }
 }
 
 // --------------------------------------------- 首页-EMC防护
 .index-EMC-protect{position: relative;
-  // background:url("../images/global.jpg") no-repeat;
   overflow: hidden;
   height: 9.6rem;
-  // margin-top: -3.64rem;
-  // z-index: 2;
   .global-image{.dh;height: 100%;
     position: absolute;
     display: flex;
@@ -3929,6 +4027,8 @@ button {
     }
     .global{
       height: 100%;
+      width: 100%;
+      object-fit: cover;
     }
    }
    .bottomsceen{.dh(2);opacity: 0;height: 100%;
@@ -3941,7 +4041,6 @@ button {
     width: 100%;
     height: 100%;
     top: 0;
-    // left: 0; padding-top: 1.4rem;
     .global-top{
       position: absolute;
       top: 0;
@@ -4027,13 +4126,14 @@ button {
   @media @max768{
       .global-content {
         .global-top {
+          padding-top: .8rem;
           .container {display: inline-block;width:100%;
             .gt-left { width:100%;
               .moucecircle{
                 margin-top: 0.3rem;
               }
             }
-            .gt-right{width:100%;}
+            .gt-right{width:100%; margin-top: .5rem;}
           }
         }
         .global-bottom{
@@ -4086,8 +4186,8 @@ button {
             img{.dh;}
           }
           .info{position: absolute;width: 100%; bottom: .37rem; padding: 0 .34rem;
-            .i-time{.medium; font-size: var(--font14)}
-            .i-title{.bold; font-size: var(--font20);  margin-top: .18rem;}
+            .i-time{.dh;.medium; font-size: var(--font14)}
+            .i-title{.dh;.bold; font-size: var(--font20);  margin-top: .18rem;}
           }
           &:hover{
             .image{.dh;
@@ -4096,7 +4196,7 @@ button {
               }
             }
             .info{
-              .i-time,.i-title{color: var(--color-active); opacity: 0.8; }
+              .i-time,.i-title{.dh;color: var(--color-active); opacity: 0.8; }
               
             }
           }
@@ -4150,6 +4250,9 @@ button {
       .item-products{width: 100%; margin-top: .4rem;}
     }
     
+  }
+  @media @max768{
+    padding: .8rem 0;
   }
   @media @max480{
     .main-box{display: inline-block;
