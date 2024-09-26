@@ -918,13 +918,21 @@ $(document).ready(function () {
     $(this).find(".search-panel").stop().slideUp(); // 鼠标移出时的操作
   }); // $("#header .header-pc .header-wrap .header-right .column .header-btn").mouseleave(function(){
   // })
+  // 判断是否首页--头部 !white
 
+  var opacity = $("#header").hasClass("header-opacity");
   $("#header .header-pc .header-wrap .header-right .nav dl").hover(function () {
     $(this).find(".downpanel").stop().slideDown();
-    $(".header-pc").addClass("pc-active");
+
+    if (opacity) {
+      $(".header-pc").addClass("pc-active");
+    }
   }, function () {
     $(this).find(".downpanel").stop().slideUp();
-    $(".header-pc").removeClass("pc-active");
+
+    if (opacity) {
+      $(".header-pc").removeClass("pc-active");
+    }
   }); // 搜索
 
   $("#header .header-pc .header-wrap .header-right .column .header-search").hover(function () {
