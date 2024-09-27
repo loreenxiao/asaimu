@@ -943,9 +943,30 @@ $(document).ready(function () {
 
   $("#header .header-pc .header-wrap .header-right .nav dl .downpanel .innerbox2 .titlelist span").hover(function () {
     $(this).addClass("active").siblings().removeClass("active");
+    $(this).addClass("active").siblings().removeClass("active");
   });
 }); // 导航栏下沉导航-结束
-// 新闻列表
+// 行业分类
+
+$(document).ready(function () {
+  // 一级切换
+  $(".product-sort-wrap .left-nav li:eq(0)").addClass("active");
+  $(".product-sort-wrap .left-nav li:eq(0) .bottomlist").slideToggle();
+  $(".product-sort-wrap .left-nav ul").on("click", 'li .top', function () {
+    var dd = $(this).next();
+    var li = $(this).parent();
+    var other = li.siblings();
+    var otherDd = other.find(".bottomlist");
+    li.toggleClass("active");
+    dd.slideToggle();
+    other.removeClass("active");
+    otherDd.slideUp();
+  }); // 二级切换
+
+  $(".product-sort-wrap .left-nav ul li .bottomlist p").click(function () {
+    $(this).addClass("on").siblings().removeClass("on");
+  });
+}); // 新闻列表
 
 function newsList() {
   var slide = new Swiper('.newswrap .newbanner', {
@@ -1042,3 +1063,95 @@ function EMCTestServer() {
 }
 
 EMCTestServer();
+
+function certifyBook() {
+  var slide = new Swiper('.certify-wrap .innerbox .booklist', {
+    speed: 900,
+    spaceBetween: 20,
+    slidesPerView: 4,
+    preventLinksPropagation: false,
+    // 阻止点击事件冒泡
+    breakpoints: {
+      480: {
+        slidesPerView: 2
+      },
+      768: {
+        slidesPerView: 3
+      }
+    },
+    pagination: {
+      el: '.certify-wrap .innerbox .swiperbox .booklist .swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      prevEl: '.certify-wrap .innerbox .swiperbox .swiper-button-prev',
+      nextEl: '.certify-wrap .innerbox .swiperbox .swiper-button-next'
+    }
+  });
+}
+
+certifyBook();
+
+function creativeWrap() {
+  var slide = new Swiper('.quality-test-wrap .innerbox .testbox .case-content .panelbox1 .bottomswiper', {
+    speed: 900,
+    effect: "fade",
+    preventLinksPropagation: false,
+    // 阻止点击事件冒泡
+    navigation: {
+      prevEl: '.quality-test-wrap .innerbox .testbox .case-content .panelbox1 .bottomswiper .swiper-button-prev',
+      nextEl: '.quality-test-wrap .innerbox .testbox .case-content .panelbox1 .bottomswiper .swiper-button-next'
+    },
+    on: {
+      slideChange: function slideChange(mySwiper) {
+        // -----S ------
+        swiper1ActiveIndex = this.activeIndex; // -----E ------
+
+        $(".quality-test-wrap .innerbox .testbox .case-content .panelbox1 .steptop .item").eq(swiper1ActiveIndex).addClass('active').siblings().removeClass('active');
+      }
+    }
+  });
+  $(".quality-test-wrap .innerbox .testbox .case-content .panelbox1 .steptop .item").click(function () {
+    $(this).addClass("active").siblings().removeClass("active");
+    var a = $(this).index();
+    slide.slideTo(a);
+  });
+}
+
+creativeWrap();
+$(document).ready(function () {
+  $('.quality-test-wrap .innerbox .testbox .case-tab .name').click(function (e) {
+    var index = $(this).index();
+    $(this).addClass("active").siblings().removeClass("active");
+    $(".quality-test-wrap .innerbox .testbox .case-content .panelbox").eq(index).addClass("active").siblings().removeClass("active");
+  });
+});
+
+function productionStrength() {
+  var slide_length = $('.production-strength-wrap .bottombox .itemlist').find('.swiper-slide').length;
+  var $current = $('.production-strength-wrap .topbox .pagination-box .pagebox .current');
+  var $all = $('.production-strength-wrap .topbox .pagination-box .pagebox .all');
+  var slide = new Swiper('.production-strength-wrap .bottombox .itemlist', {
+    speed: 900,
+    spaceBetween: 20,
+    slidesPerView: "auto",
+    loop: true,
+    preventLinksPropagation: false,
+    // 阻止点击事件冒泡
+    breakpoints: {
+      768: {
+        slidesPerView: 3
+      }
+    },
+    pagination: {
+      el: '.production-strength-wrap .bottombox .itemlist .swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      prevEl: '.production-strength-wrap .topbox .pagination-box .operatebtn .swiper-button-prev',
+      nextEl: '.production-strength-wrap .topbox .pagination-box .operatebtn .swiper-button-next'
+    }
+  });
+}
+
+productionStrength();
