@@ -921,6 +921,7 @@ $(document).ready(function () {
   // 判断是否首页--头部 !white
 
   var opacity = $("#header").hasClass("header-opacity");
+  var headewhite = $("#header").hasClass("header-white-bg");
   $("#header .header-pc .header-wrap .header-right .nav dl").hover(function () {
     $(this).find(".downpanel").stop().slideDown();
 
@@ -939,6 +940,10 @@ $(document).ready(function () {
     $(".header-pc").addClass("pc-active");
   }, function () {
     $(".header-pc").removeClass("pc-active");
+
+    if (headewhite) {
+      $(".header-pc").addClass("pc-active");
+    }
   }); // 产品中心-切换
 
   $("#header .header-pc .header-wrap .header-right .nav dl .downpanel .innerbox2 .titlelist span").hover(function () {
@@ -1001,43 +1006,57 @@ function solutionTabSwiper() {
 
 solutionTabSwiper(); // EMC测试服务
 
+function checkType(data) {
+  var res = '';
+
+  if (_typeof(data) === 'object' && Array.isArray(data)) {
+    //检查 data 是否是一个数组。Array.isArray() 是一个全局函数，用于判断给定的值是否为数组。
+    res = 'Array';
+  } else if (_typeof(data) === 'object' && !Array.isArray(data)) {
+    //Array.isArray检查一个变量是否为数组
+    res = 'Object';
+  } else {
+    res = '';
+  }
+
+  return res;
+}
+
 function teamActiveSwiper() {
   var swiper1ActiveIndex = 0; // 第一个轮播的索引
 
-  var mySwiper = new Swiper('.solution-two-section1 .bottomwrap .oneSwiper', {
+  var swiper1 = new Swiper('.solution-two-section1 .bottomwrap .oneSwiper', {
     speed: 1000,
     pagination: {
       el: '.solution-two-section1 .bottomwrap .oneSwiper .swiper-pagination',
       clickable: true
     },
-    on: {
-      slideChange: function slideChange(mySwiper) {
-        // -----S ------
-        swiper1ActiveIndex = this.activeIndex; // -----E ------
-      }
-    }
+    allowTouchMove: false,
+    on: {}
   });
-  var mySwiper2 = new Swiper('.solution-two-section1 .bottomwrap .twoSwiper', {
+  var swiper2 = new Swiper('.solution-two-section1 .bottomwrap .twoSwiper', {
     speed: 1000,
     autoplay: true,
     effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    allowTouchMove: false,
     pagination: {
       el: '.solution-two-section1 .bottomwrap .twoSwiper .swiper-pagination',
-      clickable: true
+      clickable: false
     },
-    on: {// slideChangeTransitionStart: function () { //切换时分类也要改变状态
-      //     var d = this.activeIndex;
-      //     debugger
-      //     $(".application-scenarios .appl_solve .center_box .right .swiper_list .item_box .item").eq(d).addClass("active").siblings().removeClass("active");
-      // }
+    on: {
+      paginationClick: function paginationClick(swiper, event) {
+        // 这里可以添加自定义逻辑
+        console.log('Clicked pagination bullet for slide:', swiper.activeIndex);
+      }
     }
   });
   $(".solution-two-section1 .bottomwrap .innerbox .info .tabitem li").click(function () {
-    var a = $(this).index();
-    console.log("a", a);
-    $(".solution-two-section1 .bottomwrap .innerbox .image .swiper-pagination-bullet").eq($(this).index()).click();
+    var index = $(this).index();
+    $(".solution-two-section1 .bottomwrap .innerbox .image .swiper-pagination1 .swiper-pagination-bullet").eq($(this).index()).click();
     $(this).addClass("active").siblings().removeClass("active");
-    mySwiper.slideTo(a);
   });
 }
 
@@ -1120,18 +1139,43 @@ function creativeWrap() {
 
 creativeWrap();
 $(document).ready(function () {
+  function qualityTestWrap() {
+    var slide = new Swiper('.panelbox2 .test-slide-wrap .itemlist', {
+      autoplay: true,
+      speed: 900,
+      spaceBetween: 20,
+      slidesPerView: 4,
+      observer: true,
+      //修改swiper自己或子元素时，自动初始化swiper
+      observeParents: true,
+      //修改swiper的父元素时，自动初始化swiper
+      preventLinksPropagation: false,
+      // 阻止点击事件冒泡
+      breakpoints: {
+        480: {
+          slidesPerView: 2
+        },
+        768: {
+          slidesPerView: 3
+        }
+      },
+      pagination: {
+        el: '.panelbox2 .test-slide-wrap .itemlist .swiper-pagination',
+        clickable: true
+      }
+    });
+  }
+
+  qualityTestWrap();
   $('.quality-test-wrap .innerbox .testbox .case-tab .name').click(function (e) {
+    qualityTestWrap();
     var index = $(this).index();
     $(this).addClass("active").siblings().removeClass("active");
     $(".quality-test-wrap .innerbox .testbox .case-content .panelbox").eq(index).addClass("active").siblings().removeClass("active");
   });
 });
-
-function productionStrength() {
-  var slide_length = $('.production-strength-wrap .bottombox .itemlist').find('.swiper-slide').length;
-  var $current = $('.production-strength-wrap .topbox .pagination-box .pagebox .current');
-  var $all = $('.production-strength-wrap .topbox .pagination-box .pagebox .all');
-  var slide = new Swiper('.production-strength-wrap .bottombox .itemlist', {
+$(document).ready(function () {
+  var swiper = new Swiper('.production-strength-wrap .bottombox .itemlist', {
     speed: 900,
     spaceBetween: 20,
     slidesPerView: "auto",
@@ -1150,8 +1194,42 @@ function productionStrength() {
     navigation: {
       prevEl: '.production-strength-wrap .topbox .pagination-box .operatebtn .swiper-button-prev',
       nextEl: '.production-strength-wrap .topbox .pagination-box .operatebtn .swiper-button-next'
+    },
+    on: {
+      // 在slide改变时更新当前页码
+      slideChange: function slideChange() {
+        updatePageInfo(swiper);
+      }
     }
-  });
-}
+  }); // 初始化时更新一次当前页码
 
-productionStrength();
+  if (swiper) {
+    // 确认Swiper实例存在
+    updatePageInfo(swiper);
+  }
+
+  function updatePageInfo(swiperInstance) {
+    // 检查Swiper是否已经初始化
+    if (!swiperInstance) {
+      return;
+    }
+
+    var $current = $('.production-strength-wrap .topbox .pagination-box .pagebox .current');
+    var $all = $('.production-strength-wrap .topbox .pagination-box .pagebox .all'); // 获取当前活动的slide索引
+
+    var currentIndex = swiperInstance.realIndex + 1; // 将索引转换为从1开始的页码
+    // 获取总页数
+    // const totalPages = swiperInstance.slides.length;
+    // 获取总页数（不包括复制的slide）
+
+    var actualTotalPages = 0;
+    $.each(swiperInstance.slides, function (_, slide) {
+      if (!$(slide).hasClass('swiper-slide-duplicate')) {
+        actualTotalPages++;
+      }
+    }); // 更新显示
+
+    $current.text(currentIndex);
+    $all.text(actualTotalPages);
+  }
+});

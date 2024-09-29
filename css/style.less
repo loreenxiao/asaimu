@@ -1229,12 +1229,12 @@ button {
         .nav {
           position: relative;
           .flex;
-          grid-gap: 0 50px;
-          .grid_gap(0,50);
-          @media @max1366 {
-            .grid_gap(0,34);
-            margin: 0;
-          }
+          // grid-gap: 0 50px;
+          // .grid_gap(0,50);
+          // @media @max1366 {
+          //   .grid_gap(0,34);
+          //   margin: 0;
+          // }
   
           .bor {
             position: absolute;
@@ -1373,6 +1373,7 @@ button {
               color: #fff;
               position: relative;
               height: var(--header-height);
+              padding: 0 .25rem;
               .font-weight-b;
               .flex;
               .j_center;
@@ -1382,7 +1383,9 @@ button {
                 color: var(--color-active);
                 
               }
-              
+              @media @max1280 {
+                padding: 0 .16rem;
+              }
             }
             a::after { content: ''; width: 0; height: 2px; position: absolute; right: 0; bottom: 0; background: var(--dark-green); transition: width var(--ani); }
 						a:hover::after { width: 100%; left: 0; }
@@ -4133,7 +4136,7 @@ button {
                 margin-top: 0.3rem;
               }
             }
-            .gt-right{width:100%; margin-top: .5rem;}
+            .gt-right{width:100%; margin-top: .5rem; gap: .5rem;}
           }
         }
         .global-bottom{
@@ -5662,6 +5665,7 @@ button {
           border-radius: 5px;
           border: 1px solid #EAEAEA;
           .flex; .a_center; gap: .1rem;
+          min-width: 1.2rem;
         }
       }
       
@@ -6536,6 +6540,7 @@ button {
     .sectionblock{
       margin-top: 1rem;
     }
+   
     .solution-title{
       margin-top: .1rem
     }
@@ -6628,6 +6633,11 @@ button {
     }
     .solution-title{
       margin-top: .1rem
+    }
+    .sectionblock2{
+      .designbox .swiperbox .case-info .item .image .pb .ab img{
+        padding: 1.3rem 1rem;
+      }
     }
     .designbox{
       .case-tab{.flex;.j_center; gap: .54rem; margin-top: .7rem;
@@ -8525,7 +8535,7 @@ button {
 }
 
 .quality-test-wrap{
-  padding-bottom: 1.2rem;
+  padding-bottom: 1.2rem; overflow: hidden;
   .innerbox{
       .publictitle{
         width: calc(100% );
@@ -8677,7 +8687,7 @@ button {
            
           }
         }
-        .panelbox2{
+        .panelbox2{position: relative; width: 100%;
           .ft-testbox{
             .rowline{ .flex; border-bottom: solid 1px #F2F2F2;
               &:first-child{
@@ -8709,6 +8719,25 @@ button {
                 }
               }
             }
+          }
+          .test-slide-wrap{margin-top: .6rem; width: 100%;
+            .itemlist{width: 100%; 
+              .item{ text-align: center;
+                .image{
+                  height: 2.96rem; border-radius: 10px;
+                  img{
+                    width: 100%; height: 100%; object-fit: cover;border-radius: 10px;
+                  }
+                }
+                .name{ .medium; .black3; margin-top: .2rem; text-align: center; font-size: var(--font20);
+                  
+                }
+              }
+            }
+            @media @max480{
+              
+            }
+          
           }
         }
         .panelbox3{

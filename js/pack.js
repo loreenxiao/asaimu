@@ -839,6 +839,7 @@ function aniText() {
     }
 }
 aniText();
+
 function aniText2() {
     var PC = $(window).width() > 1024,
         mobile = $(window).width() <= 1024,
@@ -867,39 +868,44 @@ aniText2();
 
 
 // 导航栏下沉导航-开始
-$(document).ready(function(){
-    $("#header .header-pc .header-wrap .header-right .column .header-btn").hover(function(){
+$(document).ready(function () {
+    $("#header .header-pc .header-wrap .header-right .column .header-btn").hover(function () {
         $(this).find(".search-panel").stop().slideDown()
-    },function(){
+    }, function () {
         $(this).find(".search-panel").stop().slideUp(); // 鼠标移出时的操作
     })
 
     // $("#header .header-pc .header-wrap .header-right .column .header-btn").mouseleave(function(){
-        
+
     // })
 
     // 判断是否首页--头部 !white
     var opacity = $("#header").hasClass("header-opacity");
-    $("#header .header-pc .header-wrap .header-right .nav dl").hover(function(){
+    var headewhite = $("#header").hasClass("header-white-bg");
+
+    $("#header .header-pc .header-wrap .header-right .nav dl").hover(function () {
         $(this).find(".downpanel").stop().slideDown();
-        if(opacity){
+        if (opacity) {
             $(".header-pc").addClass("pc-active");
         }
-    },function(){
+    }, function () {
         $(this).find(".downpanel").stop().slideUp();
-        if(opacity){
+        if (opacity) {
             $(".header-pc").removeClass("pc-active");
         }
-    }) 
+    })
 
 
     // 搜索
-    $("#header .header-pc .header-wrap .header-right .column .header-search").hover(function(){
+    $("#header .header-pc .header-wrap .header-right .column .header-search").hover(function () {
         $(".header-pc").addClass("pc-active");
-    },function(){
+    }, function () {
         $(".header-pc").removeClass("pc-active");
+        if (headewhite) {
+            $(".header-pc").addClass("pc-active");
 
-    }) 
+        }
+    })
 
 
     // 产品中心-切换
@@ -911,7 +917,7 @@ $(document).ready(function(){
 // 导航栏下沉导航-结束
 
 // 行业分类
-$(document).ready(function(){
+$(document).ready(function () {
 
     // 一级切换
     $(".product-sort-wrap .left-nav li:eq(0)").addClass("active");
@@ -932,16 +938,16 @@ $(document).ready(function(){
     $(".product-sort-wrap .left-nav ul li .bottomlist p").click(function () {
         $(this).addClass("on").siblings().removeClass("on");
     })
-    
+
 })
 
 
 
- // 新闻列表
- function newsList() {
+// 新闻列表
+function newsList() {
     var slide = new Swiper('.newswrap .newbanner', {
         speed: 900,
-        effect:"fade",
+        effect: "fade",
         preventLinksPropagation: false, // 阻止点击事件冒泡
         pagination: {
             el: '.newswrap .newbanner .swiper-pagination',
@@ -976,55 +982,62 @@ solutionTabSwiper();
 
 
 // EMC测试服务
+function checkType(data) {
+    let res = ''
+    if (typeof data === 'object' && Array.isArray(data)) { //检查 data 是否是一个数组。Array.isArray() 是一个全局函数，用于判断给定的值是否为数组。
+        res = 'Array'
+    } else if (typeof data === 'object' && !Array.isArray(data)) { //Array.isArray检查一个变量是否为数组
+        res = 'Object'
+    } else {
+        res = ''
+    }
+    return res
+}
 
 function teamActiveSwiper() {
     var swiper1ActiveIndex = 0 // 第一个轮播的索引
-    var mySwiper = new Swiper('.solution-two-section1 .bottomwrap .oneSwiper', {
+    var swiper1 = new Swiper('.solution-two-section1 .bottomwrap .oneSwiper', {
         speed: 1000,
         pagination: {
             el: '.solution-two-section1 .bottomwrap .oneSwiper .swiper-pagination',
             clickable: true,
         },
+        allowTouchMove: false,
         on: {
-            slideChange: function (mySwiper) {
-                // -----S ------
-                swiper1ActiveIndex = this.activeIndex
-                // -----E ------
-            },
-            
+
         }
     })
 
-    var mySwiper2 = new Swiper('.solution-two-section1 .bottomwrap .twoSwiper', {
+    var swiper2 = new Swiper('.solution-two-section1 .bottomwrap .twoSwiper', {
         speed: 1000,
-        autoplay:true,
-        effect:'fade',
+        autoplay: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true,
+        },
+        allowTouchMove: false,
+
         pagination: {
             el: '.solution-two-section1 .bottomwrap .twoSwiper .swiper-pagination',
-            clickable: true,
+            clickable: false,
         },
         on: {
-           
-            // slideChangeTransitionStart: function () { //切换时分类也要改变状态
-            //     var d = this.activeIndex;
-            //     debugger
-            //     $(".application-scenarios .appl_solve .center_box .right .swiper_list .item_box .item").eq(d).addClass("active").siblings().removeClass("active");
-
-            // }
-        
+            paginationClick: function (swiper, event) {
+                // 这里可以添加自定义逻辑
+                console.log('Clicked pagination bullet for slide:', swiper.activeIndex);
+            }
         }
     })
 
-    
 
     $(".solution-two-section1 .bottomwrap .innerbox .info .tabitem li").click(function () {
-        var a = $(this).index();
-        console.log("a",a)
-        $(".solution-two-section1 .bottomwrap .innerbox .image .swiper-pagination-bullet").eq($(this).index()).click();
+        var index = $(this).index();
+        $(".solution-two-section1 .bottomwrap .innerbox .image .swiper-pagination1 .swiper-pagination-bullet").eq($(this).index()).click();
         $(this).addClass("active").siblings().removeClass("active");
 
-        mySwiper.slideTo(a);
     });
+
+
 
 
 }
@@ -1040,11 +1053,11 @@ $(".test-server-wrap .innerbox .bottom-global .info .item").hover(function () {
 // --------------------------------------------- EMC测试服务
 function EMCTestServer() {
     var slide = new Swiper('.test-server-wrap .innerbox .bottom-global .bg .swiperimg', {
-        loop : true,//可选选项，开启循环
+        loop: true, //可选选项，开启循环
         allowTouchMove: false,
-        effect:"fade",
+        effect: "fade",
         speed: 1000,
-       
+
     });
 
     $(".test-server-wrap .innerbox .bottom-global .info .item").hover(function () {
@@ -1071,7 +1084,7 @@ function certifyBook() {
             768: {
                 slidesPerView: 3,
             }
-            
+
         },
         pagination: {
             el: '.certify-wrap .innerbox .swiperbox .booklist .swiper-pagination',
@@ -1082,7 +1095,7 @@ function certifyBook() {
             nextEl: '.certify-wrap .innerbox .swiperbox .swiper-button-next',
 
         }
-        
+
     });
 
 }
@@ -1092,7 +1105,7 @@ certifyBook();
 function creativeWrap() {
     var slide = new Swiper('.quality-test-wrap .innerbox .testbox .case-content .panelbox1 .bottomswiper', {
         speed: 900,
-        effect:"fade",
+        effect: "fade",
         preventLinksPropagation: false, // 阻止点击事件冒泡
         navigation: {
             prevEl: '.quality-test-wrap .innerbox .testbox .case-content .panelbox1 .bottomswiper .swiper-button-prev',
@@ -1106,11 +1119,11 @@ function creativeWrap() {
                 $(".quality-test-wrap .innerbox .testbox .case-content .panelbox1 .steptop .item").eq(swiper1ActiveIndex).addClass('active').siblings().removeClass('active');
 
             },
-            
+
         }
     });
 
-    $(".quality-test-wrap .innerbox .testbox .case-content .panelbox1 .steptop .item").click(function(){
+    $(".quality-test-wrap .innerbox .testbox .case-content .panelbox1 .steptop .item").click(function () {
         $(this).addClass("active").siblings().removeClass("active");
         var a = $(this).index();
         slide.slideTo(a);
@@ -1120,8 +1133,36 @@ function creativeWrap() {
 creativeWrap();
 
 
-$(document).ready(function() {
-    $('.quality-test-wrap .innerbox .testbox .case-tab .name').click(function(e) {
+
+$(document).ready(function () {
+    function qualityTestWrap() {
+        var slide = new Swiper('.panelbox2 .test-slide-wrap .itemlist', {
+            autoplay: true,
+            speed: 900,
+            spaceBetween: 20,
+            slidesPerView: 4,
+            observer: true, //修改swiper自己或子元素时，自动初始化swiper
+            observeParents: true, //修改swiper的父元素时，自动初始化swiper
+            preventLinksPropagation: false, // 阻止点击事件冒泡
+            breakpoints: {
+                480: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                }
+
+            },
+            pagination: {
+                el: '.panelbox2 .test-slide-wrap .itemlist .swiper-pagination',
+                clickable: true,
+            }
+        });
+    }
+    qualityTestWrap();
+
+    $('.quality-test-wrap .innerbox .testbox .case-tab .name').click(function (e) {
+        qualityTestWrap()
         var index = $(this).index();
         $(this).addClass("active").siblings().removeClass("active");
 
@@ -1131,23 +1172,21 @@ $(document).ready(function() {
 });
 
 
-function productionStrength() {
-    var slide_length = $('.production-strength-wrap .bottombox .itemlist').find('.swiper-slide').length;
-    var $current = $('.production-strength-wrap .topbox .pagination-box .pagebox .current');
-    var $all = $('.production-strength-wrap .topbox .pagination-box .pagebox .all');
+$(document).ready(function() {
+    
 
-    var slide = new Swiper('.production-strength-wrap .bottombox .itemlist', {
+    var swiper  = new Swiper('.production-strength-wrap .bottombox .itemlist', {
         speed: 900,
         spaceBetween: 20,
         slidesPerView: "auto",
-        loop:true,
+        loop: true,
         preventLinksPropagation: false, // 阻止点击事件冒泡
         breakpoints: {
-           
+
             768: {
                 slidesPerView: 3,
             }
-            
+
         },
         pagination: {
             el: '.production-strength-wrap .bottombox .itemlist .swiper-pagination',
@@ -1159,9 +1198,45 @@ function productionStrength() {
 
         },
        
+        on: {
+            // 在slide改变时更新当前页码
+            slideChange: function () {
+                updatePageInfo(swiper );
+            }
+        }
+
     });
 
-  
+    // 初始化时更新一次当前页码
+    if (swiper) { // 确认Swiper实例存在
+        updatePageInfo(swiper);
+    }
 
-}
-productionStrength();
+    function updatePageInfo(swiperInstance) {
+        // 检查Swiper是否已经初始化
+        if (!swiperInstance) {
+            return;
+        }
+
+        const $current = $('.production-strength-wrap .topbox .pagination-box .pagebox .current');
+        const $all = $('.production-strength-wrap .topbox .pagination-box .pagebox .all');
+
+        // 获取当前活动的slide索引
+        const currentIndex = swiperInstance.realIndex  + 1; // 将索引转换为从1开始的页码
+        // 获取总页数
+        // const totalPages = swiperInstance.slides.length;
+        // 获取总页数（不包括复制的slide）
+        let actualTotalPages = 0;
+        $.each(swiperInstance.slides, function(_, slide) {
+            if (!$(slide).hasClass('swiper-slide-duplicate')) {
+                actualTotalPages++;
+            }
+        });
+
+        // 更新显示
+        $current.text(currentIndex);
+        $all.text(actualTotalPages);
+        
+    }
+
+})
