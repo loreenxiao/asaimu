@@ -12,15 +12,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no,email=no">
-    <title>阿赛姆</title>
+    <title>千巡</title>
     <!-- 基础配置 -->
     <meta name="keywords" content="关键字" />
     <meta name="description" content="网页的内容" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="svg/logo.svg" />
+    <link rel="shortcut icon" href="images/logo.png" />
 
-
-    <!--  -->
     <!-- CSS层叠样式表 -->
     <link type="text/css" rel="stylesheet" href="iconfont/iconfont.css">
     <link type="text/css" rel="stylesheet" href="layui/css/layui.css">
@@ -34,375 +32,229 @@
     <script type="text/javascript" src="js/count.js"></script>
 
 
+
+
 </head>
 
 <body>
     <!-- Header头部内容 -->
-    <div id="header" class="header header-white-bg"></div>
+    <div id="header" class="header header-opacity"></div>
 
     <!-- Main内容 -->
     <main id="main" class="wrapper">
-        <section class="navbarwrap">
-            <div class="w1560">
-                <div class="innerbox">
-                    <span class="image">
-                        <img src="./images/bread-icon.png" alt="">
-                    </span>
-                    <div class="item">
-                        <a href="contact.html">联系我们</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- banner -->
-        <section class="public-banner-wrap">
-            <div class="innerbox">
-                <div class="w1560">
-                    <div class="info">
-                        <p class="title font42 white bold s-animate-up" data-time="50">联系我们</p>
-                        <p class="sec-title font18 white medium s-animate-up" data-time="100">随时随地”ONLY 2 HOURS“充分满足您的售后需求</p>
-                    </div>
-                </div>
-                <div class="image">
-                    <img src="./images/contact-banner.jpg" alt="">
-                </div>
-            </div>
-        </section>
-        <!-- 去留言 -->
-        <section class="write-message-wrap">
-            <div class="w1560">
-                <div class="innerbox">
-                    <div class="left s-animate-up" data-time="50">
-                        <div class="title">
-                            <p class="bold font42 activecolor">我们非常重视用户的反馈和问题，</p>
-                            <p class="bold font42 black0">如果您想立即咨询，</p>  
-                            <p class="bold font42 black0">请联系我们</p>
-                        </div>
-                        <a class="btn" href="about.html#form">
-                            去留言 <span><img src="./images/next-icon.png" alt=""></span>
+        <!-- 联系我们--banner -->
+        <section class="public-banner">
+            <div class="image">
+                <img src="./images/new-banner.jpg" alt="">
+                <div class="nav-tab ">
+                    <div class="w1400 nav-inner">
+                        <a class="iconhome">
+                            <img src="./images/home.png" alt="">
                         </a>
+                        <div class="item">
+                            <a href="index.html">首页</a>
+                            <span> > </span>
+                            <a href="about.html">关于我们</a>
+                            <span> > </span>
+                            <a href="contact.html">联系我们</a>
+                        </div>
                     </div>
-                    <div class="right ">
-                        <div class="item s-animate-up" data-time="100">
-                            <p class="icon">
+
+                </div>
+            </div>
+            <div class="info">
+                <div class="w1400">
+                    <div class="innerbox">
+                        <div class="left">
+                            <p class="title font54 bold ">
+                                关于千巡
+                            </p>
+                            <p class="desc font18 ">成为全球有影响力的机器人与巡维方案头部供应商</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- 联系我们 -->
+        <section class="contact-us-wrap">
+            <div class="w1400">
+                <div class="innerbox">
+                  <p class="title medium black0 font42">联系我们</p>
+                    <div class="itemlist grid3">
+                        <div class="item">
+                            <div class="icon">
                                 <img src="./images/contact-icon1.png" alt="">
-                            </p>
-                            <p class="name font20 black3 medium">
-                                给我们留言 
-                            </p>
-                            <p class="email font42 activecolor heavy">
-                                hbb@asim.com.cn 
-                            </p>
-                            <p class="title black3 font16">
-                                随时准备着接收来自您的消息。 
-                            </p>
+                            </div>
+                            <p class="name medium font20">24小时服务热线</p>
+                            <p class="addr medium font18 activecolor">0755-23223160</p>
                         </div>
-                        <div class="item s-animate-up" data-time="150">
-                            <p class="icon">
+                        <div class="item">
+                            <div class="icon">
                                 <img src="./images/contact-icon2.png" alt="">
-                            </p>
-                            <p class="name font20 black3 medium">
-                                服务热线 
-                            </p>
-                            <p class="phone font42 activecolor heavy">
-                                400-890-9090 
-                            </p>
-                            <p class="title black3 font16">
-                                我们的400服务热线，会随时为您解答任何疑问。 
-                            </p>
-                            <p class="time black9 font16">周一至周六：09:00 - 18:00（节假日除外）</p>
+                            </div>
+                            <p class="name medium font20">公司总部地址</p>
+                            <p class="addr medium font18 activecolor">深圳市宝安区顺昌路泰华梧桐岛14B座6-7楼</p>
+                        </div>
+                        <div class="item">
+                            <div class="icon">
+                                <img src="./images/contact-icon3.png" alt="">
+                            </div>
+                            <p class="name medium font20">电子邮箱</p>
+                            <p class="addr medium font18 activecolor">info@kilox.cn</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        <!-- 欢迎来访 -->
-        <section class="place-wrap">
-            <div class="w1560">
+        <!-- 联系我们 -- 表单 -->
+        <section class="contact-form-wrap">
+            <div class="w1400">
                 <div class="innerbox">
-                    <div class="left">
-                        <p class="publictitle font42 bold black0 s-animate-up" data-time="50">
-                            欢迎<span class="activecolor font42 bold">来访</span>
-                        </p>
-                        <div class="icon s-animate-up" data-time="100">
-                            <img src="./images/dw.png" alt="">
+                   <div class="left">
+                        <div class="toptitle">
+                            <p class="title medium black0 font42">我们期待您的留言 </p>
+                            <p class="sec-title black5 font18">让我们知道如何为您提供帮助，我们团队将24小时内与您联系！</p>
                         </div>
-                        <p class="address font20 black3 s-animate-up" data-time="150">深圳市·龙华区·观澜  观光路银星工业区银星智能A1栋</p>
-                        <div class="btn s-animate-up" data-time="200">
-                            地址导航 <span><img src="./images/next-icon.png" alt=""></span>
-                        </div>
-                        <div class="itemlist s-animate-up" data-time="250">
-                            <div class="item">
-                                <p class="place medium font26 black3">运营中心</p>
-                                <div class="info">
-                                    <p>
-                                        <span class="key black6 font18">手机热线</span><span class="value black3 medium font18">18822897174</span>
-                                    </p>
-                                    <p> <span class="key black6 font18">邮箱</span><span class="value black3 medium font18">hbb@asim.com.cn</span></p>
+                        <div class="bottom-media">
+                            <p class="title medium font20">关注我们：</p>
+                            <div class="medialist">
+                                <div class="item">
+                                    <img src="./images/media-icon1.png" alt="">
                                 </div>
-                            </div>
-                            <div class="item">
-                                <p class="place medium font26 black3">商务&技术服务中心</p>
-                                <div class="info">
-                                    <p>
-                                        <span class="key black6 font18">手机热线</span><span class="value black3 medium font18">18822897174</span>
-                                    </p>
-                                    <p> <span class="key black6 font18">邮箱</span><span class="value black3 medium font18">hbb@asim.com.cn</span></p>
+                                <div class="item">
+                                    <img src="./images/media-icon2.png" alt="">
+                                </div>
+                                <div class="item">
+                                    <img src="./images/media-icon3.png" alt="">
+                                </div>
+                                <div class="item">
+                                    <img src="./images/media-icon4.png" alt="">
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="right s-animate-up" data-time="100">
-                        <div id="map"></div>
-                    </div>
+
+                   </div>
+                   <div class="right">
+                        <div class="row">
+                            <input type="text" placeholder="您的姓名 *：">
+                        </div>
+                        <div class="row">
+                            <input type="text" placeholder="您的电话 *：">
+                        </div>
+                        <div class="row">
+                            <input type="text" placeholder="您的邮箱 * ：">
+                        </div>
+                        <div class="row">
+                            <input type="text" placeholder="您的公司：">
+                        </div>
+                        <div class="row">
+                            <textarea name="" id="" cols="30" rows="10">留言内容 * ：</textarea>
+                        </div>
+                        <div class="submit font16">立即提交</div>
+                        <div class="layui-form">
+                            <div class="layui-form-item">
+                                <input type="checkbox" name="AAA" value="0">
+                                <div lay-checkbox>
+                                      
+                                    <a href="policy.html">我理解并同意按照 <ins> 隐私声明 </ins>使用和传递我的个人信息</a>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
                 </div>
             </div>
         </section>
-
-        <!-- 授权代理名单 -->
-        <section class="agent-order-wrap">
-            <div class="w1560">
+        <!-- 联系我们 -- 全球分支机构 -->
+        <section class="contact-map-wrap">
+            <div class="w1400">
                 <div class="innerbox">
-                    <div class="top-title s-animate-up" data-time="50">
-                        <p class="publictitle font42 bold black0">
-                            <span class="activecolor font42 bold">授权代理</span>名单
-                        </p>
-                        <div class="desc black2 font16">
-                            要订购ASIM产品，请联系下列授权代理商。从授权代理商处购买产品的客户可以享受ASIM支持。
-未查询到授权代理商的信息，可直接 <a href="" class="red font16">联系我们</a> 咨询。
-                        </div>
+                    <p class="title bold black0 font42">全球分支机构 </p>
+                    <div class="itemlist grid2">
+                        <div class="item">
+                            <p class="name font30 bold">深圳总部</p>
+                            <div class="medialist">
+                                <div class="meida-line">
+                                    <img src="./images/media1.png" alt=""> 电话：0755-23223160  
+                                </div>
+                                <div class="meida-line">
+                                    <img src="./images/media2.png" alt=""> 邮箱：info@kilox.cn  
+                                </div>
+                                <div class="meida-line">
+                                    <img src="./images/media3.png" alt=""> 地址：深圳市宝安区顺昌路泰华梧桐岛14B座6-7楼  
+                                </div>
 
-                    </div>
-                    <div class="searchresult-table">
-                        <div class="search s-animate-up" data-time="100">
-                            <input type="text" placeholder="请输入查询的名称或者编号">
-                            <img src="./images/icon-search.png" alt="" class="search-icon">
+                            </div>
                         </div>
-                        <ul class="itemlist s-animate-up" data-time="150">
-                            <li class="rowhead">     
-                                <span>授权公司名称</span>
-                                <span>授权编号</span>
-                                <span>所在城市</span>
-                                <span>授权有效期</span>
-                            </li>
-                            <li >     
-                                <span>菡唐科技</span>
-                                <span>AMSQ0022</span>
-                                <span>深圳市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>芯锐实业</span>
-                                <span>AMSQ0023</span>
-                                <span>上海市</span>
-                                <span>2023-12-12~2024-12-12</span>
-                            </li>
-                            <li >     
-                                <span>精电电子</span>
-                                <span>AMSQ0025</span>
-                                <span>苏州市</span>
-                                <span>2024-06-18~2025-06-18</span>
-                            </li>
-                            <li >     
-                                <span>鸿拓邦</span>
-                                <span>AMSQ0026</span>
-                                <span>苏州市</span>
-                                <span>2023-06-16~2024-06-16</span>
-                            </li>
-                            <li >     
-                                <span>普尔思</span>
-                                <span>AMSQ0027</span>
-                                <span>苏州市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>天卓弘轩</span>
-                                <span>AMSQ0028</span>
-                                <span>深圳市</span>
-                                <span>2023-12-12~2024-12-12</span>
-                            </li>
-                            <li >     
-                                <span>一苇</span>
-                                <span>AMSQ0029</span>
-                                <span>深圳市</span>
-                                <span>2024-06-18~2025-06-18</span>
-                            </li>
-                            <li >     
-                                <span>毅弘</span>
-                                <span>AMSQ0030</span>
-                                <span>深圳市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>东莞市沃能电子科技有限公司</span>
-                                <span>AMSQ0031</span>
-                                <span>东莞市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>世强先进</span>
-                                <span>AMSQ0032</span>
-                                <span>深圳市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>安徽市晨微智能科技有限公司</span>
-                                <span>AMSQ0033</span>
-                                <span>深圳市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>东莞市聚创物连科技有限公司</span>
-                                <span>AMSQ0034</span>
-                                <span>东莞市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>亿芯合创(深圳) 科技有限公司</span>
-                                <span>AMSQ0032</span>
-                                <span>深圳市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>深圳市金紫扬科技有限公司</span>
-                                <span>AMSQ0030</span>
-                                <span>深圳市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>鑫铭国际科技(深圳)有限公司</span>
-                                <span>AMSQ0031</span>
-                                <span>东莞市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>埃兹本全球采购(EZBON GLOBAI）</span>
-                                <span>AMSQ0032</span>
-                                <span>深圳市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>深圳市华亚信电子技术有限公司</span>
-                                <span>AMSQ0030</span>
-                                <span>深圳市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                            <li >     
-                                <span>深圳市威尔健科技发展有限公司</span>
-                                <span>AMSQ0031</span>
-                                <span>东莞市</span>
-                                <span>2024-01-01~2025-01-01</span>
-                            </li>
-                           
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
+                        <div class="item">
+                            <p class="name font30 bold">欧洲</p>
+                            <div class="medialist">
+                                <div class="meida-line">
+                                    <img src="./images/media1.png" alt=""> 电话：0755-23223160  
+                                </div>
+                                <div class="meida-line">
+                                    <img src="./images/media2.png" alt=""> 邮箱：info@kilox.cn  
+                                </div>
+                                <div class="meida-line">
+                                    <img src="./images/media3.png" alt=""> 地址：深圳市宝安区顺昌路泰华梧桐岛14B座6-7楼  
+                                </div>
 
-        <!-- 社交媒体 -->
-        <section class="social-media-wrap">
-            <div class="w1560">
-                <div class="innerbox">
-                    <p class="publictitle font42 bold black0 s-animate-up" data-time="50">
-                        企业<span class="activecolor font42 bold">荣誉</span>
-                    </p>
-                    <p class="sec-title medium font18 black2 s-animate-up" data-time="100">更丰富，更及时。关注我们的社交媒体，随时了解动态。</p>
-                    <div class="mediabox grid3">
-                        <div class="item s-animate-up" data-time="100">
-                            <div class="left">
-                                <span class="icon">
-                                    <img src="./images/media1.png" alt="">
-                                </span>
-                                <span class="name font18 medium black2">阿赛姆微信公众号</span>
-                            </div>
-                            <div class="right">
-                                <img src="./images/qrcode.png" alt="">
                             </div>
                         </div>
-                        <div class="item s-animate-up" data-time="150">
-                            <div class="left">
-                                <span class="icon">
-                                    <img src="./images/media2.png" alt="">
-                                </span>
-                                <span class="name font18 medium black2">官方抖音账号</span>
-                            </div>
-                            <div class="right">
-                                <img src="./images/qrcode.png" alt="">
+                        <div class="item">
+                            <p class="name font30 bold">美国</p>
+                            <div class="medialist">
+                                <div class="meida-line">
+                                    <img src="./images/media1.png" alt=""> 电话：0755-23223160  
+                                </div>
+                                <div class="meida-line">
+                                    <img src="./images/media2.png" alt=""> 邮箱：info@kilox.cn  
+                                </div>
+                                <div class="meida-line">
+                                    <img src="./images/media3.png" alt=""> 地址：深圳市宝安区顺昌路泰华梧桐岛14B座6-7楼  
+                                </div>
+
                             </div>
                         </div>
-                        <div class="item s-animate-up" data-time="200">
-                            <div class="left">
-                                <span class="icon">
-                                    <img src="./images/media1.png" alt="">
-                                </span>
-                                <span class="name font18 medium black2">技术微信二维码</span>
-                            </div>
-                            <div class="right">
-                                <img src="./images/qrcode.png" alt="">
+                        <div class="item">
+                            <p class="name font30 bold">非洲</p>
+                            <div class="medialist">
+                                <div class="meida-line">
+                                    <img src="./images/media1.png" alt=""> 电话：0755-23223160  
+                                </div>
+                                <div class="meida-line">
+                                    <img src="./images/media2.png" alt=""> 邮箱：info@kilox.cn  
+                                </div>
+                                <div class="meida-line">
+                                    <img src="./images/media3.png" alt=""> 地址：深圳市宝安区顺昌路泰华梧桐岛14B座6-7楼  
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-       
+        
     </main>
-   
-  
+
     <!-- Footer尾部内容 -->
     <div id="footer"></div>
 
 
-
-
     <script>
         jQuery('#header').load('header.html');
-        jQuery('#footer').load('footer.html');
-        jQuery('#form').load('form.html');
-
+        jQuery('#footer').load('footer.html')
     </script>
 
 
     <!-- JavaScript语言 -->
     <script type="text/javascript" src="layui/layui.js"></script>
     <script type="text/javascript" src="js/extend.js"></script>
+    <script type="text/javascript" src="js/bodySmoothScroll.js"></script>
+
     <script type="text/javascript" src="js/pack.js"></script>
 
-
-   
-    <script type="text/javascript" src="//api.map.baidu.com/api?v=2.0&ak=D14544c123d3fdb3521fb78852b4125d&s=1"></script>
-    <script type="text/javascript"
-        src="//api.map.baidu.com/getscript?v=2.0&ak=D14544c123d3fdb3521fb78852b4125d&services=&t=20150522094656&s=1"></script>
-    <script>
-       $(function () {
-            var pi = [114.047629,22.729308];
-
-            var map = new BMap.Map("map");    // 创建Map实例
-            map.centerAndZoom(new BMap.Point(pi[0], pi[1]), 15);  // 初始化地图,设置中心点坐标和地图级别
-            map.setCurrentCity("深圳");          // 设置地图显示的城市 此项是必须设置的
-            // map.enableScrollWheelZoom(true);     //开启鼠标滚轮缩放
-
-
-            var top_left_control = new BMap.ScaleControl({ anchor: BMAP_ANCHOR_TOP_LEFT });
-            var top_left_navigation = new BMap.NavigationControl();  //左上角，添加默认缩放平移控件
-            var top_right_navigation = new BMap.NavigationControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT, type: BMAP_NAVIGATION_CONTROL_SMALL }); //右上角，仅包含平移和缩放按钮
-
-            map.addControl(top_left_control);
-            // map.addControl(top_left_navigation);
-            map.addControl(top_right_navigation);
-
-            var point = new BMap.Point(pi[0], pi[1]);  //  坐标
-            map.centerAndZoom(point, 15);
-            var marker = new BMap.Marker(point);  // 创建标注
-            map.addOverlay(marker);  // 将标注添加到地图中
-            marker.setAnimation(BMAP_ANIMATION_BOUNCE); //跳动的动画
-
-
-            // var label = new BMap.Label("<div class='bMap-posTit'>广州视臻信息科技有限公司</div>", { offset: new BMap.Size(0, 0) });
-            // marker.setLabel(label);
-        });
-    </script>
 
 
 

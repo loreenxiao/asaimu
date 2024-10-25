@@ -12,12 +12,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <meta name="format-detection" content="telephone=no,email=no">
-    <title>阿赛姆</title>
+    <title>千巡</title>
     <!-- 基础配置 -->
     <meta name="keywords" content="关键字" />
     <meta name="description" content="网页的内容" />
     <meta name="author" content="" />
-    <link rel="shortcut icon" href="svg/logo.svg" />
+    <link rel="shortcut icon" href="images/logo.png" />
+
     <!-- CSS层叠样式表 -->
     <link type="text/css" rel="stylesheet" href="iconfont/iconfont.css">
     <link type="text/css" rel="stylesheet" href="layui/css/layui.css">
@@ -31,308 +32,329 @@
     <script type="text/javascript" src="js/count.js"></script>
 
 
+
+
 </head>
 
 <body>
     <!-- Header头部内容 -->
-    <div id="header" class="header header-white-bg"></div>
+    <div id="header" class="header header-opacity logowhite"></div>
 
     <!-- Main内容 -->
     <main id="main" class="wrapper">
-        <section class="navbarwrap">
-            <div class="w1560">
+        <!-- 新闻--banner -->
+        <section class="public-banner">
+            <div class="image">
+                <img src="./images/new-banner.jpg" alt="">
+                <div class="nav-tab ">
+                    <div class="w1400 nav-inner">
+                        <a class="iconhome">
+                            <img src="./images/home.png" alt="">
+                        </a>
+                        <div class="item">
+                            <a href="">首页</a>
+                            <span> > </span>
+                            <a href="">关于我们</a>
+                            <span> > </span>
+                            <a href="">资讯中心</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="info">
+                <div class="w1400">
+                    <div class="innerbox">
+                        <div class="left">
+                            <p class="title font54 bold ">
+                                关于千巡
+                            </p>
+                            <p class="desc font18 ">成为全球有影响力的机器人与巡维方案头部供应商</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+        <!-- 新闻--推荐新闻 -->
+        <section class="recomentnews-wrap">
+            <div class="w1400">
                 <div class="innerbox">
-                    <span class="image">
-                        <img src="./images/bread-icon.png" alt="">
-                    </span>
-                    <div class="item">
-                        <a href="">新闻活动</a>
-                        <a href="" class="active">公司新闻 <img src="./images/bread-down.png" alt="" class="more"></a>
+                    <div class="i-top">
+                        <p class="title font42 bold ">
+                            推荐新闻
+                        </p>
+                        <div class="pagination-operate">
+                            <div class="btn prebtn bgwhite">
+                                <img src="./images/prev.png" alt="">
+                            </div>
+                            <div class="btn nextbtn bgwhite">
+                                <img src="./images/next.png" alt="">
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-        </section>
-        <!-- banner -->
-        <section class="public-banner-wrap">
-            <div class="innerbox">
-                <div class="w1560">
-                    <div class="info">
-                        <p class="title font42 white bold s-animate-up" data-time="50">公司新闻</p>
-                        <p class="sec-title font18 white medium s-animate-up" data-time="100">汇聚行业内最新动态</p>
-                    </div>
-                </div>
-                <div class="image">
-                    <img src="./images/news-banner.jpg" alt="">
-                </div>
-            </div>
-        </section>
-        <!-- 新闻轮播 -->
-        <section class="newswrap s-animate-up" data-time="50">
-            <div class="w1560">
-                <div class="newbanner">
-                   <ul class="swiper-wrapper">
-                        <li class="swiper-slide">
-                            <div class="innerbox">
-                                <div class="n-left">
-                                    <p class="time medium font20 black2">2024.05.10</p>
-                                    <div class="title bold font30 black2">汽车电子产品EMC检测内容与现状</div>
-                                    <div class="info font16 black6">在汽车电子里面，所有的电子设备都面临静电(ESD)和负载突变(LOADDUMP)的威胁，这些过压问题会对芯片电路造成永久性的损坏，所以过压保护必不可少，同时，符合这些要求也是ISO7637标准的一部分。在这一方面，阿赛姆汽车等级的TVS二极管满足上述要求，保证汽车电子设备...</div>
-                                    <div class="public-detail black9">
-                                        查看详情 
-                                        <span class="icon grey">
-                                            <img src="./images/more-active.png" alt="">
-                                        </span>
+                    <div class="i-list">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
+                                <div class="item">
+                                    <div class="image">
+                                        <img src="./images/new-img1.jpg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <p class="tag font12 black6 bold">行业资讯</p>
+                                        <p class="name bold font24 black0">度夏高温，安巡云巡检巡防，保障电网安全运行，
+                                            守护万家灯火</p>
+                                        <p class="desc font16 black6">
+                                            为期两天的2023年（第六届）电力机器人技术应用与创新发展论坛在广西南宁圆满落幕，大会以“聚焦电力机器人创新、助力行业数字化转型、促进产业链协同发展为主题，展示电力机器人产业...
+                                        </p>
+                                        <div class="newmore">
+                                            <span class="time font14 medium">2024.08.24</span>
+                                            <span class="icon">
+                                                <img src="./images/meida-icon5.png" alt="">
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="n-right">
-                                    <img src="./images/news-img.png" alt="">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="swiper-slide">
-                            <div class="innerbox">
-                                <div class="n-left">
-                                    <p class="time medium font20 black2">2024.05.10</p>
-                                    <div class="title bold font30 black2">汽车电子产品EMC检测内容与现状</div>
-                                    <div class="info font16 black6">在汽车电子里面，所有的电子设备都面临静电(ESD)和负载突变(LOADDUMP)的威胁，这些过压问题会对芯片电路造成永久性的损坏，所以过压保护必不可少，同时，符合这些要求也是ISO7637标准的一部分。在这一方面，阿赛姆汽车等级的TVS二极管满足上述要求，保证汽车电子设备...</div>
-                                    <div class="public-detail black9">
-                                        查看详情 
-                                        <span class="icon grey">
-                                            <img src="./images/more-active.png" alt="">
-                                        </span>
+                            </li>
+                            <li class="swiper-slide">
+                                <div class="item">
+                                    <div class="image">
+                                        <img src="./images/new-img1.jpg" alt="">
+                                    </div>
+                                    <div class="info">
+                                        <p class="tag font12 black6 bold">行业资讯2</p>
+                                        <p class="name bold font24 black0">度夏高温，安巡云巡检巡防，保障电网安全运行，
+                                            守护万家灯火</p>
+                                        <p class="desc font16 black6">
+                                            为期两天的2023年（第六届）电力机器人技术应用与创新发展论坛在广西南宁圆满落幕，大会以“聚焦电力机器人创新、助力行业数字化转型、促进产业链协同发展为主题，展示电力机器人产业...
+                                        </p>
+                                        <div class="newmore">
+                                            <span class="time font14 medium">2024.08.24</span>
+                                            <span class="icon">
+                                                <img src="./images/meida-icon5.png" alt="">
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="n-right">
-                                    <img src="./images/news-img.png" alt="">
-                                </div>
-                            </div>
-                        </li>
-                        <li class="swiper-slide">
-                            <div class="innerbox">
-                                <div class="n-left">
-                                    <p class="time medium font20 black2">2024.05.10</p>
-                                    <div class="title bold font30 black2">汽车电子产品EMC检测内容与现状</div>
-                                    <div class="info font16 black6">在汽车电子里面，所有的电子设备都面临静电(ESD)和负载突变(LOADDUMP)的威胁，这些过压问题会对芯片电路造成永久性的损坏，所以过压保护必不可少，同时，符合这些要求也是ISO7637标准的一部分。在这一方面，阿赛姆汽车等级的TVS二极管满足上述要求，保证汽车电子设备...</div>
-                                    <div class="public-detail black9">
-                                        查看详情 
-                                        <span class="icon grey">
-                                            <img src="./images/more-active.png" alt="">
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="n-right">
-                                    <img src="./images/news-img.png" alt="">
-                                </div>
-                            </div>
-                        </li>
-                   </ul>
-                   <div class="swiper-pagination"></div>
+                            </li>
+
+                        </ul>
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+
                 </div>
             </div>
         </section>
-        <!-- 新闻列表 -->
-        <section class="newlist-wrap s-animate-up" data-time="50">
-            <div class="w1560">
-                <div class="innerbox grid3">
-                    <div class="item">
-                        <a href="newsDetail.html">
+        <!-- 新闻--推荐新闻 -->
+
+        <section class="recomentnews-list-wrap">
+            <div class="w1400">
+                <div class="innerbox">
+                    <div class="i-top">
+                        <a href="" class="item active">公司新闻</a>
+                        <a href="" class="item">行业资讯</a>
+                        <a href="" class="item">客户案例</a>
+                    </div>
+                    <div class="i-bottom grid3">
+                        <div class="item">
                             <div class="image">
-                                <img src="./images/news-img.png" alt="">
+                                <img src="./images/new-list-img1.jpg" alt="">
                             </div>
                             <div class="info">
-                                <p class="time medium black2 font18">2024.05.10</p>
-                                <p class="title bold black2 font20">HDMI接口的ESD防护方案</p>
-                                <div class="desc font16 black6">工程师在解决HDMI（多媒体接口）的高速TMDS（信号通道）线路静电保护问题时，良好的ESD保护方案必不可少。由于HDMI 1.3的速度快，而且越来越多的设备采用多个...</div>
-                                
+                                <div class="itop">
+                                    <p class="title bold font18">度夏高温，安巡云巡检巡防，保障电网安全运行，守护万家灯火</p>
+                                    <div class="tag font12 black6">行业资讯</div>
+                                </div>
+                                <div class="ibot">
+                                    <span class="time">2024.08.24</span>
+                                    <span>
+                                        <img src="./images/meida-icon5.png" alt="">
+                                    </span>
+                                </div>
+
                             </div>
-                            <div class="public-detail black9">
-                                查看详情 
-                                <span class="icon grey">
-                                    <img src="./images/more-active.png" alt="">
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="newsDetail.html">
+                        </div>
+                        <div class="item">
                             <div class="image">
-                                <img src="./images/news-img2.png" alt="">
+                                <img src="./images/new-list-img2.jpg" alt="">
                             </div>
                             <div class="info">
-                                <p class="time medium black2 font18">2024.05.10</p>
-                                <p class="title bold black2 font20">NFC天线的ESD型号选用原则</p>
-                                <div class="desc font16 black6">工程师在解决HDMI（多媒体接口）的高速TMDS（信号通道）线路静电保护问题时，良好的ESD保护方案必不可少。由于HDMI 1.3的速度快，而且越来越多的设备采用多个...</div>
-                                
+                                <div class="itop">
+                                    <p class="title bold font18">度夏高温，安巡云巡检巡防，保障电网安全运行，守护万家灯火</p>
+                                    <div class="tag font12 black6">行业资讯</div>
+                                </div>
+                                <div class="ibot">
+                                    <span class="time">2024.08.24</span>
+                                    <span>
+                                        <img src="./images/meida-icon5.png" alt="">
+                                    </span>
+                                </div>
+
                             </div>
-                            <div class="public-detail black9">
-                                查看详情 
-                                <span class="icon grey">
-                                    <img src="./images/more-active.png" alt="">
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="newsDetail.html">
+                        </div>
+                        <div class="item">
                             <div class="image">
-                                <img src="./images/news-img3.png" alt="">
+                                <img src="./images/new-list-img3.jpg" alt="">
                             </div>
                             <div class="info">
-                                <p class="time medium black2 font18">2024.05.10</p>
-                                <p class="title bold black2 font20">电路板抗静电设计的ESD要点</p>
-                                <div class="desc font16 black6">工程师在解决HDMI（多媒体接口）的高速TMDS（信号通道）线路静电保护问题时，良好的ESD保护方案必不可少。由于HDMI 1.3的速度快，而且越来越多的设备采用多个...</div>
-                                
+                                <div class="itop">
+                                    <p class="title bold font18">度夏高温，安巡云巡检巡防，保障电网安全运行，守护万家灯火</p>
+                                    <div class="tag font12 black6">行业资讯</div>
+                                </div>
+                                <div class="ibot">
+                                    <span class="time">2024.08.24</span>
+                                    <span>
+                                        <img src="./images/meida-icon5.png" alt="">
+                                    </span>
+                                </div>
+
                             </div>
-                            <div class="public-detail black9">
-                                查看详情 
-                                <span class="icon grey">
-                                    <img src="./images/more-active.png" alt="">
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="newsDetail.html">
+                        </div>
+                        <div class="item">
                             <div class="image">
-                                <img src="./images/news-img4.png" alt="">
+                                <img src="./images/new-list-img4.jpg" alt="">
                             </div>
                             <div class="info">
-                                <p class="time medium black2 font18">2024.05.10</p>
-                                <p class="title bold black2 font20">如何正确选择ESD二极管？</p>
-                                <div class="desc font16 black6">工程师在解决HDMI（多媒体接口）的高速TMDS（信号通道）线路静电保护问题时，良好的ESD保护方案必不可少。由于HDMI 1.3的速度快，而且越来越多的设备采用多个...</div>
-                                
+                                <div class="itop">
+                                    <p class="title bold font18">度夏高温，安巡云巡检巡防，保障电网安全运行，守护万家灯火</p>
+                                    <div class="tag font12 black6">行业资讯</div>
+                                </div>
+                                <div class="ibot">
+                                    <span class="time">2024.08.24</span>
+                                    <span>
+                                        <img src="./images/meida-icon5.png" alt="">
+                                    </span>
+                                </div>
+
                             </div>
-                            <div class="public-detail black9">
-                                查看详情 
-                                <span class="icon grey">
-                                    <img src="./images/more-active.png" alt="">
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="newsDetail.html">
+                        </div>
+                        <div class="item">
                             <div class="image">
-                                <img src="./images/news-img5.png" alt="">
+                                <img src="./images/new-list-img5.jpg" alt="">
                             </div>
                             <div class="info">
-                                <p class="time medium black2 font18">2024.05.10</p>
-                                <p class="title bold black2 font20">TVS瞬态抑制二极管在电子电路中的应用</p>
-                                <div class="desc font16 black6">工程师在解决HDMI（多媒体接口）的高速TMDS（信号通道）线路静电保护问题时，良好的ESD保护方案必不可少。由于HDMI 1.3的速度快，而且越来越多的设备采用多个...</div>
-                                
+                                <div class="itop">
+                                    <p class="title bold font18">度夏高温，安巡云巡检巡防，保障电网安全运行，守护万家灯火</p>
+                                    <div class="tag font12 black6">行业资讯</div>
+                                </div>
+                                <div class="ibot">
+                                    <span class="time">2024.08.24</span>
+                                    <span>
+                                        <img src="./images/meida-icon5.png" alt="">
+                                    </span>
+                                </div>
+
                             </div>
-                            <div class="public-detail black9">
-                                查看详情 
-                                <span class="icon grey">
-                                    <img src="./images/more-active.png" alt="">
-                                </span>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="item">
-                        <a href="newsDetail.html">
+                        </div>
+                        <div class="item">
                             <div class="image">
-                                <img src="./images/news-img6.png" alt="">
+                                <img src="./images/new-list-img6.jpg" alt="">
                             </div>
                             <div class="info">
-                                <p class="time medium black2 font18">2024.05.10</p>
-                                <p class="title bold black2 font20">电子元器件领域五种常用的二极管</p>
-                                <div class="desc font16 black6">工程师在解决HDMI（多媒体接口）的高速TMDS（信号通道）线路静电保护问题时，良好的ESD保护方案必不可少。由于HDMI 1.3的速度快，而且越来越多的设备采用多个...</div>
-                                
+                                <div class="itop">
+                                    <p class="title bold font18">度夏高温，安巡云巡检巡防，保障电网安全运行，守护万家灯火</p>
+                                    <div class="tag font12 black6">行业资讯</div>
+                                </div>
+                                <div class="ibot">
+                                    <span class="time">2024.08.24</span>
+                                    <span>
+                                        <img src="./images/meida-icon5.png" alt="">
+                                    </span>
+                                </div>
+
                             </div>
-                            <div class="public-detail black9">
-                                查看详情 
-                                <span class="icon grey">
-                                    <img src="./images/more-active.png" alt="">
-                                </span>
+                        </div>
+                        <div class="item">
+                            <div class="image">
+                                <img src="./images/new-list-img7.jpg" alt="">
                             </div>
-                        </a>
+                            <div class="info">
+                                <div class="itop">
+                                    <p class="title bold font18">度夏高温，安巡云巡检巡防，保障电网安全运行，守护万家灯火</p>
+                                    <div class="tag font12 black6">行业资讯</div>
+                                </div>
+                                <div class="ibot">
+                                    <span class="time">2024.08.24</span>
+                                    <span>
+                                        <img src="./images/meida-icon5.png" alt="">
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="image">
+                                <img src="./images/new-list-img8.jpg" alt="">
+                            </div>
+                            <div class="info">
+                                <div class="itop">
+                                    <p class="title bold font18">度夏高温，安巡云巡检巡防，保障电网安全运行，守护万家灯火</p>
+                                    <div class="tag font12 black6">行业资讯</div>
+                                </div>
+                                <div class="ibot">
+                                    <span class="time">2024.08.24</span>
+                                    <span>
+                                        <img src="./images/meida-icon5.png" alt="">
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="image">
+                                <img src="./images/new-list-img9.jpg" alt="">
+                            </div>
+                            <div class="info">
+                                <div class="itop">
+                                    <p class="title bold font18">度夏高温，安巡云巡检巡防，保障电网安全运行，守护万家灯火</p>
+                                    <div class="tag font12 black6">行业资讯</div>
+                                </div>
+                                <div class="ibot">
+                                    <span class="time">2024.08.24</span>
+                                    <span>
+                                        <img src="./images/meida-icon5.png" alt="">
+                                    </span>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
-                </div>
-                 <!-- 分页 -->
-                 <div class="pagerBox ">
-                    <div id="pageview_news"></div>
+                    <div id="demo-laypage-normal-2"></div>
+
                 </div>
             </div>
         </section>
-
-
-
-
-        <!-- 咨询问题详情 -->
-        
     </main>
-   
-   <!-- 表单 -->
-   <div id="form"></div>
+
     <!-- Footer尾部内容 -->
     <div id="footer"></div>
 
 
-
-
     <script>
         jQuery('#header').load('header.html');
-        jQuery('#footer').load('footer.html');
-        jQuery('#form').load('form.html');
-
+        jQuery('#footer').load('footer.html')
     </script>
 
 
     <!-- JavaScript语言 -->
     <script type="text/javascript" src="layui/layui.js"></script>
     <script type="text/javascript" src="js/extend.js"></script>
-    <script type="text/javascript" src="js/pack.js"></script>
+    <script type="text/javascript" src="js/bodySmoothScroll.js"></script>
 
-   
+    <script type="text/javascript" src="js/pack.js"></script>
     <script>
         layui.use(function () {
             var laypage = layui.laypage;
             laypage.render({
-                elem: 'pageview_news',
-                count: 100,
-                layout: ['prev', 'page', 'next', 'skip'],
-                prev: '<div class="swiper_but prev"><img src="images/next-icon1.png" alt=""></div>',
-                next: '<div class="swiper_but next"><img src="images/next-icon2.png" alt=""></div>',
-                skipText: ['前往第', '页', '跳转<span><img src="images/next-icon2.png" alt=""></span>'],
-                // jump: function (obj) {
-                //     console.log(obj);
-                // }
+                elem: 'demo-laypage-normal-2',
+                count: 100, // 数据总数
+                prev: '<em><img src="./images/chevronLeft.png" alt=""></em>',
+                next: '<em><img src="./images/chevronRight.png" alt=""></em>'
             });
         });
     </script>
-    <script>
-        $(document).on("click", ".layui-laypage a", function () {
-            var top = $("#page1").offset().top;
-            $("html,body").animate({ "scrollTop": top }, 1000);
-        })
 
-        $(document).on("click", ".layui-laypage .layui-laypage-btn", function () {
-
-            var page = $(this).parents(".layui-laypage-skip").find("input").val();
-
-            var newUrl = window.location = '' + '#page' + page;
-
-            var top = $("#page1").offset().top;
-            $("html,body").animate({ "scrollTop": top }, 1000);
-        })
-
-        $(document).on('keypress', '.layui-laypage .layui-input', function (e) {
-            if (e.which == 13) {
-                var top = $("#page1").offset().top;
-                $("html,body").animate({ "scrollTop": top }, 1000);
-
-
-                var page = $(this).val();
-
-                var newUrl = window.location = '' + '#page' + page;
-
-
-            }
-        });
-
-
-    </script>
 
 
 </body>

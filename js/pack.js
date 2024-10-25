@@ -1,84 +1,4 @@
 $(function () {
-    class Utils {
-        lenisInit() {
-            const initSmoothScrolling = () => {
-                this.lenis = new Lenis({
-                    mouseMultiplier: 1.2,
-                    smooth: true,
-                    smoothTouch: false
-                });
-                const scrollFn = (time) => {
-                    this.lenis.raf(time);
-                    requestAnimationFrame(scrollFn);
-                };
-                requestAnimationFrame(scrollFn);
-            };
-            initSmoothScrolling();
-        }
-    }
-
-    class App extends Utils {
-        constructor() {
-            super();
-            this.init();
-        }
-
-        init() {
-            this.lenisInit();
-            this.definedAn();
-        }
-
-        definedAn() {
-            let that = this;
-            $('.l-morebox').hover(function () {
-                let jttl = gsap.timeline({
-                    paused: true
-                });
-                jttl.to($(this).find('svg.jt'), {
-                        xPercent: 100
-                    })
-                    .set($(this).find('svg.jt'), {
-                        xPercent: -100
-                    })
-                    .to($(this).find('svg.jt'), {
-                        xPercent: 0
-                    });
-                jttl.play();
-            }, function () {});
-
-            if ($('.index-title').length > 0) {
-                let panels = gsap.utils.toArray(".index-title");
-                panels.forEach((v, i) => {
-                    let name = $(v).find('.name>*');
-                    let nname = $(v).find('.nname>*');
-                    gsap.from(name, {
-                        xPercent: 100,
-                        opacity: 0,
-                        stagger: 0.05,
-                        ease: 'power2.inOut',
-                        scrollTrigger: {
-                            trigger: v,
-                            start: "top bottom",
-                            toggleActions: "play resume resume reset"
-                        }
-                    });
-                    gsap.from(nname, {
-                        xPercent: 100,
-                        opacity: 0,
-                        stagger: 0.05,
-                        ease: 'power2.inOut',
-                        scrollTrigger: {
-                            trigger: v,
-                            start: "top bottom",
-                            toggleActions: "play resume resume reset"
-                        }
-                    });
-                });
-            }
-        }
-    }
-    const _app = new App();
-
     /* 全局公共属性 */
     let wH = window.innerHeight,
         wW = window.innerWidth,
@@ -335,347 +255,9 @@ $(function () {
 
 
 
-    // 可视化数据滚动
-    // function visualData(obj) {
-    //     $(window).load(function () {
-    //         obj.each(function () {
-    //             var h = Number($(this).html());
-    //             var t = "";
-    //             var n = Math.ceil(h / 20);
-    //             var a = true;
-    //             var This = $(this);
-    //             if ($(this).length != 0) {
-    //                 t = $(this).offset().top;
-    //             }
-    //             This.html(0);
-    //             fn1();
-    //             $(window).scroll(function () {
-    //                 fn1();
-    //             });
-
-    //             function fn1() {
-    //                 var wT = $(window).scrollTop();
-    //                 if (wT > t - $(window).height() + 50 && wT < t - 50 && a == true) {
-    //                     a = false;
-    //                     var y = 0;
-    //                     var timer2 = setInterval(function () {
-    //                         if (y >= h) {
-    //                             y = h;
-    //                             clearInterval(timer2);
-    //                         }
-    //                         This.html(y);
-    //                         y += n;
-    //                     }, 100);
-    //                 }
-    //             }
-    //         });
-    //     });
-    // }
-    // visualData($(".num-move"));
 
 
 
-
-
-    // 首页-banner
-    function indexSlide() {
-        var slide = new Swiper('.indexbanner .bannerbox', {
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
-            speed: 900,
-            effect: 'fade',
-
-            // loop: true,
-            watchOverflow: true, //因为仅有1个slide，swiper无效
-            preventLinksPropagation: false, // 阻止点击事件冒泡
-            navigation: {
-                nextEl: '.indexbanner .bannerbox .swiper-button-next',
-                prevEl: '.indexbanner .bannerbox .swiper-button-prev',
-            },
-            pagination: {
-                el: '.indexbanner .bannerbox .swiper-pagination',
-                clickable: true,
-            },
-        });
-    }
-    indexSlide();
-
-
-
-
-    // 首页- 解决方案
-    function indexSolution() {
-        var slide = new Swiper('.index-solution .solution-card', {
-            speed: 900,
-            spaceBetween: 42,
-            slidesPerView: 6,
-            preventLinksPropagation: false, // 阻止点击事件冒泡
-            pagination: {
-                el: '.index-solution .solution-card .swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                prevEl: '.index-solution .swiper-button-prev',
-                nextEl: '.index-solution .swiper-button-next',
-
-            },
-            breakpoints: {
-                1560: {
-                    slidesPerView: 5,
-                    spaceBetween: 30,
-                },
-                1200: {
-                    slidesPerView: 4,
-                    spaceBetween: 25,
-                },
-                990: {
-                    slidesPerView: 3,
-                    spaceBetween: 20,
-                },
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                480: {
-                    slidesPerView: 1,
-                    spaceBetween: 20,
-                },
-
-            },
-        });
-
-    }
-    indexSolution();
-
-    // 首页- 定制方案
-    function indexOrder() {
-        let divBox = $('.index-order');
-        if (divBox.length) {
-            const getDiv = el => divBox.find(el);
-            let tabs = getDiv('.swipertab').children(),
-                swiperBox = getDiv('.order-swiper'),
-                prev = getDiv('.swiper-button-prev'),
-                next = getDiv('.swiper-button-next'),
-                speed = 500;
-
-            tabs.click(function () {
-                var i = $(this).index();
-                $(this).addClass('active').siblings().removeClass('active');
-                swiper.slideTo($(this).index());
-            });
-
-            const swiper = new Swiper(swiperBox, {
-                speed,
-                spaceBetween: 20,
-                allowTouchMove: false,
-                effect: "fade",
-            });
-
-            let swiperArr = [];
-            swiperBox.find('.swiper-box').each(function () {
-                let pager = $(this).siblings('.swiper-pagination');
-                const itemSwiper = new Swiper($(this), {
-                    // autoplay: {
-                    //     delay: 3000,
-                    //     disableOnInteraction: false,
-                    // },
-                    // speed: 900,
-                    loop: true,
-                    spaceBetween: 22,
-                    slidesPerView: 5,
-                    centeredSlides: true,
-                    preventLinksPropagation: false, // 阻止点击事件冒泡
-                    pagination: {
-                        el: '.swiper-box .swiper-pagination',
-                        clickable: true,
-                    },
-                    navigation: {
-                        prevEl: '.swiper-box .swiper-button-prev',
-                        nextEl: '.swiper-box .swiper-button-next',
-                    },
-                    breakpoints: {
-                        480: {
-                            slidesPerView: 1,
-                        },
-                        768: {
-                            slidesPerView: 3,
-                        },
-                        // 990: {
-                        //     slidesPerView: 3,
-
-                        // },
-
-                    },
-                });
-                swiperArr.push(itemSwiper);
-            });
-
-            prev.click(() => swiperArr[swiper.activeIndex].slidePrev());
-            next.click(() => swiperArr[swiper.activeIndex].slideNext());
-        }
-    }
-    indexOrder();
-
-    // 首页- EMC防护
-
-    function indexProtect() {
-        var mySwiper = new Swiper('.index-EMC-protect .parner-wrap', {
-            loop: true, //可选选项，开启循环
-            slidesPerView: 9,
-            // spaceBetween: 20,
-            allowTouchMove: false,
-            speed: 3000,
-            autoplay: true,
-            autoplay: {
-                delay: 0,
-                disableOnInteraction: false,
-            },
-            breakpoints: {
-                1200: {
-                    slidesPerView: 7,
-                },
-                990: {
-                    slidesPerView: 5,
-                    spaceBetween: 18
-                },
-                640: {
-                    slidesPerView: 3,
-                    spaceBetween: 15
-                },
-                480: {
-                    slidesPerView: 3,
-                    spaceBetween: 10
-                },
-            }
-        })
-    }
-    indexProtect();
-
-    // --------------------------------------------- 关于我们--发展历程
-    function development() {
-        var mySwiper = new Swiper('.development-culture .leftwrap .scrollcontent', {
-            // loop : true,//可选选项，开启循环
-            direction: "vertical",
-            spaceBetween: 10,
-            slidesPerView: 3,
-            speed: 1000,
-            breakpoints: {
-                480: {
-                    slidesPerView: 1,
-                },
-                990: {
-                    slidesPerView: 1.8,
-                },
-                1280: {
-                    slidesPerView: 2,
-                },
-            },
-            pagination: {
-                el: '.development-culture .leftwrap .scrollcontent .swiper-pagination',
-                clickable: true,
-            },
-
-        })
-        $(".development-culture .leftwrap .yeartab li").click(function () {
-            $(this).addClass("active").siblings().removeClass("active");
-            var index = $(this).index();
-            mySwiper.slideTo(index)
-        })
-    }
-    development();
-
-
-    // 产品-滚动锚点
-    $(".product-list-wrap .innerbox .left-box ul li").click(function () {
-        var index = $(this).index();
-        $(this).addClass('active').siblings().removeClass('active');
-
-        $('html, body').animate({
-            scrollTop: $(".product-list-wrap .innerbox .right-box .rowline").eq(index).offset().top // 获取锚点的位置
-        }, 500); // 动画持续时间
-
-
-    })
-
-    $(document).ready(function () {
-        // 给每个按钮绑定点击事件
-        $('.product-list-wrap .innerbox .left-box ul li').click(function () {
-            var buttonDataId = $(this).data('id');
-            var targetDiv = $('#divList .item[data-id="' + buttonDataId + '"]');
-
-            // 清除所有 div 的 active 类
-            $('.product-list-wrap .innerbox .right-box .rowline').removeClass('active');
-
-            // 给当前点击对应的 div 添加 active 类
-            targetDiv.addClass('active');
-
-            // 滚动到对应的 div
-            $('html, body').animate({
-                scrollTop: targetDiv.offset().top
-            }, 500);
-
-            // 更新按钮的状态
-            $('.product-list-wrap .innerbox .left-box ul li').removeClass('selected');
-            $(this).addClass('selected');
-        });
-
-        // 初始化第一个 div 和按钮为 active 和 selected 状态
-        $('.product-list-wrap .innerbox .right-box .rowline:first-child').addClass('active');
-        $('.product-list-wrap .innerbox .left-box ul li:first-child').addClass('selected');
-
-        // 监听滚动事件
-        $(window).on('scroll', function () {
-            detectActiveDiv();
-        });
-
-        function detectActiveDiv() {
-            var scrollTop = $(window).scrollTop();
-            var windowHeight = $(window).height();
-
-            $('.product-list-wrap .innerbox .right-box .rowline').each(function () {
-                var divTop = $(this).offset().top;
-                var divHeight = $(this).outerHeight();
-
-                if (divTop <= scrollTop + windowHeight && divTop + divHeight >= scrollTop) {
-                    // 当前 div 在可视区域内
-                    $(this).addClass('active').siblings().removeClass('active');
-                    updateButtonState($(this));
-                } else {
-                    $(this).removeClass('active');
-                }
-            });
-        }
-
-        function updateButtonState(activeDiv) {
-            var activeDivId = activeDiv.data('id');
-            $('.product-list-wrap .innerbox .left-box ul li').removeClass('selected');
-            $('.product-list-wrap .innerbox .left-box ul li[data-id="' + activeDivId + '"]').addClass('selected');
-        }
-    });
-
-
-
-
-    // 产品详情---产品特性 参数搜索 相关下载
-    $(".product-seristab-wrap .seris-content .section-one .tab-title li").click(function () {
-        var index = $(this).index();
-        $(this).addClass('active').siblings().removeClass('active');
-        $(".product-seristab-wrap .seris-content .section-one .tab-content .sectionitem").eq(index).addClass('on').siblings().removeClass('on');
-
-    })
-
-    // 产品详情---不同系列
-    $(".product-seristab-wrap .seris-tab li").click(function () {
-        $(this).addClass('active').siblings().removeClass('active');
-
-    })
-    // 企业文化
-    $(".company-culture .innerbox .item").hover(function () {
-        $(this).addClass('active').siblings().removeClass('active');
-
-    })
 
 
 })
@@ -882,13 +464,48 @@ $(document).ready(function () {
     // 判断是否首页--头部 !white
     var opacity = $("#header").hasClass("header-opacity");
     var headewhite = $("#header").hasClass("header-white-bg");
+    // 点击切换选中标题
+    // $("#header .header-pc .header-wrap .header-right .nav dl").click(function () {
+
+    //     $(this).find(".onetitle").addClass('active').siblings().removeClass('active');
+    // })
+
+    // var querycs = window.location.href.split(".html");
+    // var domain = window.location.hostname;
+    // querycs = querycs[0].split(domain);
+    // console.log(querycs)
+    // var querycsthis = querycs[1] ? querycs[1] : '/';
+    // console.log(querycsthis)
+    // $(".onetitle").each(function (i, v) {
+    //     var query = $(this).attr('href');
+    //     var vars = query.split(".html");
+    //     // console.log(vars[0]);
+    //     // console.log(querycsthis);
+    //     if (vars[0] == querycsthis) {
+    //         $(this).addClass('active').siblings().removeClass('active');
+    //     }
+    // })
+    $('#c-list').click(function (e) {
+        $("#hi-resume-popper").css("display", "flex");
+    });
+    $('.form .close-icon').click(function (e) {
+        $("#hi-resume-popper").css("display", "none");
+    });
+
+
 
     $("#header .header-pc .header-wrap .header-right .nav dl").hover(function () {
+        // 下拉默认选中第一项
+        // $("#header .header-pc .header-wrap .header-right .nav dl .downpanel .innerbox2 .titlelist .twonav").removeClass('active')
+        // $('#header .header-pc .header-wrap .header-right .nav dl .downpanel .innerbox2 .titlelist .twonav:first').addClass('active');
+
+
         $(this).find(".downpanel").stop().slideDown();
         if (opacity) {
             $(".header-pc").addClass("pc-active");
         }
     }, function () {
+
         $(this).find(".downpanel").stop().slideUp();
         if (opacity) {
             $(".header-pc").removeClass("pc-active");
@@ -906,82 +523,269 @@ $(document).ready(function () {
 
         }
     })
+    // 二级显示
+    $(".header-pc .nav dl").mouseover(function () {
+        // var i = $(this).index();
+        $(".header-pc .nav dd").stop().slideUp(300);
+        $(this).find("dd").stop().slideDown(300);
+    });
+
+    $(".header-pc .header-wrap .nav").mouseleave(function () {
+        $(".header-pc .nav dd").stop().slideUp(300);
+    });
+
+    // 导航栏行业方案-切换
+    $("#header .header-pc .header-wrap .header-right .nav dl .downpanel .innerbox2 .titlelist .twonav").mouseover(function () {
+        var d = $(this).index();
+        $(this).addClass("active").siblings().removeClass("active");
 
 
-    // 产品中心-切换
-    $("#header .header-pc .header-wrap .header-right .nav dl .downpanel .innerbox2 .titlelist span").hover(function () {
-        $(this).addClass("active").siblings().removeClass("active");
-        $(this).addClass("active").siblings().removeClass("active");
     })
+
+
+
 })
 // 导航栏下沉导航-结束
 
-// 行业分类
-$(document).ready(function () {
-
-    // 一级切换
-    $(".product-sort-wrap .left-nav li:eq(0)").addClass("active");
-    $(".product-sort-wrap .left-nav li:eq(0) .bottomlist").slideToggle();
-
-    $(".product-sort-wrap .left-nav ul").on("click", 'li .top', function () {
-        var dd = $(this).next();
-        var li = $(this).parent();
-        var other = li.siblings();
-        var otherDd = other.find(".bottomlist");
-        li.toggleClass("active");
-        dd.slideToggle();
-        other.removeClass("active");
-        otherDd.slideUp();
-    })
-
-    // 二级切换
-    $(".product-sort-wrap .left-nav ul li .bottomlist p").click(function () {
-        $(this).addClass("on").siblings().removeClass("on");
-    })
-
-})
 
 
 
-// 新闻列表
-function newsList() {
-    var slide = new Swiper('.newswrap .newbanner', {
+
+// ---------------------------------------------  首页-banner
+function indexSlide() {
+    var slide = new Swiper('.indexbanner .pro-ban', {
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
         speed: 900,
-        effect: "fade",
+        effect: 'fade',
+        watchOverflow: true, //因为仅有1个slide，swiper无效
         preventLinksPropagation: false, // 阻止点击事件冒泡
         pagination: {
-            el: '.newswrap .newbanner .swiper-pagination',
+            el: '.indexbanner .pro-ban .swiper-pagination',
             clickable: true,
         },
     });
-
 }
-newsList();
+indexSlide();
 
-// EMC方案设计
-function solutionTabSwiper() {
-    var slide = new Swiper('.casedesign-wrap .innerbox .designbox .swiperbox', {
+
+// ---------------------------------------------  首页-行业应用
+function indexApplySlide() {
+    var slide1 = new Swiper('.index-apply-wrap .info .innerbox .apply-center', {
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
         speed: 900,
-        slidesPerView: 1,
         effect: 'fade',
+        watchOverflow: true, //因为仅有1个slide，swiper无效
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+
+    });
+    var slide2 = new Swiper('.index-apply-wrap .image', {
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        speed: 900,
+        effect: 'fade',
+        watchOverflow: true, //因为仅有1个slide，swiper无效
         preventLinksPropagation: false, // 阻止点击事件冒泡
 
     });
 
-    $(".casedesign-wrap .innerbox .designbox .case-tab .name").click(function () {
-        var a = $(this).index();
-        $(".about-history-swiper .swiper-pagination-bullet").eq($(this).index()).click();
-        $(this).addClass("active").siblings().removeClass("active");
 
-        slide.slideTo(a);
+    $(".index-apply-wrap .info .innerbox .apply-bottom .itemlist .item").hover(function () {
+        var d = $(this).index();
+        slide1.slideTo(d);
+        slide2.slideTo(d);
+
     });
 
+}
+indexApplySlide();
+
+
+
+// ---------------------------------------------  首页-软件服务
+function indexSolfSlide() {
+    var slide = new Swiper('.software-server-wrap .innerbox .content .right', {
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        speed: 900,
+        effect: 'fade',
+        watchOverflow: true, //因为仅有1个slide，swiper无效
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        pagination: {
+            el: '.software-server-wrap .innerbox .content .right .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.software-server-wrap .left .pagination-operate .nextbtn',
+            prevEl: '.software-server-wrap .left .pagination-operate .prebtn',
+        },
+
+    });
+}
+indexSolfSlide();
+
+
+// ---------------------------------------------  首页-硬件产品
+function indexhalfRobotSlide() {
+    var slide = new Swiper('.hardware-products-wrap .innerbox .swiperwrap .swiperlist', {
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        speed: 900,
+        effect: 'fade',
+        watchOverflow: true, //因为仅有1个slide，swiper无效
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        pagination: {
+            el: '.hardware-products-wrap .innerbox .swiperwrap .swiperlist .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.hardware-products-wrap .innerbox .swiperwrap .swiperlist .pagination-operate .nextbtn',
+            prevEl: '.hardware-products-wrap .innerbox .swiperwrap .swiperlist .pagination-operate .prebtn',
+        },
+
+    });
+}
+indexhalfRobotSlide();
+
+
+// ---------------------------------------------  产品详情-应用场景
+function applicationScenariosSlide() {
+    var slide = new Swiper('.application-scenarios .innerbox .info', {
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+        speed: 900,
+        effect: 'fade',
+        watchOverflow: true, //因为仅有1个slide，swiper无效
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        pagination: {
+            el: '.application-scenarios .innerbox .info .swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.application-scenarios .prebtn',
+            prevEl: '.application-scenarios .nextbtn',
+        },
+
+    });
+}
+applicationScenariosSlide();
+
+
+// ---------------------------------------------  行业详情-核心价值
+function industryValueWrapSlide() {
+    var slide = new Swiper('.industry-value-wrap .innerbox .i-list', {
+        speed: 900,
+        slidesPerView: 2,
+        spaceBetween: 40,
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        watchOverflow: true,
+        navigation: {
+            nextEl: '.industry-value-wrap .nextbtn',
+            prevEl: '.industry-value-wrap .prebtn',
+        },
+        pagination: {
+            el: '.industry-value-wrap .innerbox .i-list .swiper-pagination',
+            clickable: true,
+        },
+
+        breakpoints: {
+            480: {
+                slidesPerView: 1,
+                spaceBetween: 20,
+            },
+
+        },
+    });
+}
+industryValueWrapSlide()
+// ---------------------------------------------  新闻-推荐新闻
+
+function recomentnewsWrapSlide() {
+    var slide = new Swiper('.recomentnews-wrap .innerbox .i-list', {
+        speed: 900,
+        slidesPerView: 1,
+        spaceBetween: 40,
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        watchOverflow: true,
+        navigation: {
+            nextEl: '.recomentnews-wrap .nextbtn',
+            prevEl: '.recomentnews-wrap .prebtn',
+        },
+        pagination: {
+            el: '.recomentnews-wrap .innerbox .i-list .swiper-pagination',
+            clickable: true,
+        },
+
+
+    });
+}
+recomentnewsWrapSlide()
+
+
+// ---------------------------------------------  核心技术--Robotics 
+
+function recomentnewsWrapSlide() {
+    var slide = new Swiper('.core-robotics-wrap .innerbox .i-bottom .swiperimg', {
+        speed: 900,
+        slidesPerView: 1,
+        spaceBetween: 40,
+        effect: "fade",
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        watchOverflow: true,
+        pagination: {
+            el: '.core-robotics-wrap .innerbox .i-bottom .swiperimg .swiper-pagination',
+            clickable: true,
+        }
+    });
+    $(".core-robotics-wrap .innerbox .i-top .tablist .item").click(function () {
+        var d = $(this).index();
+        $(this).addClass("active").siblings().removeClass("active");
+        slide.slideTo(d)
+
+    })
 
 }
-solutionTabSwiper();
+recomentnewsWrapSlide()
 
+// ---------------------------------------------  软件详情--AI
 
-// EMC测试服务
+function softdetailListWrap() {
+    var slide = new Swiper('.softlist-section-one .innerbox .bottom-wrap .tabinfo', {
+        speed: 900,
+        slidesPerView: 1,
+        spaceBetween: 40,
+        effect: "fade",
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        watchOverflow: true,
+        pagination: {
+            el: '.core-robotics-wrap .innerbox .i-bottom .swiperimg .swiper-pagination',
+            clickable: true,
+        }
+    });
+    $(".softlist-section-one .innerbox .bottom-wrap .tabul .title").click(function () {
+        var d = $(this).index();
+        $(this).addClass("active").siblings().removeClass("active");
+        slide.slideTo(d)
+
+    })
+
+}
+softdetailListWrap()
+
+// --------------------------------------------- 产品列表
 function checkType(data) {
     let res = ''
     if (typeof data === 'object' && Array.isArray(data)) { //检查 data 是否是一个数组。Array.isArray() 是一个全局函数，用于判断给定的值是否为数组。
@@ -994,249 +798,267 @@ function checkType(data) {
     return res
 }
 
-function teamActiveSwiper() {
+// --------------------------------------------- 软件架构
+function softServerWrap() {
     var swiper1ActiveIndex = 0 // 第一个轮播的索引
-    var swiper1 = new Swiper('.solution-two-section1 .bottomwrap .oneSwiper', {
-        speed: 1000,
-        pagination: {
-            el: '.solution-two-section1 .bottomwrap .oneSwiper .swiper-pagination',
-            clickable: true,
-        },
-        allowTouchMove: false,
-        on: {
-
-        }
-    })
-
-    var swiper2 = new Swiper('.solution-two-section1 .bottomwrap .twoSwiper', {
-        speed: 1000,
-        autoplay: true,
-        effect: 'fade',
-        fadeEffect: {
-            crossFade: true,
-        },
-        allowTouchMove: false,
-
-        pagination: {
-            el: '.solution-two-section1 .bottomwrap .twoSwiper .swiper-pagination',
-            clickable: false,
-        },
-        on: {
-            paginationClick: function (swiper, event) {
-                // 这里可以添加自定义逻辑
-                console.log('Clicked pagination bullet for slide:', swiper.activeIndex);
-            }
-        }
-    })
+    var box = $('.pl-section-one');
+    if (box.length) {
+        //    软件
 
 
-    $(".solution-two-section1 .bottomwrap .innerbox .info .tabitem li").click(function () {
-        var index = $(this).index();
-        $(".solution-two-section1 .bottomwrap .innerbox .image .swiper-pagination1 .swiper-pagination-bullet").eq($(this).index()).click();
-        $(this).addClass("active").siblings().removeClass("active");
-
-    });
-
-
-
-
-}
-teamActiveSwiper();
-
-// 4.1 EMC测试服务
-$(".test-server-wrap .innerbox .bottom-global .info .item").hover(function () {
-    $(this).addClass('active').siblings().removeClass('active');
-
-})
-
-
-// --------------------------------------------- EMC测试服务
-function EMCTestServer() {
-    var slide = new Swiper('.test-server-wrap .innerbox .bottom-global .bg .swiperimg', {
-        loop: true, //可选选项，开启循环
-        allowTouchMove: false,
-        effect: "fade",
-        speed: 1000,
-
-    });
-
-    $(".test-server-wrap .innerbox .bottom-global .info .item").hover(function () {
-        $(this).addClass("active").siblings().removeClass("active");
-        var index = $(this).index();
-        slide.slideTo(index)
-
-    })
-}
-EMCTestServer()
-
-
-
-function certifyBook() {
-    var slide = new Swiper('.certify-wrap .innerbox .booklist', {
-        speed: 900,
-        spaceBetween: 20,
-        slidesPerView: 4,
-        preventLinksPropagation: false, // 阻止点击事件冒泡
-        breakpoints: {
-            480: {
-                slidesPerView: 2,
+        var swiper1 = new Swiper('.pl-section-one .firstcontainer', {
+            // autoplay: {
+            //     delay: 5000,
+            //     disableOnInteraction: false,
+            // },
+            effect: "fade",
+            fadeEffect: {
+                crossFade: true //开启淡出。过渡时，原slide透明度从1->0（淡出），过渡中的slide透明度从0->1（淡入），其他slide透明度0。
             },
-            768: {
-                slidesPerView: 3,
-            }
-
-        },
-        pagination: {
-            el: '.certify-wrap .innerbox .swiperbox .booklist .swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            prevEl: '.certify-wrap .innerbox .swiperbox .swiper-button-prev',
-            nextEl: '.certify-wrap .innerbox .swiperbox .swiper-button-next',
-
-        }
-
-    });
-
-}
-certifyBook();
-
-
-function creativeWrap() {
-    var slide = new Swiper('.quality-test-wrap .innerbox .testbox .case-content .panelbox1 .bottomswiper', {
-        speed: 900,
-        effect: "fade",
-        preventLinksPropagation: false, // 阻止点击事件冒泡
-        navigation: {
-            prevEl: '.quality-test-wrap .innerbox .testbox .case-content .panelbox1 .bottomswiper .swiper-button-prev',
-            nextEl: '.quality-test-wrap .innerbox .testbox .case-content .panelbox1 .bottomswiper .swiper-button-next',
-        },
-        on: {
-            slideChange: function (mySwiper) {
-                // -----S ------
-                swiper1ActiveIndex = this.activeIndex
-                // -----E ------
-                $(".quality-test-wrap .innerbox .testbox .case-content .panelbox1 .steptop .item").eq(swiper1ActiveIndex).addClass('active').siblings().removeClass('active');
-
-            },
-
-        }
-    });
-
-    $(".quality-test-wrap .innerbox .testbox .case-content .panelbox1 .steptop .item").click(function () {
-        $(this).addClass("active").siblings().removeClass("active");
-        var a = $(this).index();
-        slide.slideTo(a);
-    })
-
-}
-creativeWrap();
-
-
-
-$(document).ready(function () {
-    function qualityTestWrap() {
-        var slide = new Swiper('.panelbox2 .test-slide-wrap .itemlist', {
-            autoplay: true,
-            speed: 900,
-            spaceBetween: 20,
-            slidesPerView: 4,
-            observer: true, //修改swiper自己或子元素时，自动初始化swiper
-            observeParents: true, //修改swiper的父元素时，自动初始化swiper
             preventLinksPropagation: false, // 阻止点击事件冒泡
-            breakpoints: {
-                480: {
-                    slidesPerView: 2,
+            // pagination: {
+            //     el: '.equiment-wrap .banner_sp',
+            //     clickable: true,
+            // },
+            allowTouchMove: false,
+            on: {
+                slideChangeTransitionStart: function () { //切换时分类也要改变状态
+                    var d = this.activeIndex;
+                    console.log("1d", d)
                 },
-                768: {
-                    slidesPerView: 3,
-                }
+                slideChange: function (mySwiper) {
+                    swiper1ActiveIndex = this.activeIndex;
+                },
+            },
+        });
 
+        const swiper2 = new Swiper('.productlist-wrap .soft-imglist', {
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            slidesPerView: 1,
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true,
+            },
+            spaceBetween: 20,
+            allowTouchMove: false,
+            navigation: {
+                nextEl: '.productlist-wrap .nextbtn',
+                prevEl: '.productlist-wrap .prebtn',
             },
             pagination: {
-                el: '.panelbox2 .test-slide-wrap .itemlist .swiper-pagination',
+                el: '.productlist-wrap .soft-imglist .swiper-pagination',
                 clickable: true,
+            },
+            on: {
+                slideChangeTransitionStart: function () { //切换时分类也要改变状态
+                    var d = this.activeIndex;
+                    // $(".productlist-wrap .pl-section-one .innerbox .tabinfo .soft-server .tabitem span").eq(d).click();
+
+                    $('.productlist-wrap .pl-section-one .innerbox .tabinfo .soft-server .tabitem span').stop().removeClass('active').eq(d).addClass('active');
+
+                },
             }
         });
+        // 软件切换
+        $(".productlist-wrap .pl-section-one .innerbox .tabtitle .name").click(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+            var index = $(this).index();
+            swiper1.slideTo(index)
+        });
+
+        // 软件服务内部点击事件
+        $(".productlist-wrap .pl-section-one .innerbox .tabinfo .soft-server .tabitem span").hover(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+            var index = $(this).index();
+            // swiper2.slideTo(index);
+            if (checkType(swiper2) === 'Array') {
+                swiper2[swiper1ActiveIndex].slideTo(index)
+            } else {
+                swiper2.slideTo(index)
+
+            }
+
+        });
+
     }
-    qualityTestWrap();
 
-    $('.quality-test-wrap .innerbox .testbox .case-tab .name').click(function (e) {
-        qualityTestWrap()
-        var index = $(this).index();
-        $(this).addClass("active").siblings().removeClass("active");
+}
+softServerWrap();
 
-        $(".quality-test-wrap .innerbox .testbox .case-content .panelbox").eq(index).addClass("active").siblings().removeClass("active");
 
-    });
+
+
+
+// --------------------------------------------- 硬件架构
+
+ // 硬件架构
+ $(".pl-section-two .innerbox .tabtitle .name").click(function () {
+    $(this).addClass('active').siblings().removeClass('active');
+    var d = $(this).index();
+    $('.pl-section-two .innerbox .tabinfo .firstcontainer .swiperlist').stop().removeClass('swiperactive').eq(d).addClass('swiperactive');
+    // opacity 会占位--此处选中第二项硬件产品时要隐藏硬件架构模块（第一项）
+    console.log('d',d)
+    if(d == 1){
+        $(".pl-section-two .innerbox .tabinfo .swiperlist .image").addClass("showopacity")
+    }else{
+        $(".pl-section-two .innerbox .tabinfo .swiperlist .image").removeClass("showopacity")
+    }
+
 });
 
 
-$(document).ready(function() {
-    
-
-    var swiper  = new Swiper('.production-strength-wrap .bottombox .itemlist', {
-        speed: 900,
-        spaceBetween: 20,
-        slidesPerView: "auto",
-        loop: true,
-        preventLinksPropagation: false, // 阻止点击事件冒泡
-        breakpoints: {
-
-            768: {
-                slidesPerView: 3,
-            }
-
-        },
-        pagination: {
-            el: '.production-strength-wrap .bottombox .itemlist .swiper-pagination',
-            clickable: true,
-        },
-        navigation: {
-            prevEl: '.production-strength-wrap .topbox .pagination-box .operatebtn .swiper-button-prev',
-            nextEl: '.production-strength-wrap .topbox .pagination-box .operatebtn .swiper-button-next',
-
-        },
-       
-        on: {
-            // 在slide改变时更新当前页码
-            slideChange: function () {
-                updatePageInfo(swiper );
-            }
-        }
-
-    });
-
-    // 初始化时更新一次当前页码
-    if (swiper) { // 确认Swiper实例存在
-        updatePageInfo(swiper);
-    }
-
-    function updatePageInfo(swiperInstance) {
-        // 检查Swiper是否已经初始化
-        if (!swiperInstance) {
-            return;
-        }
-
-        const $current = $('.production-strength-wrap .topbox .pagination-box .pagebox .current');
-        const $all = $('.production-strength-wrap .topbox .pagination-box .pagebox .all');
-
-        // 获取当前活动的slide索引
-        const currentIndex = swiperInstance.realIndex  + 1; // 将索引转换为从1开始的页码
-        // 获取总页数
-        // const totalPages = swiperInstance.slides.length;
-        // 获取总页数（不包括复制的slide）
-        let actualTotalPages = 0;
-        $.each(swiperInstance.slides, function(_, slide) {
-            if (!$(slide).hasClass('swiper-slide-duplicate')) {
-                actualTotalPages++;
-            }
+function halfServerWrap() {
+    var swiper1ActiveIndex = 0 // 第一个轮播的索引
+    var box = $('.pl-section-two');
+    if (box.length) {
+        
+        var swiper1 = new Swiper('.pl-section-two .secondcontainer', {
+            effect: "fade",
+            fadeEffect: {
+                crossFade: true //开启淡出。过渡时，原slide透明度从1->0（淡出），过渡中的slide透明度从0->1（淡入），其他slide透明度0。
+            },
+            preventLinksPropagation: false, // 阻止点击事件冒泡
+            allowTouchMove: false,
+            on: {
+                slideChangeTransitionStart: function () { //切换时分类也要改变状态
+                    var d = this.activeIndex;
+                    console.log("1d",d)
+                },
+                slideChange: function (mySwiper) {
+                    // -----S ------
+                    swiper1ActiveIndex = this.activeIndex
+                    // -----E ------
+                },
+            },
         });
 
-        // 更新显示
-        $current.text(currentIndex);
-        $all.text(actualTotalPages);
-        
+        var swiper2 = new Swiper('.pl-section-two .innerbox .tabinfo .swiperlist .thirdcontainer .haftlist-item', {
+            slidesPerView: 3,
+            spaceBetween: 30,
+            preventLinksPropagation: false, // 阻止点击事件冒泡
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.pl-section-two .pagination-operate .nextbtn',
+                prevEl: '.pl-section-two .pagination-operate .prebtn',
+            },
+            breakpoints: {
+                480: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+    
+            },
+            allowTouchMove: false,
+           
+        });
+
+       
+        // 硬件架构内部点击事件
+        $(".pl-section-two .innerbox .tabinfo .swiperlist .hafttab span").hover(function () {
+            $(this).addClass('active').siblings().removeClass('active');
+            var index = $(this).index();
+            swiper1.slideTo(index)
+            // if (checkType(swiper2) === 'Array') {
+            //     swiper1[swiper1ActiveIndex].slideTo(index)
+            // } else {
+            //     swiper1.slideTo(index)
+
+            // }
+
+        });
+
+
+
     }
 
-})
+}
+halfServerWrap();
+
+// ---------------------------------------------  生态伙伴-千巡科技集成商
+
+function parnerListSlide() {
+    var slide = new Swiper('.parner-section4 .innerbox .swiperimg', {
+        speed: 900,
+        slidesPerView: 1,
+        spaceBetween: 40,
+        effect: "fade",
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        watchOverflow: true,
+        navigation: {
+            nextEl: '.parner-section4 .nextbtn',
+            prevEl: '.parner-section4 .prebtn',
+        },
+        pagination: {
+            el: '.parner-section4 .swiper-pagination',
+            clickable: true,
+        }
+    });
+    $(".core-robotics-wrap .innerbox .i-top .tablist .item").click(function () {
+        var d = $(this).index();
+        $(this).addClass("active").siblings().removeClass("active");
+        slide.slideTo(d)
+
+    })
+
+}
+parnerListSlide()
+
+
+// ---------------------------------------------  荣誉资质
+
+function honorSlide() {
+    var slide = new Swiper('.honor-wrap .innerbox .swiperimg', {
+        speed: 900,
+        slidesPerView: 1,
+        spaceBetween: 40,
+        effect: "fade",
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        watchOverflow: true,
+        navigation: {
+            nextEl: '.honor-wrap .nextbtn',
+            prevEl: '.honor-wrap .prebtn',
+        },
+        pagination: {
+            el: '.parner-section4 .swiper-pagination',
+            clickable: true,
+        }
+    });
+    $(".core-robotics-wrap .innerbox .i-top .tablist .item").click(function () {
+        var d = $(this).index();
+        $(this).addClass("active").siblings().removeClass("active");
+        slide.slideTo(d)
+
+    })
+
+}
+honorSlide()
+
+
+
+
+// ---------------------------------------------  应用行业
+
+function  applicationSlide() {
+    var slide = new Swiper('.all-industry-wrap .innerbox .swiperlist', {
+        speed: 900,
+        slidesPerView: 1,
+        spaceBetween: 40,
+        effect: "fade",
+        preventLinksPropagation: false, // 阻止点击事件冒泡
+        watchOverflow: true,
+    });
+    $(".all-industry-wrap .innerbox .i-top .itemtab .item").click(function () {
+        var d = $(this).index();
+        $(this).addClass("active").siblings().removeClass("active");
+        slide.slideTo(d)
+
+    })
+
+}
+applicationSlide()

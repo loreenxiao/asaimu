@@ -2,140 +2,93 @@
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 $(function () {
-  var Utils =
-  /*#__PURE__*/
-  function () {
-    function Utils() {
-      _classCallCheck(this, Utils);
-    }
+  // 加载-滚动条丝滑滚动 --extend.css
+  // class Utils {
+  //     lenisInit() {
+  //         const initSmoothScrolling = () => {
+  //             this.lenis = new Lenis({
+  //                 mouseMultiplier: 1.2,
+  //                 smooth: true,
+  //                 smoothTouch: true
+  //             });
+  //             const scrollFn = (time) => {
+  //                 this.lenis.raf(time);
+  //                 requestAnimationFrame(scrollFn);
+  //             };
+  //             requestAnimationFrame(scrollFn);
+  //         };
+  //         initSmoothScrolling();
+  //     }
+  // }
+  // class App extends Utils {
+  //     constructor() {
+  //         super();
+  //         this.init();
+  //     }
+  //     init() {
+  //         this.lenisInit();
+  //         this.definedAn();
+  //     }
+  //     definedAn() {
+  //         let that = this;
+  //         $('.l-morebox').hover(function () {
+  //             let jttl = gsap.timeline({
+  //                 paused: true
+  //             });
+  //             jttl.to($(this).find('svg.jt'), {
+  //                     xPercent: 100
+  //                 })
+  //                 .set($(this).find('svg.jt'), {
+  //                     xPercent: -100
+  //                 })
+  //                 .to($(this).find('svg.jt'), {
+  //                     xPercent: 0
+  //                 });
+  //             jttl.play();
+  //         }, function () {});
+  //         if ($('.index-title').length > 0) {
+  //             let panels = gsap.utils.toArray(".index-title");
+  //             panels.forEach((v, i) => {
+  //                 let name = $(v).find('.name>*');
+  //                 let nname = $(v).find('.nname>*');
+  //                 gsap.from(name, {
+  //                     xPercent: 100,
+  //                     opacity: 0,
+  //                     stagger: 0.05,
+  //                     ease: 'power2.inOut',
+  //                     scrollTrigger: {
+  //                         trigger: v,
+  //                         start: "top bottom",
+  //                         toggleActions: "play resume resume reset"
+  //                     }
+  //                 });
+  //                 gsap.from(nname, {
+  //                     xPercent: 100,
+  //                     opacity: 0,
+  //                     stagger: 0.05,
+  //                     ease: 'power2.inOut',
+  //                     scrollTrigger: {
+  //                         trigger: v,
+  //                         start: "top bottom",
+  //                         toggleActions: "play resume resume reset"
+  //                     }
+  //                 });
+  //             });
+  //         }
+  //     }
+  // }
+  // const _app = new App();
 
-    _createClass(Utils, [{
-      key: "lenisInit",
-      value: function lenisInit() {
-        var _this2 = this;
-
-        var initSmoothScrolling = function initSmoothScrolling() {
-          _this2.lenis = new Lenis({
-            mouseMultiplier: 1.2,
-            smooth: true,
-            smoothTouch: false
-          });
-
-          var scrollFn = function scrollFn(time) {
-            _this2.lenis.raf(time);
-
-            requestAnimationFrame(scrollFn);
-          };
-
-          requestAnimationFrame(scrollFn);
-        };
-
-        initSmoothScrolling();
-      }
-    }]);
-
-    return Utils;
-  }();
-
-  var App =
-  /*#__PURE__*/
-  function (_Utils) {
-    _inherits(App, _Utils);
-
-    function App() {
-      var _this3;
-
-      _classCallCheck(this, App);
-
-      _this3 = _possibleConstructorReturn(this, _getPrototypeOf(App).call(this));
-
-      _this3.init();
-
-      return _this3;
-    }
-
-    _createClass(App, [{
-      key: "init",
-      value: function init() {
-        this.lenisInit();
-        this.definedAn();
-      }
-    }, {
-      key: "definedAn",
-      value: function definedAn() {
-        var that = this;
-        $('.l-morebox').hover(function () {
-          var jttl = gsap.timeline({
-            paused: true
-          });
-          jttl.to($(this).find('svg.jt'), {
-            xPercent: 100
-          }).set($(this).find('svg.jt'), {
-            xPercent: -100
-          }).to($(this).find('svg.jt'), {
-            xPercent: 0
-          });
-          jttl.play();
-        }, function () {});
-
-        if ($('.index-title').length > 0) {
-          var panels = gsap.utils.toArray(".index-title");
-          panels.forEach(function (v, i) {
-            var name = $(v).find('.name>*');
-            var nname = $(v).find('.nname>*');
-            gsap.from(name, {
-              xPercent: 100,
-              opacity: 0,
-              stagger: 0.05,
-              ease: 'power2.inOut',
-              scrollTrigger: {
-                trigger: v,
-                start: "top bottom",
-                toggleActions: "play resume resume reset"
-              }
-            });
-            gsap.from(nname, {
-              xPercent: 100,
-              opacity: 0,
-              stagger: 0.05,
-              ease: 'power2.inOut',
-              scrollTrigger: {
-                trigger: v,
-                start: "top bottom",
-                toggleActions: "play resume resume reset"
-              }
-            });
-          });
-        }
-      }
-    }]);
-
-    return App;
-  }(Utils);
-
-  var _app = new App();
   /* 全局公共属性 */
-
-
   var wH = window.innerHeight,
       wW = window.innerWidth,
       c = "active"; // 使用IE浏览器提示
@@ -593,10 +546,17 @@ $(function () {
 
   indexProtect(); // --------------------------------------------- 关于我们--发展历程
 
+  function isMobileDevice() {
+    // 检测是否为移动设备
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  }
+
   function development() {
+    // 根据设备类型设置 Swiper 的方向
+    var direction = isMobileDevice() ? 'horizontal' : 'vertical';
     var mySwiper = new Swiper('.development-culture .leftwrap .scrollcontent', {
       // loop : true,//可选选项，开启循环
-      direction: "vertical",
+      direction: direction,
       spaceBetween: 10,
       slidesPerView: 3,
       speed: 1000,
@@ -616,10 +576,27 @@ $(function () {
         clickable: true
       }
     });
+    var mySwiper2 = new Swiper('.development-culture .innerbox .rightwrap .swiperlogo .item .logo', {
+      // loop : true,//可选选项，开启循环
+      speed: 1000,
+      effect: "fade",
+      pagination: {
+        el: '.development-culture .innerbox .rightwrap .swiperlogo .item .logo .swiper-pagination',
+        clickable: true
+      },
+      on: {
+        slideChange: function slideChange() {
+          console.log('Slide changed', this.activeIndex);
+          var d = this.activeIndex;
+          $(".development-culture .leftwrap .yeartab li").eq(d).click();
+        }
+      }
+    });
     $(".development-culture .leftwrap .yeartab li").click(function () {
       $(this).addClass("active").siblings().removeClass("active");
       var index = $(this).index();
       mySwiper.slideTo(index);
+      mySwiper2.slideTo(index);
     });
   }
 
@@ -727,20 +704,20 @@ function imousehover(obj, obj2) {
     }, {
       key: "initCursor",
       value: function initCursor() {
-        var _this4 = this;
+        var _this2 = this;
 
         this.pageX = $(window).width() / 2 - 50;
         this.pageY = $(window).height() / 2 - 50;
         $(document).on("mousemove", function (e) {
-          _this4.pageX = e.clientX;
-          _this4.pageY = e.clientY;
+          _this2.pageX = e.clientX;
+          _this2.pageY = e.clientY;
         });
 
         var render = function render() {
-          if (_this4.move) {
-            window.TweenMax.to(_this4.cursor, 0.5, {
-              x: _this4.pageX,
-              y: _this4.pageY,
+          if (_this2.move) {
+            window.TweenMax.to(_this2.cursor, 0.5, {
+              x: _this2.pageX,
+              y: _this2.pageY,
               ease: "Power1.easeOut"
             });
           }
@@ -753,10 +730,10 @@ function imousehover(obj, obj2) {
     }, {
       key: "initHovers",
       value: function initHovers() {
-        var _this5 = this;
+        var _this3 = this;
 
         var handleMouseEnter = function handleMouseEnter(e) {
-          window.TweenMax.to(_this5.cursor, 0.5, {
+          window.TweenMax.to(_this3.cursor, 0.5, {
             scale: 1,
             opacity: 1,
             ease: "Power1.easeOut"
@@ -765,7 +742,7 @@ function imousehover(obj, obj2) {
         };
 
         var handleMouseLeave = function handleMouseLeave() {
-          window.TweenMax.to(_this5.cursor, 0.5, {
+          window.TweenMax.to(_this3.cursor, 0.5, {
             scale: 0,
             opacity: 0,
             ease: "Power1.easeOut"
@@ -780,36 +757,36 @@ function imousehover(obj, obj2) {
     }, {
       key: "initMove",
       value: function initMove() {
-        var _this6 = this;
+        var _this4 = this;
 
         var handleMouseMove = function handleMouseMove(e) {
           if ($(e.target).closest('.owl-nav')[0]) {
-            _this6.initCircle(e.target, "[class*='owl-']");
+            _this4.initCircle(e.target, "[class*='owl-']");
           } else if ($(e.target).closest('.searchOnOff')[0]) {
-            _this6.initCircle(e.target, ".searchOnOff");
+            _this4.initCircle(e.target, ".searchOnOff");
           } else {
-            window.TweenMax.to(_this6.cursor, 0.5, {
+            window.TweenMax.to(_this4.cursor, 0.5, {
               scale: 1,
               // background: 'yellow',
               ease: "Power1.easeOut"
             });
-            window.TweenMax.to(_this6.cursorInner, 0.5, {
+            window.TweenMax.to(_this4.cursorInner, 0.5, {
               opacity: 1,
               ease: "Power1.easeOut"
             });
-            _this6.move = true;
+            _this4.move = true;
           }
 
           if ($(e.currentTarget).hasClass('ff_topSlider') || $(e.currentTarget).parents('.mlist.project')[0]) {
             // const sxPos = (e.clientX / window.innerWidth) * 200 - 100;
             // this.cursor.toggleClass("next", sxPos > 0);
-            _this6.cursor.addClass('more');
+            _this4.cursor.addClass('more');
           } else if ($(e.currentTarget).hasClass('videom') || $(e.currentTarget).parents('.bodyvideom')[0]) {
-            _this6.cursor.addClass('play');
+            _this4.cursor.addClass('play');
           } else if ($(e.currentTarget).parents('.team_tabs')[0]) {
-            _this6.cursor.addClass('drag');
+            _this4.cursor.addClass('drag');
           } else if ($(e.currentTarget).hasClass('post-next')) {
-            _this6.cursor.addClass('next');
+            _this4.cursor.addClass('next');
           }
         };
 
@@ -1045,22 +1022,47 @@ function teamActiveSwiper() {
     pagination: {
       el: '.solution-two-section1 .bottomwrap .twoSwiper .swiper-pagination',
       clickable: false
-    },
-    on: {
-      paginationClick: function paginationClick(swiper, event) {
-        // 这里可以添加自定义逻辑
-        console.log('Clicked pagination bullet for slide:', swiper.activeIndex);
-      }
     }
   });
-  $(".solution-two-section1 .bottomwrap .innerbox .info .tabitem li").click(function () {
+  var mobile = $(window).width() <= 768;
+
+  if (mobile) {
+    $('.solution-two-section1 .bottomwrap .innerbox .image').detach().appendTo('.solution-two-section1 .bottomwrap .innerbox .info .tabitem .active .bottom');
+  }
+
+  $(".solution-two-section1 .bottomwrap .innerbox .info .tabitem li").hover(function () {
     var index = $(this).index();
     $(".solution-two-section1 .bottomwrap .innerbox .image .swiper-pagination1 .swiper-pagination-bullet").eq($(this).index()).click();
     $(this).addClass("active").siblings().removeClass("active");
+
+    if (mobile) {
+      $('.solution-two-section1 .bottomwrap .innerbox .image').detach().appendTo('.solution-two-section1 .bottomwrap .innerbox .info .tabitem .active .bottom');
+    }
   });
 }
 
-teamActiveSwiper(); // 4.1 EMC测试服务
+teamActiveSwiper();
+
+function serverwrap() {
+  var swiper = new Swiper('.whichserver-wrap .innerwrap .bottomwrap .innerbox .image', {
+    // speed: 1000,
+    // autoplay: true,
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    pagination: {
+      el: '.whichserver-wrap .innerwrap .bottomwrap .innerbox .image .swiper-pagination'
+    },
+    on: {}
+  });
+  $(".whichserver-wrap .innerwrap .bottomwrap .innerbox .info .tab-ul ul li").click(function () {
+    var index = $(this).index();
+    $(".whichserver-wrap .innerwrap .bottomwrap .innerbox .image .swiper-pagination .swiper-pagination-bullet").eq(index).click();
+  });
+}
+
+serverwrap(); // 4.1 EMC测试服务
 
 $(".test-server-wrap .innerbox .bottom-global .info .item").hover(function () {
   $(this).addClass('active').siblings().removeClass('active');
